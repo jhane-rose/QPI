@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        QPI - Quiz Performance Improvement
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- ================================= -->
+        <!-- HEADER -->
+        <!-- ================================= -->
+
+        <header class="header">
+
+            <h1>QPI</h1>
+
+            <p>
+                Quiz Performance Improvement
+            </p>
+
+            <small>
+                Grade 11 Demeter
+            </small>
+
+        </header>
+
+
+
+        <main>
+
+
+            <!-- ================================= -->
+            <!-- HOME SCREEN -->
+            <!-- ================================= -->
+
+            <section
+                id="homeScreen"
+                class="screen"
+            >
+
+                <h2>
+                    Welcome to QPI
+                </h2>
+
+                <p>
+                    An offline quiz application
+                    designed to support learning
+                    retention through quiz practice.
+                </p>
+
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter your name"
+                    autocomplete="off"
+                >
+
+
+                <button
+                    onclick="enterQPI()"
+                >
+                    Continue
+                </button>
+
+            </section>
+
+
+
+            <!-- ================================= -->
+            <!-- MENU SCREEN -->
+            <!-- ================================= -->
+
+            <section
+                id="menuScreen"
+                class="screen hidden"
+            >
+
+                <h2>
+                    Main Menu
+                </h2>
+
+
+                <p id="welcomeMessage"></p>
+
+
+                <div class="menu">
+
+
+                    <button
+                        onclick="startQuiz('pretest')"
+                    >
+                        📝 Pre-Test
+                    </button>
+
+
+                    <button
+                        onclick="startQuiz('practice')"
+                    >
+                        📚 Learning Quiz
+                    </button>
+
+
+                    <button
+                        onclick="startQuiz('posttest')"
+                    >
+                        📊 Post-Test
+                    </button>
+
+
+                    <button
+                        class="secondary"
+                        onclick="showProgress()"
+                    >
+                        📈 My Progress
+                    </button>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================================= -->
+            <!-- QUIZ SCREEN -->
+            <!-- ================================= -->
+
+            <section
+                id="quizScreen"
+                class="screen hidden"
+            >
+
+
+                <!-- Quiz Header -->
+
+                <div class="quizTop">
+
+                    <span id="quizType">
+                        Quiz
+                    </span>
+
+
+                    <span id="questionNumber">
+                        Question 1 of 10
+                    </span>
+
+                </div>
+
+
+
+                <!-- Progress Bar -->
+
+                <div class="progressBar">
+
+                    <div
+                        id="progressFill"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- Question -->
+
+                <h2
+                    id="questionText"
+                >
+                </h2>
+
+
+
+                <!-- Answer Choices -->
+
+                <div
+                    id="choices"
+                ></div>
+
+
+
+                <!-- ================================= -->
+                <!-- FEEDBACK / TEACHING AREA -->
+                <!-- ================================= -->
+
+                <div
+                    id="feedback"
+                    class="hidden"
+                >
+
+                    <div
+                        id="feedbackTitle"
+                    ></div>
+
+
+                    <div
+                        id="correctAnswer"
+                    ></div>
+
+
+                    <div
+                        id="explanation"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- Next Button -->
+
+                <button
+                    id="nextButton"
+                    onclick="nextQuestion()"
+                    disabled
+                >
+                    Check Answer
+                </button>
+
+
+            </section>
+
+
+
+            <!-- ================================= -->
+            <!-- RESULT SCREEN -->
+            <!-- ================================= -->
+
+            <section
+                id="resultScreen"
+                class="screen hidden"
+            >
+
+
+                <h2>
+                    🎉 Quiz Completed!
+                </h2>
+
+
+                <p
+                    id="resultMessage"
+                ></p>
+
+
+
+                <!-- Score Card -->
+
+                <div class="scoreCard">
+
+
+                    <p>
+                        Your Score
+                    </p>
+
+
+                    <h2
+                        id="finalScore"
+                    >
+                        0 / 10
+                    </h2>
+
+
+                    <p>
+                        Percentage
+                    </p>
+
+
+                    <h2
+                        id="percentage"
+                    >
+                        0%
+                    </h2>
+
+
+                </div>
+
+
+
+                <!-- Performance Message -->
+
+                <div
+                    id="performanceMessage"
+                ></div>
+
+
+
+                <button
+                    onclick="backToMenu()"
+                >
+                    Back to Menu
+                </button>
+
+
+            </section>
+
+
+
+            <!-- ================================= -->
+            <!-- PROGRESS SCREEN -->
+            <!-- ================================= -->
+
+            <section
+                id="progressScreen"
+                class="screen hidden"
+            >
+
+
+                <h2>
+                    📈 My Progress
+                </h2>
+
+
+                <p>
+                    Your saved quiz results are
+                    stored on this device.
+                </p>
+
+
+                <div
+                    id="progressContent"
+                ></div>
+
+
+
+                <button
+                    onclick="backToMenu()"
+                >
+                    Back to Menu
+                </button>
+
+
+                <button
+                    class="danger"
+                    onclick="clearResults()"
+                >
+                    Clear Results
+                </button>
+
+
+            </section>
+
+
+        </main>
+
+
+
+        <!-- ================================= -->
+        <!-- FOOTER -->
+        <!-- ================================= -->
+
+        <footer>
+
+            <p>
+                QPI • Offline Learning Application
+            </p>
+
+            <p>
+                TopLink Global College Inc.
+            </p>
+
+        </footer>
+
+
+    </div>
+
+
+
+    <!-- ================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================= -->
+
+    <script
+        src="app.js"
+    ></script>
+
+
+</body>
+
+</html>
