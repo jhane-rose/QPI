@@ -27,9 +27,9 @@
     <div class="app">
 
 
-        <!-- ================================= -->
+        <!-- ================================================= -->
         <!-- HEADER -->
-        <!-- ================================= -->
+        <!-- ================================================= -->
 
         <header class="header">
 
@@ -40,7 +40,7 @@
             </p>
 
             <small>
-                Grade 11 Demeter
+                Grade 11 • General Mathematics
             </small>
 
         </header>
@@ -50,9 +50,9 @@
         <main>
 
 
-            <!-- ================================= -->
+            <!-- ================================================= -->
             <!-- HOME SCREEN -->
-            <!-- ================================= -->
+            <!-- ================================================= -->
 
             <section
                 id="homeScreen"
@@ -64,21 +64,95 @@
                 </h2>
 
                 <p>
-                    An offline quiz application
-                    designed to support learning
-                    retention through quiz practice.
+                    An offline learning and quiz application
+                    designed to help Grade 11 students practice
+                    General Mathematics.
                 </p>
 
 
-                <input
-                    type="text"
-                    id="studentName"
-                    placeholder="Enter your name"
-                    autocomplete="off"
-                >
+                <div class="formGroup">
+
+                    <label for="studentName">
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter your name"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="formGroup">
+
+                    <label for="studentSection">
+                        Grade 11 Section
+                    </label>
+
+                    <select id="studentSection">
+
+                        <option value="">
+                            Select your section
+                        </option>
+
+                        <option value="APHRODITE">
+                            APHRODITE
+                        </option>
+
+                        <option value="APOLLO">
+                            APOLLO
+                        </option>
+
+                        <option value="DEMETER">
+                            DEMETER
+                        </option>
+
+                        <option value="ATHENA">
+                            ATHENA
+                        </option>
+
+                        <option value="HADES">
+                            HADES
+                        </option>
+
+                        <option value="HERMES">
+                            HERMES
+                        </option>
+
+                        <option value="ARTEMIS">
+                            ARTEMIS
+                        </option>
+
+                        <option value="ZEUS">
+                            ZEUS
+                        </option>
+
+                        <option value="POSEIDON">
+                            POSEIDON
+                        </option>
+
+                        <option value="EROS">
+                            EROS
+                        </option>
+
+                        <option value="HERA">
+                            HERA
+                        </option>
+
+                        <option value="ARES">
+                            ARES
+                        </option>
+
+                    </select>
+
+                </div>
 
 
                 <button
+                    type="button"
                     onclick="enterQPI()"
                 >
                     Continue
@@ -88,9 +162,9 @@
 
 
 
-            <!-- ================================= -->
+            <!-- ================================================= -->
             <!-- MENU SCREEN -->
-            <!-- ================================= -->
+            <!-- ================================================= -->
 
             <section
                 id="menuScreen"
@@ -107,8 +181,8 @@
 
                 <div class="menu">
 
-
                     <button
+                        type="button"
                         onclick="startQuiz('pretest')"
                     >
                         📝 Pre-Test
@@ -116,6 +190,7 @@
 
 
                     <button
+                        type="button"
                         onclick="startQuiz('practice')"
                     >
                         📚 Learning Quiz
@@ -123,6 +198,7 @@
 
 
                     <button
+                        type="button"
                         onclick="startQuiz('posttest')"
                     >
                         📊 Post-Test
@@ -130,12 +206,21 @@
 
 
                     <button
+                        type="button"
+                        class="reviewButton"
+                        onclick="showReview()"
+                    >
+                        📖 General Mathematics Review
+                    </button>
+
+
+                    <button
+                        type="button"
                         class="secondary"
                         onclick="showProgress()"
                     >
                         📈 My Progress
                     </button>
-
 
                 </div>
 
@@ -143,17 +228,127 @@
 
 
 
-            <!-- ================================= -->
+            <!-- ================================================= -->
+            <!-- REVIEW SCREEN -->
+            <!-- ================================================= -->
+
+            <section
+                id="reviewScreen"
+                class="screen hidden"
+            >
+
+                <h2>
+                    📖 General Mathematics
+                </h2>
+
+                <p>
+                    Review the lessons and examples
+                    before taking the quiz.
+                </p>
+
+
+                <div id="reviewTopics">
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('functions')"
+                    >
+                        📘 Functions
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('rational')"
+                    >
+                        📊 Rational Functions
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('inverse')"
+                    >
+                        🔄 Inverse Functions
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('business')"
+                    >
+                        💰 Business Mathematics
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('sequences')"
+                    >
+                        📈 Sequences
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('series')"
+                    >
+                        🧮 Series
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('exponential')"
+                    >
+                        📐 Exponential Functions
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('logarithmic')"
+                    >
+                        🔢 Logarithmic Functions
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="reviewContent"
+                    class="reviewContent hidden"
+                ></div>
+
+
+                <button
+                    type="button"
+                    class="secondary"
+                    onclick="showReview()"
+                >
+                    ← Back to Review Topics
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="backToMenu()"
+                >
+                    Back to Menu
+                </button>
+
+            </section>
+
+
+
+            <!-- ================================================= -->
             <!-- QUIZ SCREEN -->
-            <!-- ================================= -->
+            <!-- ================================================= -->
 
             <section
                 id="quizScreen"
                 class="screen hidden"
             >
-
-
-                <!-- Quiz Header -->
 
                 <div class="quizTop">
 
@@ -161,16 +356,12 @@
                         Quiz
                     </span>
 
-
                     <span id="questionNumber">
                         Question 1 of 10
                     </span>
 
                 </div>
 
-
-
-                <!-- Progress Bar -->
 
                 <div class="progressBar">
 
@@ -181,27 +372,15 @@
                 </div>
 
 
-
-                <!-- Question -->
-
                 <h2
                     id="questionText"
-                >
-                </h2>
+                ></h2>
 
-
-
-                <!-- Answer Choices -->
 
                 <div
                     id="choices"
                 ></div>
 
-
-
-                <!-- ================================= -->
-                <!-- FEEDBACK / TEACHING AREA -->
-                <!-- ================================= -->
 
                 <div
                     id="feedback"
@@ -212,11 +391,9 @@
                         id="feedbackTitle"
                     ></div>
 
-
                     <div
                         id="correctAnswer"
                     ></div>
-
 
                     <div
                         id="explanation"
@@ -225,104 +402,81 @@
                 </div>
 
 
-
-                <!-- Next Button -->
-
                 <button
                     id="nextButton"
+                    type="button"
                     onclick="nextQuestion()"
                     disabled
                 >
                     Check Answer
                 </button>
 
-
             </section>
 
 
 
-            <!-- ================================= -->
+            <!-- ================================================= -->
             <!-- RESULT SCREEN -->
-            <!-- ================================= -->
+            <!-- ================================================= -->
 
             <section
                 id="resultScreen"
                 class="screen hidden"
             >
 
-
                 <h2>
                     🎉 Quiz Completed!
                 </h2>
 
 
-                <p
-                    id="resultMessage"
-                ></p>
+                <p id="resultMessage"></p>
 
-
-
-                <!-- Score Card -->
 
                 <div class="scoreCard">
-
 
                     <p>
                         Your Score
                     </p>
 
-
-                    <h2
-                        id="finalScore"
-                    >
+                    <h2 id="finalScore">
                         0 / 10
                     </h2>
-
 
                     <p>
                         Percentage
                     </p>
 
-
-                    <h2
-                        id="percentage"
-                    >
+                    <h2 id="percentage">
                         0%
                     </h2>
 
-
                 </div>
 
-
-
-                <!-- Performance Message -->
 
                 <div
                     id="performanceMessage"
                 ></div>
 
 
-
                 <button
+                    type="button"
                     onclick="backToMenu()"
                 >
                     Back to Menu
                 </button>
 
-
             </section>
 
 
 
-            <!-- ================================= -->
+            <!-- ================================================= -->
             <!-- PROGRESS SCREEN -->
-            <!-- ================================= -->
+            <!-- ================================================= -->
 
             <section
                 id="progressScreen"
                 class="screen hidden"
             >
-
 
                 <h2>
                     📈 My Progress
@@ -330,8 +484,8 @@
 
 
                 <p>
-                    Your saved quiz results are
-                    stored on this device.
+                    Your quiz results are stored
+                    on this device.
                 </p>
 
 
@@ -340,8 +494,8 @@
                 ></div>
 
 
-
                 <button
+                    type="button"
                     onclick="backToMenu()"
                 >
                     Back to Menu
@@ -349,23 +503,22 @@
 
 
                 <button
+                    type="button"
                     class="danger"
                     onclick="clearResults()"
                 >
                     Clear Results
                 </button>
 
-
             </section>
-
 
         </main>
 
 
 
-        <!-- ================================= -->
+        <!-- ================================================= -->
         <!-- FOOTER -->
-        <!-- ================================= -->
+        <!-- ================================================= -->
 
         <footer>
 
@@ -374,24 +527,20 @@
             </p>
 
             <p>
+                Grade 11 • General Mathematics
+            </p>
+
+            <p>
                 TopLink Global College Inc.
             </p>
 
         </footer>
 
-
     </div>
 
 
 
-    <!-- ================================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ================================= -->
-
-    <script
-        src="app.js"
-    ></script>
-
+    <script src="app.js"></script>
 
 </body>
 
