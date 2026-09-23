@@ -4,41 +4,75 @@
     padding: 0;
 }
 
+
 body {
-    font-family: Arial, sans-serif;
-    background: #eef2f7;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #e0f2fe
+        );
+
     color: #1f2937;
+
+    min-height: 100vh;
 }
+
 
 .app {
     width: 100%;
     max-width: 700px;
+
     min-height: 100vh;
-    margin: auto;
+
+    margin: 0 auto;
+
     background: white;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.08);
 }
+
 
 /* HEADER */
 
 .header {
-    background: #2563eb;
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
     color: white;
+
     text-align: center;
-    padding: 30px 20px;
+
+    padding: 35px 20px;
 }
 
+
 .header h1 {
-    font-size: 48px;
+    font-size: 52px;
+
+    letter-spacing: 3px;
+
     margin-bottom: 5px;
 }
+
 
 .header p {
     font-size: 18px;
 }
 
+
 .header small {
     display: block;
-    margin-top: 8px;
+
+    margin-top: 10px;
+
     opacity: 0.9;
 }
 
@@ -46,67 +80,204 @@ body {
 /* MAIN */
 
 main {
-    padding: 25px;
+    padding: 30px 25px;
 }
+
 
 .screen {
     text-align: center;
+
+    animation: fadeIn 0.3s ease;
 }
+
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 
-/* HOME */
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* HEADINGS */
 
 .screen h2 {
     margin-bottom: 15px;
+
+    color: #111827;
 }
+
 
 .screen > p {
     margin-bottom: 20px;
-    line-height: 1.5;
+
+    line-height: 1.6;
+
+    color: #4b5563;
 }
 
-input {
+
+/* FORM */
+
+.formGroup {
     width: 100%;
+
+    text-align: left;
+
+    margin-top: 15px;
+}
+
+
+.formGroup label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+
+    font-size: 14px;
+}
+
+
+input,
+select {
+
+    width: 100%;
+
     padding: 15px;
-    margin: 15px 0;
+
     border: 1px solid #d1d5db;
-    border-radius: 8px;
+
+    border-radius: 10px;
+
     font-size: 16px;
+
+    background: white;
+
+    color: #1f2937;
+
+    outline: none;
+}
+
+
+input:focus,
+select:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.15);
 }
 
 
 /* BUTTONS */
 
 button {
+
     width: 100%;
+
     padding: 15px;
+
     margin-top: 12px;
+
     border: none;
-    border-radius: 8px;
+
+    border-radius: 10px;
 
     background: #2563eb;
+
     color: white;
 
     font-size: 16px;
+
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
+
 
 button:hover {
+
     background: #1d4ed8;
+
+    transform: translateY(-1px);
 }
 
+
+button:active {
+
+    transform: scale(0.98);
+}
+
+
+button:disabled {
+
+    background: #9ca3af;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
 button.secondary {
+
     background: #475569;
 }
 
+
 button.secondary:hover {
+
     background: #334155;
+}
+
+
+button.danger {
+
+    background: #dc2626;
+}
+
+
+button.danger:hover {
+
+    background: #b91c1c;
+}
+
+
+button.reviewButton {
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #6366f1
+        );
+}
+
+
+button.reviewButton:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #6d28d9,
+            #4f46e5
+        );
 }
 
 
@@ -117,120 +288,402 @@ button.secondary:hover {
 }
 
 
+.menu button {
+    margin-top: 14px;
+    padding: 17px;
+}
+
+
 /* QUIZ */
 
 .quizTop {
+
     display: flex;
+
     justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
 
     margin-bottom: 15px;
 
     font-weight: bold;
+
     color: #2563eb;
+}
+
+
+#quizType {
+
+    background: #eff6ff;
+
+    padding: 7px 10px;
+
+    border-radius: 7px;
+}
+
+
+#questionNumber {
+
+    color: #64748b;
 }
 
 
 /* PROGRESS BAR */
 
 .progressBar {
+
     width: 100%;
-    height: 8px;
+
+    height: 9px;
 
     background: #e5e7eb;
 
-    border-radius: 10px;
+    border-radius: 20px;
 
     margin-bottom: 30px;
+
+    overflow: hidden;
 }
 
+
 #progressFill {
+
     height: 100%;
+
     width: 0%;
 
-    background: #2563eb;
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa
+        );
 
-    border-radius: 10px;
+    border-radius: 20px;
 
-    transition: width 0.3s;
+    transition: width 0.3s ease;
 }
 
 
 /* QUESTION */
 
 #questionText {
+
     margin-bottom: 25px;
+
     line-height: 1.5;
+
+    font-size: 22px;
 }
 
 
 /* ANSWERS */
 
+#choices {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
 .choice {
+
     background: #f1f5f9;
+
     color: #1f2937;
 
     text-align: left;
 
     border: 2px solid transparent;
+
+    margin-top: 0;
+
+    line-height: 1.4;
 }
+
 
 .choice:hover {
+
     background: #dbeafe;
 }
 
+
 .choice.selected {
+
     background: #dbeafe;
+
     border-color: #2563eb;
+
+    color: #1e40af;
+}
+
+
+.choice.correct {
+
+    background: #dcfce7 !important;
+
+    border-color: #16a34a !important;
+
+    color: #166534 !important;
+}
+
+
+.choice.incorrect {
+
+    background: #fee2e2 !important;
+
+    border-color: #dc2626 !important;
+
+    color: #991b1b !important;
+}
+
+
+/* FEEDBACK */
+
+.feedback {
+
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    text-align: left;
+
+    line-height: 1.6;
+}
+
+
+.feedback.correct {
+
+    background: #f0fdf4;
+
+    border: 2px solid #86efac;
+
+    color: #166534;
+}
+
+
+.feedback.incorrect {
+
+    background: #fef2f2;
+
+    border: 2px solid #fca5a5;
+
+    color: #991b1b;
+}
+
+
+#feedbackTitle {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+
+#correctAnswer {
+
+    margin-bottom: 10px;
 }
 
 
 /* SCORE */
 
 .scoreCard {
-    background: #eff6ff;
 
-    border-radius: 12px;
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #dbeafe
+        );
+
+    border-radius: 15px;
 
     padding: 30px;
 
     margin: 25px 0;
+
+    border: 1px solid #bfdbfe;
 }
+
 
 .scoreCard p {
+
     margin-bottom: 10px;
+
+    color: #475569;
 }
+
 
 #finalScore {
-    font-size: 42px;
+
+    font-size: 44px;
+
     color: #2563eb;
+
+    margin-bottom: 20px;
 }
 
+
 #percentage {
-    font-size: 20px;
+
+    font-size: 24px;
+
+    color: #1d4ed8;
+}
+
+
+/* PERFORMANCE */
+
+#performanceMessage {
+
+    padding: 18px;
+
+    margin: 20px 0;
+
+    background: #f8fafc;
+
+    border-radius: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* REVIEW */
+
+#reviewTopics {
+
+    margin-top: 20px;
+}
+
+
+.reviewContent {
+
+    margin-top: 20px;
+
+    text-align: left;
+
+    background: #f8fafc;
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    border-left: 5px solid #7c3aed;
+
+    line-height: 1.7;
+}
+
+
+.reviewContent h3 {
+
+    color: #4f46e5;
+
+    margin-bottom: 15px;
+}
+
+
+.reviewContent h4 {
+
+    margin-top: 18px;
+
+    margin-bottom: 8px;
+
+    color: #374151;
+}
+
+
+.reviewContent p {
+
+    margin-bottom: 12px;
+
+    color: #374151;
+}
+
+
+.formula {
+
+    background: #ede9fe;
+
+    color: #4c1d95;
+
+    padding: 15px;
+
+    margin: 15px 0;
+
+    border-radius: 8px;
+
     font-weight: bold;
+
+    text-align: center;
+}
+
+
+.example {
+
+    background: #eff6ff;
+
+    border-left: 4px solid #2563eb;
+
+    padding: 15px;
+
+    margin: 15px 0;
+
+    border-radius: 5px;
 }
 
 
 /* PROGRESS */
 
 .progressItem {
+
     background: #f8fafc;
 
     border-left: 5px solid #2563eb;
 
-    padding: 15px;
+    padding: 18px;
 
     margin: 12px 0;
 
     text-align: left;
 
-    border-radius: 5px;
+    border-radius: 8px;
+}
+
+
+.progressItem h3 {
+
+    color: #2563eb;
+
+    margin-bottom: 12px;
+}
+
+
+.progressItem p {
+
+    margin-bottom: 7px;
+}
+
+
+.progressItem small {
+
+    color: #64748b;
 }
 
 
 /* FOOTER */
 
 footer {
+
     text-align: center;
 
     padding: 25px;
@@ -240,4 +693,55 @@ footer {
     font-size: 13px;
 
     border-top: 1px solid #e5e7eb;
+
+    background: #f8fafc;
+}
+
+
+footer p {
+
+    margin-bottom: 5px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    body {
+        background: white;
+    }
+
+
+    .app {
+        max-width: 100%;
+
+        box-shadow: none;
+    }
+
+
+    .header h1 {
+        font-size: 42px;
+    }
+
+
+    main {
+        padding: 25px 18px;
+    }
+
+
+    #questionText {
+        font-size: 19px;
+    }
+
+
+    .quizTop {
+        font-size: 12px;
+    }
+
+
+    .choice {
+        font-size: 15px;
+    }
+
 }
