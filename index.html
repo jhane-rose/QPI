@@ -178,41 +178,29 @@
 
                 <p id="welcomeMessage"></p>
 
-
                 <div class="menu">
+                    <button
+                        type="button"
+                        class="secondary"
+                        onclick="openEncoding()"
+                    >
+                        📝 Encode
+                    </button>
 
                     <button
                         type="button"
-                        onclick="startQuiz('pretest')"
+                        class="secondary"
+                        onclick="openStoredMaterials()"
                     >
-                        📝 Pre-Test
+                        🗂️ Store
                     </button>
-
 
                     <button
                         type="button"
                         onclick="startQuiz('practice')"
                     >
-                        📚 Learning Quiz
+                        📚 Daily Quiz
                     </button>
-
-
-                    <button
-                        type="button"
-                        onclick="startQuiz('posttest')"
-                    >
-                        📊 Post-Test
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="reviewButton"
-                        onclick="showReview()"
-                    >
-                        📖 General Mathematics Review
-                    </button>
-
 
                     <button
                         type="button"
@@ -223,6 +211,110 @@
                     </button>
 
                 </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- DAILY QUIZ LEVELS -->
+            <!-- ================================================= -->
+
+            <section
+                id="dailyQuizScreen"
+                class="screen hidden"
+            >
+
+                <h2>📚 Daily Quiz</h2>
+                <div id="learningLevels" class="menu hidden"></div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- ENCODE DISCUSSION MATERIALS -->
+            <!-- ================================================= -->
+
+            <section
+                id="encodeScreen"
+                class="screen hidden"
+            >
+
+                <h2>📝 General Mathematics Discussions</h2>
+
+                <div id="discussionDays" class="discussionDays"></div>
+
+                <button
+                    type="button"
+                    class="secondary"
+                    onclick="backToMenu()"
+                >
+                    Back to Menu
+                </button>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- DISCUSSION DAY PAGE -->
+            <!-- ================================================= -->
+
+            <section
+                id="discussionScreen"
+                class="screen hidden"
+            >
+
+                <div id="discussionEditor" class="discussionEditor hidden">
+                    <h3 id="discussionDayTitle"></h3>
+
+                    <div class="formGroup">
+                        <label for="discussionMaterialText">Review Material</label>
+                        <textarea
+                            id="discussionMaterialText"
+                            rows="10"
+                            placeholder="Enter or paste the review material for this day"
+                        ></textarea>
+                    </div>
+
+                    <p id="discussionStatus" class="discussionStatus" role="status"></p>
+
+                    <button type="button" onclick="saveDiscussionMaterial()">
+                        Save Material
+                    </button>
+                    <button type="button" onclick="markDiscussionRead()">
+                        Mark as Read
+                    </button>
+                </div>
+
+                <button
+                    type="button"
+                    class="secondary"
+                    onclick="backToDiscussionDays()"
+                >
+                    Back to Days
+                </button>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- STORED MATERIALS -->
+            <!-- ================================================= -->
+
+            <section
+                id="storeScreen"
+                class="screen hidden"
+            >
+
+                <h2>🗂️ Stored General Mathematics Materials</h2>
+                <div id="storedMaterialsContent" class="storedMaterialsContent"></div>
+
+                <button
+                    type="button"
+                    class="secondary"
+                    onclick="backToMenu()"
+                >
+                    Back to Menu
+                </button>
 
             </section>
 
@@ -457,6 +549,7 @@
                     id="performanceMessage"
                 ></div>
 
+                <div id="resultActions"></div>
 
                 <button
                     type="button"
