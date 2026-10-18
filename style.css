@@ -294,6 +294,181 @@ button.reviewButton:hover {
 }
 
 
+.discussionDays {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+
+.discussionDays button {
+    margin-top: 0;
+    padding: 13px 8px;
+}
+
+
+.discussionEditor {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #d1d5db;
+    text-align: left;
+}
+
+
+.discussionEditor h3 {
+    margin-bottom: 10px;
+}
+
+
+.discussionEditor textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font: inherit;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+
+.discussionEditor textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+
+.discussionStatus {
+    min-height: 1.5em;
+    margin-top: 12px;
+    color: #166534;
+}
+
+
+.activityBuilder,
+.savedActivities {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #d1d5db;
+}
+
+
+.activityBuilder h3,
+.savedActivities > h3 {
+    margin-bottom: 14px;
+}
+
+
+.activityBuilder small {
+    display: block;
+    margin-top: 8px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+
+.learningActivity {
+    margin-top: 14px;
+    padding: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f8fafc;
+    text-align: left;
+}
+
+
+.learningActivity h4 {
+    margin: 6px 0 10px;
+}
+
+
+.activityTypeLabel {
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+.activityPromptText,
+.flashcardAnswer {
+    margin: 12px 0;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+
+.learningActivity button {
+    margin-top: 10px;
+}
+
+
+.activityResponse {
+    margin-top: 12px;
+}
+
+
+.activityFeedback {
+    min-height: 1.5em;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+
+.correctAnswerFeedback {
+    color: #166534;
+}
+
+
+.incorrectAnswerFeedback {
+    color: #b91c1c;
+}
+
+
+.storedMaterialsContent {
+    margin: 20px 0;
+    text-align: left;
+}
+
+
+.storedDay {
+    padding: 18px 0;
+    border-bottom: 1px solid #d1d5db;
+}
+
+
+.storedDay h3 {
+    margin-bottom: 12px;
+}
+
+
+.storedDiscussionText,
+.storedActivity p {
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+
+.storedActivity {
+    margin-top: 16px;
+    padding: 14px;
+    border-left: 3px solid #2563eb;
+    background: #f8fafc;
+}
+
+
+.storedActivity h4 {
+    margin-bottom: 8px;
+}
+
+
+.storedActivity .storedAnswer {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
 /* QUIZ */
 
 .quizTop {
