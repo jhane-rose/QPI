@@ -22,6 +22,28 @@ let answerSubmitted = false;
 let currentQuestions = [];
 let userAnswers = [];
 
+function shuffleArray(items) {
+    const array = [...items];
+
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return array;
+}
+
+function prepareQuestionForQuiz(question) {
+    const shuffledChoices = shuffleArray(question.choices);
+    const correctChoice = question.choices[question.answer];
+
+    return {
+        ...question,
+        choices: shuffledChoices,
+        answer: shuffledChoices.indexOf(correctChoice)
+    };
+}
+
 
 // ============================================================
 // SECTION LIST
@@ -41,6 +63,178 @@ const sections = [
     "HERA",
     "ARES"
 ];
+
+let currentLearningLevel = 1;
+let currentDiscussionDay = 0;
+
+function getLearningState() {
+    try {
+        return JSON.parse(localStorage.getItem("qpiLearningState") || "{}");
+    } catch (error) {
+        return {};
+    }
+}
+
+function saveLearningState(state) {
+    localStorage.setItem("qpiLearningState", JSON.stringify(state));
+}
+
+function formatDateKey(date) {
+    return new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
+        .toISOString()
+        .slice(0, 10);
+}
+
+function getUnlockedLearningLevel() {
+    const state = getLearningState();
+
+    if (!state.startDate) {
+        state.startDate = formatDateKey(new Date());
+        saveLearningState(state);
+    }
+
+    const startDate = new Date(`${state.startDate}T00:00:00`);
+    const today = new Date();
+    const daysSinceStart = Math.floor(
+        (new Date(formatDateKey(today)).getTime() - startDate.getTime()) / 86400000
+    );
+
+    return Math.min(
+        Math.max(daysSinceStart + 1, 1),
+        learningLevels.length
+    );
+}
+
+function renderLearningLevels() {
+    const container = document.getElementById("learningLevels");
+
+    if (!container) {
+        return;
+    }
+
+    const unlockedLevel = getUnlockedLearningLevel();
+
+    container.innerHTML = "";
+    container.classList.remove("hidden");
+
+    const label = document.createElement("p");
+    label.textContent = "Daily Quiz Levels";
+    container.appendChild(label);
+
+    const emptyMessage = document.createElement("p");
+    emptyMessage.id = "dailyQuizStatus";
+    emptyMessage.textContent = "One new level unlocks each day. Quiz questions have not been added yet.";
+    container.appendChild(emptyMessage);
+
+    learningLevels.forEach(level => {
+        const button = document.createElement("button");
+        const hasQuestions = Array.isArray(level.questions) && level.questions.length > 0;
+        const isUnlocked = level.id <= unlockedLevel;
+
+        button.type = "button";
+        button.textContent = isUnlocked
+            ? hasQuestions
+                ? `Level ${level.id}: ${level.title}`
+                : `Level ${level.id} - Open (Empty)`
+            : `🔒 Level ${level.id} - Opens Day ${level.id}`;
+        button.disabled = !isUnlocked;
+
+        if (isUnlocked) {
+            button.onclick = () => startLearningLevel(level.id);
+        }
+
+        container.appendChild(button);
+    });
+
+    const backButton = document.createElement("button");
+    backButton.type = "button";
+    backButton.textContent = "Back to Menu";
+    backButton.className = "secondary";
+    backButton.onclick = () => backToMenu();
+    container.appendChild(backButton);
+}
+
+function hideLearningLevels() {
+    const container = document.getElementById("learningLevels");
+    if (container) {
+        container.classList.add("hidden");
+        container.innerHTML = "";
+    }
+}
+
+function startLearningLevel(levelId) {
+    const level = learningLevels.find(item => item.id === levelId);
+
+    if (!level) {
+        return;
+    }
+
+    if (levelId > getUnlockedLearningLevel()) {
+        return;
+    }
+
+    if (!Array.isArray(level.questions) || !level.questions.length) {
+        const status = document.getElementById("dailyQuizStatus");
+        if (status) {
+            status.textContent = `Level ${levelId} is open, but quiz questions have not been added yet.`;
+        }
+        return;
+    }
+
+    currentLearningLevel = levelId;
+    currentQuiz = "practice";
+    currentQuestion = 0;
+    score = 0;
+    selectedAnswer = null;
+    answerSubmitted = false;
+    userAnswers = [];
+
+    const questionCount = Math.min(5, level.questions.length);
+
+    currentQuestions = shuffleArray(level.questions)
+        .slice(0, questionCount)
+        .map(prepareQuestionForQuiz);
+
+    document.getElementById("quizType").textContent =
+        `${getQuizName("practice")} • ${level.title}`;
+
+    showScreen("quizScreen");
+    loadQuestion();
+}
+
+function retryLearningLevel() {
+    startLearningLevel(currentLearningLevel);
+}
+
+function reviewMistakes() {
+    const mistakes = userAnswers.filter(answer => !answer.correct);
+
+    if (!mistakes.length) {
+        document.getElementById("performanceMessage").innerHTML =
+            "<p>You answered everything correctly. Great job!</p>";
+        return;
+    }
+
+    const content = mistakes.map((answer, index) => {
+        const question = currentQuestions.find(item => item.question === answer.question) || currentQuestions[0];
+        const correctAnswerText = question && question.choices && question.choices[answer.correctAnswer]
+            ? question.choices[answer.correctAnswer]
+            : "Unknown";
+
+        return `
+            <div class="progressItem">
+                <p><strong>${index + 1}.</strong> ${answer.question}</p>
+                <p>Your answer: ${answer.selectedAnswer !== null && question ? question.choices[answer.selectedAnswer] : "No answer"}</p>
+                <p>Correct answer: ${correctAnswerText}</p>
+            </div>
+        `;
+    }).join("");
+
+    document.getElementById("performanceMessage").innerHTML = `
+        <h3>Review Mistakes</h3>
+        ${content}
+    `;
+}
 
 
 // ============================================================
@@ -1414,6 +1608,12 @@ const questionBank = [
 
 ];
 
+const learningLevels = Array.from({ length: 10 }, (_, index) => ({
+    id: index + 1,
+    title: `Level ${index + 1}`,
+    questions: []
+}));
+
 
 // ============================================================
 // REVIEW CONTENT
@@ -1722,9 +1922,212 @@ function enterQPI() {
     document.getElementById("welcomeMessage").textContent =
         `Welcome, ${studentName}! Section ${studentSection}.`;
 
+    hideLearningLevels();
     showScreen("menuScreen");
 }
 
+
+function getDiscussionState() {
+    try {
+        const state = JSON.parse(localStorage.getItem("qpiDiscussionState") || "{}");
+        state.unlockedDay = Math.min(Math.max(Number(state.unlockedDay) || 1, 1), 10);
+        state.completedDays = Array.isArray(state.completedDays) ? state.completedDays : [];
+        return state;
+    } catch (error) {
+        return { unlockedDay: 1, completedDays: [] };
+    }
+}
+
+function saveDiscussionState(state) {
+    localStorage.setItem("qpiDiscussionState", JSON.stringify(state));
+}
+
+function getDiscussionMaterials() {
+    try {
+        return JSON.parse(localStorage.getItem("qpiDiscussionMaterials") || "{}");
+    } catch (error) {
+        return {};
+    }
+}
+
+function getLearningActivities() {
+    try {
+        return JSON.parse(localStorage.getItem("qpiLearningActivities") || "{}");
+    } catch (error) {
+        return {};
+    }
+}
+
+function openEncoding() {
+    renderDiscussionDays();
+    showScreen("encodeScreen");
+}
+
+function openStoredMaterials() {
+    renderStoredMaterials();
+    showScreen("storeScreen");
+}
+
+function renderStoredMaterials() {
+    const container = document.getElementById("storedMaterialsContent");
+    const materials = getDiscussionMaterials();
+    const activities = getLearningActivities();
+    const typeNames = {
+        puzzle: "Math Puzzle",
+        flashcards: "Flashcards",
+        crossword: "Crossword",
+        wordsearch: "Word Search"
+    };
+
+    container.innerHTML = "";
+
+    let hasStoredContent = false;
+
+    for (let day = 1; day <= 10; day++) {
+        const material = materials[day] || {};
+        const dayActivities = Array.isArray(activities[day]) ? activities[day] : [];
+
+        if (!material.title && !material.text && !dayActivities.length) {
+            continue;
+        }
+
+        hasStoredContent = true;
+
+        const daySection = document.createElement("section");
+        daySection.className = "storedDay";
+
+        const heading = document.createElement("h3");
+        heading.textContent = `Day ${day}${material.title ? `: ${material.title}` : ""}`;
+        daySection.appendChild(heading);
+
+        if (material.text) {
+            const discussion = document.createElement("p");
+            discussion.className = "storedDiscussionText";
+            discussion.textContent = material.text;
+            daySection.appendChild(discussion);
+        }
+
+        dayActivities.forEach(activity => {
+            const activityBlock = document.createElement("article");
+            activityBlock.className = "storedActivity";
+
+            const activityHeading = document.createElement("h4");
+            activityHeading.textContent = `${typeNames[activity.type] || "Learning Activity"}: ${activity.title}`;
+
+            const prompt = document.createElement("p");
+            prompt.textContent = activity.prompt;
+
+            const answer = document.createElement("p");
+            answer.className = "storedAnswer";
+            answer.textContent = `Answer: ${activity.answer}`;
+
+            activityBlock.append(activityHeading, prompt, answer);
+            daySection.appendChild(activityBlock);
+        });
+
+        container.appendChild(daySection);
+    }
+
+    if (!hasStoredContent) {
+        const emptyMessage = document.createElement("p");
+        emptyMessage.textContent = "No materials stored yet. Use Encode to add a discussion or learning activity.";
+        container.appendChild(emptyMessage);
+    }
+}
+
+function renderDiscussionDays() {
+    const container = document.getElementById("discussionDays");
+    const state = getDiscussionState();
+
+    container.innerHTML = "";
+
+    for (let day = 1; day <= 10; day++) {
+        const button = document.createElement("button");
+        const isCompleted = state.completedDays.includes(day);
+
+        button.type = "button";
+        button.textContent = isCompleted
+            ? `Day ${day} ✓`
+            : day <= state.unlockedDay
+                ? `Day ${day}`
+                : `🔒 Day ${day}`;
+        button.disabled = day > state.unlockedDay;
+
+        if (day <= state.unlockedDay) {
+            button.onclick = () => openDiscussionDay(day);
+        }
+
+        container.appendChild(button);
+    }
+}
+
+function openDiscussionDay(day) {
+    const state = getDiscussionState();
+
+    if (day > state.unlockedDay || day < 1 || day > 10) {
+        return;
+    }
+
+    const materials = getDiscussionMaterials();
+    const material = materials[day] || {};
+    const editor = document.getElementById("discussionEditor");
+
+    currentDiscussionDay = day;
+    document.getElementById("discussionDayTitle").textContent = `Day ${day}`;
+    document.getElementById("discussionMaterialText").value = material.text || "";
+    document.getElementById("discussionStatus").textContent = state.completedDays.includes(day)
+        ? "This discussion is complete."
+        : "";
+    editor.classList.remove("hidden");
+    showScreen("discussionScreen");
+}
+
+function backToDiscussionDays() {
+    renderDiscussionDays();
+    showScreen("encodeScreen");
+}
+
+function saveDiscussionMaterial() {
+    if (!currentDiscussionDay) {
+        return;
+    }
+
+    const materials = getDiscussionMaterials();
+    materials[currentDiscussionDay] = {
+        ...materials[currentDiscussionDay],
+        text: document.getElementById("discussionMaterialText").value.trim()
+    };
+    localStorage.setItem("qpiDiscussionMaterials", JSON.stringify(materials));
+    document.getElementById("discussionStatus").textContent = "Material saved on this device.";
+}
+
+function markDiscussionRead() {
+    if (!currentDiscussionDay) {
+        return;
+    }
+
+    const materialText = document.getElementById("discussionMaterialText").value.trim();
+
+    if (!materialText) {
+        alert("Add the review material before marking this discussion as read.");
+        return;
+    }
+
+    saveDiscussionMaterial();
+
+    const state = getDiscussionState();
+    if (!state.completedDays.includes(currentDiscussionDay)) {
+        state.completedDays.push(currentDiscussionDay);
+    }
+    state.unlockedDay = Math.min(10, Math.max(state.unlockedDay, currentDiscussionDay + 1));
+    saveDiscussionState(state);
+
+    document.getElementById("discussionStatus").textContent =
+        currentDiscussionDay < 10
+            ? `Day ${currentDiscussionDay} complete. Day ${currentDiscussionDay + 1} is now unlocked.`
+            : "Day 10 complete. You finished all daily discussions.";
+    renderDiscussionDays();
+}
 
 // ============================================================
 // SCREEN CONTROL
@@ -1757,6 +2160,12 @@ function showScreen(screenId) {
 
 function startQuiz(type) {
 
+    if (type === "practice") {
+        renderLearningLevels();
+        showScreen("dailyQuizScreen");
+        return;
+    }
+
     currentQuiz = type;
     currentQuestion = 0;
     score = 0;
@@ -1764,14 +2173,9 @@ function startQuiz(type) {
     answerSubmitted = false;
     userAnswers = [];
 
-    /*
-        Shuffle the question bank so that every quiz
-        can contain different questions.
-    */
-
-    currentQuestions = [...questionBank]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 10);
+    currentQuestions = shuffleArray(questionBank)
+        .slice(0, 10)
+        .map(prepareQuestionForQuiz);
 
     document.getElementById("quizType").textContent =
         getQuizName(type);
@@ -1793,7 +2197,7 @@ function getQuizName(type) {
     }
 
     if (type === "practice") {
-        return "📚 Learning Quiz";
+        return "📚 Daily Quiz";
     }
 
     if (type === "posttest") {
@@ -2068,6 +2472,48 @@ function finishQuiz() {
     document.getElementById("performanceMessage").textContent =
         message;
 
+    const resultActions = document.getElementById("resultActions");
+    const passThreshold = 70;
+
+    if (currentQuiz === "practice") {
+        const level = learningLevels.find(item => item.id === currentLearningLevel);
+        const isPassed = percentage >= passThreshold;
+
+        if (!isPassed) {
+            resultActions.innerHTML = `
+                <button type="button" onclick="reviewMistakes()">Review Mistakes</button>
+                <button type="button" onclick="retryLearningLevel()">Retry</button>
+            `;
+
+            document.getElementById("performanceMessage").innerHTML = `
+                <p>${message}</p>
+                <p>You need at least 70% to unlock the next level.</p>
+            `;
+        } else {
+            const state = getLearningState();
+            state.unlockedLevel = Math.min(
+                learningLevels.length,
+                Math.max(state.unlockedLevel || 1, level ? level.id + 1 : 1)
+            );
+            saveLearningState(state);
+            renderLearningLevels();
+
+            resultActions.innerHTML = `
+                <button type="button" onclick="startLearningLevel(${Math.min(currentLearningLevel + 1, learningLevels.length)})">Next Level</button>
+                <button type="button" onclick="backToMenu()">Back to Menu</button>
+            `;
+
+            document.getElementById("performanceMessage").innerHTML = `
+                <p>${message}</p>
+                <p>Level cleared! You unlocked the next daily level.</p>
+            `;
+        }
+    } else {
+        resultActions.innerHTML = `
+            <button type="button" onclick="backToMenu()">Back to Menu</button>
+        `;
+    }
+
     showScreen("resultScreen");
 }
 
@@ -2211,6 +2657,7 @@ function backToMenu() {
     document.getElementById("welcomeMessage").textContent =
         `Welcome, ${studentName}! Section ${studentSection}.`;
 
+    hideLearningLevels();
     showScreen("menuScreen");
 }
 
@@ -2263,5 +2710,6 @@ document.getElementById("nextButton").onclick =
 document.addEventListener("DOMContentLoaded", () => {
 
     loadStudent();
+    hideLearningLevels();
 
 });
