@@ -192,14 +192,14 @@
                         class="secondary"
                         onclick="openStoredMaterials()"
                     >
-                        🗂️ Store
+                        🗂️ Storing
                     </button>
 
                     <button
                         type="button"
-                        onclick="startQuiz('practice')"
+                        onclick="startQuiz('retrieval')"
                     >
-                        📚 Daily Quiz
+                        📚 Retrieval Test
                     </button>
 
                     <button
@@ -224,7 +224,7 @@
                 class="screen hidden"
             >
 
-                <h2>📚 Daily Quiz</h2>
+                <h2>📚 Retrieval Test</h2>
                 <div id="learningLevels" class="menu hidden"></div>
 
             </section>
@@ -242,6 +242,7 @@
                 <h2>📝 General Mathematics Discussions</h2>
 
                 <div id="discussionDays" class="discussionDays"></div>
+                <p id="discussionUnlockStatus" class="discussionStatus" role="status"></p>
 
                 <button
                     type="button"
@@ -265,6 +266,26 @@
 
                 <div id="discussionEditor" class="discussionEditor hidden">
                     <h3 id="discussionDayTitle"></h3>
+
+                    <figure id="dayOneReviewerDiagram" class="reviewerDiagram hidden">
+                        <img
+                            src="day-1-trigonometry.svg"
+                            alt="Right triangle labeled opposite, adjacent, and hypotenuse, alongside diagrams showing angles of elevation and depression"
+                        >
+                        <figcaption>
+                            SOH-CAH-TOA labels the triangle sides. Elevation is measured upward from the horizontal; depression is measured downward.
+                        </figcaption>
+                    </figure>
+
+                    <figure id="dayTwoBearingDiagram" class="dayTwoBearingDiagram hidden">
+                        <img
+                            src="day-2-bearings.svg"
+                            alt="Bearing diagram showing north, east, south, and west, plus a 6-kilometer east and 8-kilometer north route with a bearing of about 037 degrees"
+                        >
+                        <figcaption>
+                            Bearings are measured clockwise from north. The route 6 km east and 8 km north has a bearing of about 037°.
+                        </figcaption>
+                    </figure>
 
                     <div class="formGroup">
                         <label for="discussionMaterialText">Review Material</label>
@@ -305,7 +326,14 @@
                 class="screen hidden"
             >
 
-                <h2>🗂️ Stored General Mathematics Materials</h2>
+                <h2>🗂️ Storing: General Mathematics</h2>
+                <p>Choose a study activity. Score at least 80% in any one activity to unlock the Retrieval Test.</p>
+                <p id="storingStatus" class="discussionStatus" role="status"></p>
+                <div id="storingActivityChoices" class="storingActivityChoices">
+                    <button type="button" onclick="renderStoringActivity('wordsearch')">🔎 Word Search</button>
+                    <button type="button" class="secondary" onclick="renderStoringActivity('flashcards')">🃏 Flash Cards</button>
+                    <button type="button" class="secondary" onclick="renderStoringActivity('mnemonics')">🧠 Mnemonics</button>
+                </div>
                 <div id="storedMaterialsContent" class="storedMaterialsContent"></div>
 
                 <button
@@ -316,6 +344,18 @@
                     Back to Menu
                 </button>
 
+            </section>
+
+            <section id="storingActivityScreen" class="screen hidden">
+                <h2 id="storingActivityTitle">Storing Activity</h2>
+                <div id="wordSearchPuzzle"></div>
+                <button
+                    type="button"
+                    class="secondary"
+                    onclick="backToStoringChoices()"
+                >
+                    Back to Storing Activities
+                </button>
             </section>
 
 
@@ -548,6 +588,8 @@
                 <div
                     id="performanceMessage"
                 ></div>
+
+                <div id="retrievalTestReview"></div>
 
                 <div id="resultActions"></div>
 
