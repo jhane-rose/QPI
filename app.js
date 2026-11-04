@@ -1926,6 +1926,118 @@ function enterQPI() {
     showScreen("menuScreen");
 }
 
+const dayOneReviewerTitle = "Trigonometry, Triangles, Elevation and Depression";
+const dayOneReviewer = `# DAY 1 REVIEWER
+${dayOneReviewerTitle}
+
+1. Trigonometric Ratios
+Remember SOH-CAH-TOA:
+
+sin θ = Opposite / Hypotenuse
+cos θ = Adjacent / Hypotenuse
+tan θ = Opposite / Adjacent
+
+The hypotenuse is the longest side of a right triangle.
+
+2. Right and Oblique Triangles
+
+Pythagorean Theorem:
+a² + b² = c²
+
+Example: a = 6, b = 8
+c = √(36 + 64) = 10 m
+
+Sine Rule:
+a/sin A = b/sin B = c/sin C
+
+Cosine Rule:
+c² = a² + b² − 2ab cos C
+
+Use the cosine rule when two sides and their included angle are known.
+
+3. Elevation and Depression
+
+Elevation: Looking upward from the horizontal.
+Depression: Looking downward from the horizontal.
+
+Example: Distance = 10 m, angle = 45°
+tan 45° = h/10
+h = 10 m
+
+Answer: 10 m`;
+
+const dayTwoReviewerTitle = "Bearings and Triangle Areas";
+const dayTwoReviewer = `# DAY 2 REVIEWER
+${dayTwoReviewerTitle}
+
+4. Bearings
+Bearings are measured clockwise from north.
+
+North = 000°
+East = 090°
+South = 180°
+West = 270°
+
+Example: A boat travels 6 km east and 8 km north.
+Distance = √(6² + 8²) = 10 km
+Bearing ≈ 037°
+
+5. Area of Oblique Triangles
+
+Heron's Formula — use when all three sides are known.
+
+s = (a + b + c)/2
+Area = √[s(s − a)(s − b)(s − c)]
+
+Example: Sides are 5, 5, and 6 m.
+s = (5 + 5 + 6)/2 = 8
+Area = √[8(3)(3)(2)] = 12 m²
+
+Sine Area Formula — use when two sides and their included angle are known.
+
+Area = ½ ab sin C
+
+Example: a = 8, b = 10, C = 30°.
+Area = ½(8)(10)(0.5) = 20 cm²
+
+Day 2 Practice
+
+1. What is the bearing of west?
+2. Which formula uses all three side lengths?
+3. Find the area if a = 6, b = 10, and C = 30°.
+
+Answers: 1. 270°. 2. Heron's formula. 3. 15 square units.
+
+Formulas to Memorize
+
+sin θ = O/H
+cos θ = A/H
+tan θ = O/A
+a² + b² = c²
+Sine Rule: a/sin A = b/sin B = c/sin C
+Cosine Rule: c² = a² + b² − 2ab cos C
+Heron's Formula: Area = √[s(s − a)(s − b)(s − c)]
+Sine Area: Area = ½ ab sin C`;
+
+function getDiscussionMaterial(day, materials) {
+    const material = materials[day] || {};
+    const reviewer = {
+        1: { title: dayOneReviewerTitle, text: dayOneReviewer },
+        2: { title: dayTwoReviewerTitle, text: dayTwoReviewer }
+    }[day];
+
+    if (!reviewer) {
+        return material;
+    }
+
+    return {
+        ...material,
+        title: material.title || reviewer.title,
+        text: Object.prototype.hasOwnProperty.call(material, "text")
+            ? material.text
+            : reviewer.text
+    };
+}
 
 function getDiscussionState() {
     try {
@@ -1940,6 +2052,111 @@ function getDiscussionState() {
 
 function saveDiscussionState(state) {
     localStorage.setItem("qpiDiscussionState", JSON.stringify(state));
+}
+
+function getDayTwoRequirements() {
+    try {
+        const requirements = JSON.parse(
+            localStorage.getItem("qpiDayTwoRequirements") || "{}"
+        );
+        const passedActivities = Array.isArray(requirements.passedActivities)
+            ? requirements.passedActivities
+            : requirements.wordSearchComplete === true
+                ? ["wordsearch"]
+                : [];
+
+        return {
+            passedActivities,
+            wordSearchComplete: passedActivities.includes("wordsearch"),
+            retrievalTestComplete: requirements.retrievalTestComplete === true
+        };
+    } catch (error) {
+        return {
+            passedActivities: [],
+            wordSearchComplete: false,
+            retrievalTestComplete: false
+        };
+    }
+}
+
+function hasPassedStoringActivity() {
+    return getDayTwoRequirements().passedActivities.length > 0;
+}
+
+function updateDayTwoUnlock() {
+    const requirements = getDayTwoRequirements();
+    const state = getDiscussionState();
+    const isReady = state.completedDays.includes(1)
+        && hasPassedStoringActivity()
+        && requirements.retrievalTestComplete;
+
+    if (isReady && state.unlockedDay < 2) {
+        state.unlockedDay = 2;
+        saveDiscussionState(state);
+    }
+
+    renderDiscussionDays();
+}
+
+function completeDayTwoRequirement(requirement) {
+    const requirements = getDayTwoRequirements();
+
+    if (requirement === "wordSearchComplete") {
+        if (!requirements.passedActivities.includes("wordsearch")) {
+            requirements.passedActivities.push("wordsearch");
+        }
+    } else {
+        requirements[requirement] = true;
+    }
+
+    requirements.wordSearchComplete = requirements.passedActivities.includes("wordsearch");
+    localStorage.setItem("qpiDayTwoRequirements", JSON.stringify(requirements));
+    updateDayTwoUnlock();
+}
+
+function completeStoringActivity(activity, scorePercentage) {
+    const requirements = getDayTwoRequirements();
+    const passed = scorePercentage >= 80;
+
+    requirements.passedActivities = requirements.passedActivities.filter(
+        passedActivity => passedActivity !== activity
+    );
+
+    if (passed) {
+        requirements.passedActivities.push(activity);
+    }
+
+    requirements.wordSearchComplete = requirements.passedActivities.includes("wordsearch");
+    localStorage.setItem("qpiDayTwoRequirements", JSON.stringify(requirements));
+    updateDayTwoUnlock();
+
+    return passed;
+}
+
+function renderStoringActivityResult(activityName, scorePercentage, onRetry) {
+    const container = document.getElementById("wordSearchPuzzle");
+    container.innerHTML = "";
+
+    const section = document.createElement("section");
+    section.className = "wordSearch studyActivity";
+
+    const heading = document.createElement("h3");
+    heading.textContent = `${activityName} Score: ${scorePercentage}%`;
+
+    const message = document.createElement("p");
+    message.className = "wordSearchStatus";
+    message.textContent = scorePercentage >= 80
+        ? "Passing score! This Storing activity is complete, so you may take the Retrieval Test."
+        : "You need at least 80% to pass. Review the material and try this activity again, or choose another Storing activity.";
+
+    const retryButton = document.createElement("button");
+    retryButton.type = "button";
+    retryButton.className = "secondary";
+    retryButton.textContent = "Try Again";
+    retryButton.onclick = onRetry;
+
+    section.append(heading, message, retryButton);
+    container.appendChild(section);
 }
 
 function getDiscussionMaterials() {
@@ -1963,9 +2180,563 @@ function openEncoding() {
     showScreen("encodeScreen");
 }
 
-function openStoredMaterials() {
+function openStoredMaterials(message = "") {
+    if (wordSearchTimerId !== null) {
+        clearInterval(wordSearchTimerId);
+        wordSearchTimerId = null;
+    }
+
+    document.getElementById("storingStatus").textContent = message;
     renderStoredMaterials();
     showScreen("storeScreen");
+}
+
+function renderStoringActivity(activity, message = "") {
+    if (activity !== "wordsearch" && wordSearchTimerId !== null) {
+        clearInterval(wordSearchTimerId);
+        wordSearchTimerId = null;
+    }
+
+    document.querySelectorAll("#storingActivityChoices button").forEach(button => {
+        const isSelected = button.getAttribute("onclick").includes(`'${activity}'`);
+        button.classList.toggle("secondary", !isSelected);
+        button.setAttribute("aria-pressed", String(isSelected));
+    });
+
+    const activityTitles = {
+        wordsearch: "Word Search",
+        flashcards: "Flash Cards",
+        mnemonics: "Mnemonics"
+    };
+    document.getElementById("storingActivityTitle").textContent =
+        activityTitles[activity] || "Storing Activity";
+
+    if (activity === "wordsearch") {
+        renderWordSearch(message);
+    } else if (activity === "flashcards") {
+        renderStoringFlashcards();
+    } else if (activity === "mnemonics") {
+        renderStoringMnemonics();
+    } else {
+        return;
+    }
+
+    document.getElementById("storingStatus").textContent = "";
+    showScreen("storingActivityScreen");
+}
+
+function backToStoringChoices() {
+    if (wordSearchTimerId !== null) {
+        clearInterval(wordSearchTimerId);
+        wordSearchTimerId = null;
+    }
+    showScreen("storeScreen");
+}
+
+const wordSearchWords = [
+    "TRIGONOMETRY",
+    "HYPOTENUSE",
+    "TRIANGLE",
+    "BEARING",
+    "COSINE",
+    "SINE",
+    "TANGENT",
+    "HERON",
+    "NORTH",
+    "ELEVATION"
+];
+
+let wordSearchTimerId = null;
+let currentStoringFlashcard = 0;
+let storingFlashcardRatings = [];
+
+const storingFlashcards = [
+    {
+        front: "SOH: What is sine θ?",
+        back: "Opposite ÷ Hypotenuse"
+    },
+    {
+        front: "CAH: What is cosine θ?",
+        back: "Adjacent ÷ Hypotenuse"
+    },
+    {
+        front: "TOA: What is tangent θ?",
+        back: "Opposite ÷ Adjacent"
+    },
+    {
+        front: "What is the Pythagorean Theorem?",
+        back: "a² + b² = c². Use it to find a side of a right triangle."
+    },
+    {
+        front: "From which direction are bearings measured?",
+        back: "Clockwise from north. North = 000°, east = 090°, south = 180°, west = 270°."
+    },
+    {
+        front: "When should you use Heron's Formula?",
+        back: "When all three side lengths are known. First find s = (a + b + c)/2, then Area = √[s(s − a)(s − b)(s − c)]."
+    },
+    {
+        front: "What is the sine area formula?",
+        back: "Area = ½ ab sin C. Use it when two sides and their included angle are known."
+    },
+    {
+        front: "What is an angle of elevation?",
+        back: "The angle measured upward from the horizontal line of sight."
+    },
+    {
+        front: "What is an angle of depression?",
+        back: "The angle measured downward from the horizontal line of sight."
+    }
+];
+
+function renderStoringFlashcards() {
+    const container = document.getElementById("wordSearchPuzzle");
+    if (wordSearchTimerId !== null) {
+        clearInterval(wordSearchTimerId);
+        wordSearchTimerId = null;
+    }
+
+    currentStoringFlashcard = 0;
+    storingFlashcardRatings = Array(storingFlashcards.length).fill(null);
+    renderStoringFlashcard();
+}
+
+function renderStoringFlashcard(showAnswer = false) {
+    const container = document.getElementById("wordSearchPuzzle");
+    const card = storingFlashcards[currentStoringFlashcard];
+    container.innerHTML = "";
+
+    const section = document.createElement("section");
+    section.className = "wordSearch studyActivity";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Flash Cards";
+
+    const progress = document.createElement("p");
+    progress.className = "wordSearchInstructions";
+    progress.textContent =
+        `Card ${currentStoringFlashcard + 1} of ${storingFlashcards.length}`;
+
+    const cardContent = document.createElement("div");
+    cardContent.className = "flashcard";
+    cardContent.setAttribute("aria-live", "polite");
+    cardContent.textContent = showAnswer ? card.back : card.front;
+
+    const flipButton = document.createElement("button");
+    flipButton.type = "button";
+    flipButton.textContent = showAnswer ? "Show Question" : "Flip Card";
+    flipButton.onclick = () => renderStoringFlashcard(!showAnswer);
+
+    const navigation = document.createElement("div");
+    navigation.className = "flashcardNavigation";
+
+    if (showAnswer) {
+        const gotItButton = document.createElement("button");
+        gotItButton.type = "button";
+        gotItButton.textContent = "I knew it";
+        gotItButton.onclick = () => rateStoringFlashcard(true);
+
+        const reviewButton = document.createElement("button");
+        reviewButton.type = "button";
+        reviewButton.className = "secondary";
+        reviewButton.textContent = "Need to review";
+        reviewButton.onclick = () => rateStoringFlashcard(false);
+        navigation.append(gotItButton, reviewButton);
+    }
+
+    section.append(heading, progress, cardContent, flipButton, navigation);
+    container.appendChild(section);
+}
+
+function rateStoringFlashcard(knewAnswer) {
+    storingFlashcardRatings[currentStoringFlashcard] = knewAnswer;
+
+    if (currentStoringFlashcard < storingFlashcards.length - 1) {
+        currentStoringFlashcard++;
+        renderStoringFlashcard();
+        return;
+    }
+
+    const scorePercentage = Math.round(
+        (storingFlashcardRatings.filter(Boolean).length / storingFlashcards.length) * 100
+    );
+    completeStoringActivity("flashcards", scorePercentage);
+    renderStoringActivityResult(
+        "Flash Cards",
+        scorePercentage,
+        renderStoringFlashcards
+    );
+}
+
+const mnemonicQuizQuestions = [
+    {
+        question: "In SOH, what does H stand for?",
+        choices: ["Hypotenuse", "Height", "Horizontal", "Heron"],
+        answer: 0
+    },
+    {
+        question: "Bearings are measured in which direction from north?",
+        choices: ["Clockwise", "Counterclockwise", "Upward", "Westward only"],
+        answer: 0
+    },
+    {
+        question: "Which method uses all three side lengths to find triangle area?",
+        choices: ["Heron's formula", "Sine area formula", "SOH-CAH-TOA", "Bearing rule"],
+        answer: 0
+    },
+    {
+        question: "The sine area formula uses which angle?",
+        choices: [
+            "The included angle between the two known sides",
+            "Any exterior angle",
+            "The smallest angle only",
+            "A right angle only"
+        ],
+        answer: 0
+    },
+    {
+        question: "An angle of depression is measured from the horizontal while looking which way?",
+        choices: ["Down", "Up", "Straight ahead only", "Clockwise"],
+        answer: 0
+    }
+];
+
+function renderStoringMnemonics() {
+    const container = document.getElementById("wordSearchPuzzle");
+    if (wordSearchTimerId !== null) {
+        clearInterval(wordSearchTimerId);
+        wordSearchTimerId = null;
+    }
+
+    const section = document.createElement("section");
+    section.className = "wordSearch studyActivity";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Mnemonics and Memory Tips";
+    section.appendChild(heading);
+
+    const memoryTips = [
+        ["SOH-CAH-TOA", "<strong>SOH:</strong> Sine = Opposite / Hypotenuse<br><strong>CAH:</strong> Cosine = Adjacent / Hypotenuse<br><strong>TOA:</strong> Tangent = Opposite / Adjacent"],
+        ["Bearings go clockwise from North", "North 000°, East 090°, South 180°, West 270°."],
+        ["Heron's Formula: three sides", "When all three side lengths are given, find s = (a + b + c)/2, then use Area = √[s(s − a)(s − b)(s − c)]."],
+        ["Sine area: two sides and the included angle", "Use Area = ½ ab sin C when two sides and their included angle are known."],
+        ["Elevation up, depression down", "Both start at the horizontal line of sight: elevation looks up; depression looks down."]
+    ];
+
+    memoryTips.forEach(([title, description]) => {
+        const item = document.createElement("article");
+        item.className = "mnemonicItem";
+        const itemHeading = document.createElement("h4");
+        itemHeading.textContent = title;
+        const text = document.createElement("p");
+        text.innerHTML = description;
+        item.append(itemHeading, text);
+        section.appendChild(item);
+    });
+
+    const beginButton = document.createElement("button");
+    beginButton.type = "button";
+    beginButton.textContent = "Take Mnemonics Check";
+    beginButton.onclick = () => renderMnemonicQuiz();
+    section.appendChild(beginButton);
+    container.replaceChildren(section);
+}
+
+function renderMnemonicQuiz(questionIndex = 0, answers = []) {
+    const container = document.getElementById("wordSearchPuzzle");
+    const question = prepareQuestionForQuiz(mnemonicQuizQuestions[questionIndex]);
+    let selectedAnswer = null;
+
+    const section = document.createElement("section");
+    section.className = "wordSearch studyActivity";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Mnemonics Check";
+
+    const prompt = document.createElement("p");
+    prompt.textContent = `Question ${questionIndex + 1} of ${mnemonicQuizQuestions.length}: ${question.question}`;
+
+    const choices = document.createElement("div");
+    const submit = document.createElement("button");
+    submit.type = "button";
+    submit.textContent = questionIndex === mnemonicQuizQuestions.length - 1
+        ? "Finish Check"
+        : "Submit and Continue";
+    submit.disabled = true;
+
+    question.choices.forEach((choice, index) => {
+        const choiceButton = document.createElement("button");
+        choiceButton.type = "button";
+        choiceButton.className = "secondary";
+        choiceButton.textContent = choice;
+        choiceButton.onclick = () => {
+            selectedAnswer = index;
+            choices.querySelectorAll("button").forEach((button, buttonIndex) => {
+                button.classList.toggle("selected", buttonIndex === index);
+            });
+            submit.disabled = false;
+        };
+        choices.appendChild(choiceButton);
+    });
+
+    submit.onclick = () => {
+        if (selectedAnswer === null) {
+            return;
+        }
+
+        answers.push(selectedAnswer === question.answer);
+        if (questionIndex < mnemonicQuizQuestions.length - 1) {
+            renderMnemonicQuiz(questionIndex + 1, answers);
+            return;
+        }
+
+        const scorePercentage = Math.round(
+            (answers.filter(Boolean).length / mnemonicQuizQuestions.length) * 100
+        );
+        completeStoringActivity("mnemonics", scorePercentage);
+        renderStoringActivityResult(
+            "Mnemonics Check",
+            scorePercentage,
+            renderStoringMnemonics
+        );
+    };
+
+    section.append(heading, prompt, choices, submit);
+    container.replaceChildren(section);
+}
+
+function createWordSearchGrid() {
+    const size = 12;
+    const directions = [
+        [0, 1], [1, 0], [0, -1], [-1, 0],
+        [1, 1], [-1, -1], [1, -1], [-1, 1]
+    ];
+
+    for (let gridAttempt = 0; gridAttempt < 30; gridAttempt++) {
+        const grid = Array.from({ length: size }, () => Array(size).fill(""));
+        let allWordsPlaced = true;
+
+        const wordsByLength = shuffleArray(wordSearchWords)
+            .sort((first, second) => second.length - first.length);
+
+        for (const word of wordsByLength) {
+            let placed = false;
+
+            for (let attempt = 0; attempt < 1000 && !placed; attempt++) {
+                const [rowStep, columnStep] = directions[
+                    Math.floor(Math.random() * directions.length)
+                ];
+                const row = Math.floor(Math.random() * size);
+                const column = Math.floor(Math.random() * size);
+                const endRow = row + rowStep * (word.length - 1);
+                const endColumn = column + columnStep * (word.length - 1);
+
+                if (endRow < 0 || endRow >= size || endColumn < 0 || endColumn >= size) {
+                    continue;
+                }
+
+                const canPlace = [...word].every((letter, index) => {
+                    const existing = grid[row + rowStep * index][column + columnStep * index];
+                    return !existing || existing === letter;
+                });
+
+                if (!canPlace) {
+                    continue;
+                }
+
+                [...word].forEach((letter, index) => {
+                    grid[row + rowStep * index][column + columnStep * index] = letter;
+                });
+                placed = true;
+            }
+
+            if (!placed) {
+                allWordsPlaced = false;
+                break;
+            }
+        }
+
+        if (allWordsPlaced) {
+            return grid.map(row => row.map(letter =>
+                letter || String.fromCharCode(65 + Math.floor(Math.random() * 26))
+            ));
+        }
+    }
+
+    throw new Error("Could not generate a complete word search puzzle.");
+}
+
+function renderWordSearch(message = "") {
+    const container = document.getElementById("wordSearchPuzzle");
+    if (wordSearchTimerId !== null) {
+        clearInterval(wordSearchTimerId);
+        wordSearchTimerId = null;
+    }
+
+    const grid = createWordSearchGrid();
+    const foundWords = new Set();
+    let selectionStart = null;
+    let remainingSeconds = 3 * 60;
+    let puzzleFinished = false;
+
+    container.innerHTML = "";
+
+    const section = document.createElement("section");
+    section.className = "wordSearch";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Word Search: Trigonometry and Bearings";
+
+    const instructions = document.createElement("p");
+    instructions.className = "wordSearchInstructions";
+    instructions.textContent =
+        "Find the lesson terms in the letter grid. Tap the first and last letter of a word in a straight line. Words may run in any direction.";
+
+    const timer = document.createElement("p");
+    timer.className = "wordSearchTimer";
+    timer.setAttribute("role", "timer");
+    timer.setAttribute("aria-live", "off");
+
+    const updateTimer = () => {
+        const minutes = Math.floor(remainingSeconds / 60);
+        const seconds = remainingSeconds % 60;
+        timer.textContent = `Time remaining: ${minutes}:${String(seconds).padStart(2, "0")}`;
+    };
+
+    updateTimer();
+
+    const status = document.createElement("p");
+    status.className = "wordSearchStatus";
+    status.setAttribute("role", "status");
+    status.textContent = message
+        ? `${message} Found 0 of ${wordSearchWords.length} words.`
+        : `Found 0 of ${wordSearchWords.length} words.`;
+
+    const gridWrapper = document.createElement("div");
+    gridWrapper.className = "wordSearchGridWrapper";
+
+    const gridElement = document.createElement("div");
+    gridElement.className = "wordSearchGrid";
+    gridElement.setAttribute("aria-label", "Word search letter grid");
+
+    const wordList = document.createElement("ul");
+    wordList.className = "wordSearchWords";
+
+    wordSearchWords.forEach(word => {
+        const item = document.createElement("li");
+        item.textContent = word;
+        item.dataset.word = word;
+        wordList.appendChild(item);
+    });
+
+    const newPuzzleButton = document.createElement("button");
+    newPuzzleButton.type = "button";
+    newPuzzleButton.className = "secondary";
+    newPuzzleButton.textContent = "New Puzzle";
+    newPuzzleButton.onclick = renderWordSearch;
+
+    wordSearchTimerId = setInterval(() => {
+        remainingSeconds--;
+        updateTimer();
+
+        if (remainingSeconds <= 0) {
+            clearInterval(wordSearchTimerId);
+            wordSearchTimerId = null;
+            puzzleFinished = true;
+            gridElement.querySelectorAll(".wordSearchCell").forEach(cell => {
+                cell.disabled = true;
+            });
+            status.textContent = `Time is up. You found ${foundWords.size} of ${wordSearchWords.length} words.`;
+        }
+    }, 1000);
+
+    grid.forEach((rowLetters, rowIndex) => {
+        rowLetters.forEach((letter, columnIndex) => {
+            const cell = document.createElement("button");
+            cell.type = "button";
+            cell.className = "wordSearchCell";
+            cell.textContent = letter;
+            cell.setAttribute("aria-label", `Row ${rowIndex + 1}, column ${columnIndex + 1}: ${letter}`);
+            cell.dataset.row = rowIndex;
+            cell.dataset.column = columnIndex;
+            cell.onclick = () => {
+                if (puzzleFinished) {
+                    return;
+                }
+
+                if (!selectionStart) {
+                    gridElement.querySelectorAll(".selected").forEach(item =>
+                        item.classList.remove("selected")
+                    );
+                    selectionStart = { row: rowIndex, column: columnIndex };
+                    cell.classList.add("selected");
+                    status.textContent = "Now tap the last letter of the word.";
+                    return;
+                }
+
+                const rowDifference = rowIndex - selectionStart.row;
+                const columnDifference = columnIndex - selectionStart.column;
+                const length = Math.max(
+                    Math.abs(rowDifference),
+                    Math.abs(columnDifference)
+                ) + 1;
+                const isStraight = rowDifference === 0
+                    || columnDifference === 0
+                    || Math.abs(rowDifference) === Math.abs(columnDifference);
+
+                if (isStraight && length > 1) {
+                    const rowStep = Math.sign(rowDifference);
+                    const columnStep = Math.sign(columnDifference);
+                    const selectedLetters = Array.from({ length }, (_, index) => {
+                        const selectedRow = selectionStart.row + rowStep * index;
+                        const selectedColumn = selectionStart.column + columnStep * index;
+                        return grid[selectedRow][selectedColumn];
+                    }).join("");
+                    const matchingWord = wordSearchWords.find(word =>
+                        !foundWords.has(word)
+                        && (word === selectedLetters || word === [...selectedLetters].reverse().join(""))
+                    );
+
+                    if (matchingWord) {
+                        foundWords.add(matchingWord);
+                        for (let index = 0; index < length; index++) {
+                            const selectedRow = selectionStart.row + rowStep * index;
+                            const selectedColumn = selectionStart.column + columnStep * index;
+                            gridElement.querySelector(
+                                `[data-row="${selectedRow}"][data-column="${selectedColumn}"]`
+                            ).classList.add("found");
+                        }
+                        wordList.querySelector(`[data-word="${matchingWord}"]`).classList.add("foundWord");
+                        status.textContent = foundWords.size === wordSearchWords.length
+                            ? "You found every word. Great work!"
+                            : `Found ${matchingWord}. ${foundWords.size} of ${wordSearchWords.length} words found.`;
+                        if (foundWords.size === wordSearchWords.length) {
+                            puzzleFinished = true;
+                            clearInterval(wordSearchTimerId);
+                            wordSearchTimerId = null;
+                            timer.textContent = `Completed with ${timer.textContent.replace("Time remaining: ", "")} remaining.`;
+                            newPuzzleButton.disabled = false;
+                            completeDayTwoRequirement("wordSearchComplete");
+                        }
+                    } else {
+                        status.textContent = "No matching word there. Try another line.";
+                    }
+                } else {
+                    status.textContent = "Choose two letters in the same row, column, or diagonal.";
+                }
+
+                selectionStart = null;
+                gridElement.querySelectorAll(".selected").forEach(item =>
+                    item.classList.remove("selected")
+                );
+            };
+            gridElement.appendChild(cell);
+        });
+    });
+
+    gridWrapper.appendChild(gridElement);
+    section.append(heading, instructions, timer, gridWrapper, wordList, status, newPuzzleButton);
+    container.appendChild(section);
 }
 
 function renderStoredMaterials() {
@@ -1984,10 +2755,11 @@ function renderStoredMaterials() {
     let hasStoredContent = false;
 
     for (let day = 1; day <= 10; day++) {
-        const material = materials[day] || {};
+        const material = getDiscussionMaterial(day, materials);
         const dayActivities = Array.isArray(activities[day]) ? activities[day] : [];
+        const showDiscussionMaterial = day !== 1 && day !== 2;
 
-        if (!material.title && !material.text && !dayActivities.length) {
+        if ((!showDiscussionMaterial || (!material.title && !material.text)) && !dayActivities.length) {
             continue;
         }
 
@@ -1996,15 +2768,17 @@ function renderStoredMaterials() {
         const daySection = document.createElement("section");
         daySection.className = "storedDay";
 
-        const heading = document.createElement("h3");
-        heading.textContent = `Day ${day}${material.title ? `: ${material.title}` : ""}`;
-        daySection.appendChild(heading);
+        if (showDiscussionMaterial) {
+            const heading = document.createElement("h3");
+            heading.textContent = `Day ${day}${material.title ? `: ${material.title}` : ""}`;
+            daySection.appendChild(heading);
 
-        if (material.text) {
-            const discussion = document.createElement("p");
-            discussion.className = "storedDiscussionText";
-            discussion.textContent = material.text;
-            daySection.appendChild(discussion);
+            if (material.text) {
+                const discussion = document.createElement("p");
+                discussion.className = "storedDiscussionText";
+                discussion.textContent = material.text;
+                daySection.appendChild(discussion);
+            }
         }
 
         dayActivities.forEach(activity => {
@@ -2038,26 +2812,56 @@ function renderStoredMaterials() {
 function renderDiscussionDays() {
     const container = document.getElementById("discussionDays");
     const state = getDiscussionState();
+    const requirements = getDayTwoRequirements();
+    const dayTwoReady = state.completedDays.includes(1)
+        && hasPassedStoringActivity()
+        && requirements.retrievalTestComplete;
 
     container.innerHTML = "";
 
     for (let day = 1; day <= 10; day++) {
         const button = document.createElement("button");
         const isCompleted = state.completedDays.includes(day);
+        const isUnlocked = day === 1
+            || (day <= state.unlockedDay
+                && (day !== 2 || dayTwoReady)
+                && (day < 3 || state.completedDays.includes(2)));
 
         button.type = "button";
         button.textContent = isCompleted
             ? `Day ${day} ✓`
-            : day <= state.unlockedDay
+            : isUnlocked
                 ? `Day ${day}`
                 : `🔒 Day ${day}`;
-        button.disabled = day > state.unlockedDay;
+        button.disabled = !isUnlocked;
 
-        if (day <= state.unlockedDay) {
+        if (isUnlocked) {
             button.onclick = () => openDiscussionDay(day);
         }
 
         container.appendChild(button);
+    }
+
+    const unlockStatus = document.getElementById("discussionUnlockStatus");
+    if (unlockStatus) {
+        const remaining = [];
+        if (!state.completedDays.includes(1)) {
+            remaining.push("mark Day 1 as read");
+        }
+        if (!hasPassedStoringActivity()) {
+            remaining.push("pass at least 80% in any one Storing activity");
+        }
+        if (!requirements.retrievalTestComplete) {
+            remaining.push("finish the Retrieval Test");
+        }
+
+        const remainingText = remaining.length < 2
+            ? remaining[0]
+            : `${remaining.slice(0, -1).join(", ")}, and ${remaining[remaining.length - 1]}`;
+
+        unlockStatus.textContent = dayTwoReady
+            ? "Day 2 is unlocked."
+            : `To unlock Day 2, ${remainingText}.`;
     }
 }
 
@@ -2069,11 +2873,14 @@ function openDiscussionDay(day) {
     }
 
     const materials = getDiscussionMaterials();
-    const material = materials[day] || {};
+    const material = getDiscussionMaterial(day, materials);
     const editor = document.getElementById("discussionEditor");
 
     currentDiscussionDay = day;
-    document.getElementById("discussionDayTitle").textContent = `Day ${day}`;
+    document.getElementById("discussionDayTitle").textContent =
+        `Day ${day}${material.title ? `: ${material.title}` : ""}`;
+    document.getElementById("dayOneReviewerDiagram").classList.toggle("hidden", day !== 1);
+    document.getElementById("dayTwoBearingDiagram").classList.toggle("hidden", day !== 2);
     document.getElementById("discussionMaterialText").value = material.text || "";
     document.getElementById("discussionStatus").textContent = state.completedDays.includes(day)
         ? "This discussion is complete."
@@ -2093,8 +2900,17 @@ function saveDiscussionMaterial() {
     }
 
     const materials = getDiscussionMaterials();
+    const existingMaterial = materials[currentDiscussionDay] || {};
+    const reviewerTitle = {
+        1: dayOneReviewerTitle,
+        2: dayTwoReviewerTitle
+    }[currentDiscussionDay];
+
     materials[currentDiscussionDay] = {
-        ...materials[currentDiscussionDay],
+        ...existingMaterial,
+        ...(reviewerTitle && !existingMaterial.title
+            ? { title: reviewerTitle }
+            : {}),
         text: document.getElementById("discussionMaterialText").value.trim()
     };
     localStorage.setItem("qpiDiscussionMaterials", JSON.stringify(materials));
@@ -2119,13 +2935,30 @@ function markDiscussionRead() {
     if (!state.completedDays.includes(currentDiscussionDay)) {
         state.completedDays.push(currentDiscussionDay);
     }
-    state.unlockedDay = Math.min(10, Math.max(state.unlockedDay, currentDiscussionDay + 1));
+    if (currentDiscussionDay === 1) {
+        state.unlockedDay = Math.max(state.unlockedDay, 1);
+    } else {
+        state.unlockedDay = Math.min(
+            10,
+            Math.max(state.unlockedDay, currentDiscussionDay + 1)
+        );
+    }
     saveDiscussionState(state);
 
-    document.getElementById("discussionStatus").textContent =
-        currentDiscussionDay < 10
-            ? `Day ${currentDiscussionDay} complete. Day ${currentDiscussionDay + 1} is now unlocked.`
-            : "Day 10 complete. You finished all daily discussions.";
+    if (currentDiscussionDay === 1) {
+        updateDayTwoUnlock();
+        const requirements = getDayTwoRequirements();
+        const dayTwoReady = hasPassedStoringActivity()
+            && requirements.retrievalTestComplete;
+        document.getElementById("discussionStatus").textContent = dayTwoReady
+            ? "Day 1 complete. Day 2 is now unlocked."
+            : "Day 1 complete. Pass at least 80% in one Storing activity and the Retrieval Test to unlock Day 2.";
+    } else {
+        document.getElementById("discussionStatus").textContent =
+            currentDiscussionDay < 10
+                ? `Day ${currentDiscussionDay} complete. Day ${currentDiscussionDay + 1} is now unlocked.`
+                : "Day 10 complete. You finished all daily discussions.";
+    }
     renderDiscussionDays();
 }
 
@@ -2158,11 +2991,107 @@ function showScreen(screenId) {
 // START QUIZ
 // ============================================================
 
+const retrievalTestQuestions = [
+    {
+        question: "Which trigonometric ratio is opposite divided by hypotenuse?",
+        choices: ["Sine", "Cosine", "Tangent", "Secant"],
+        answer: 0,
+        explanation: "SOH means sine = opposite over hypotenuse."
+    },
+    {
+        question: "A right triangle has legs of 6 m and 8 m. What is its hypotenuse?",
+        choices: ["10 m", "12 m", "14 m", "48 m"],
+        answer: 0,
+        explanation: "By the Pythagorean theorem, c = √(6² + 8²) = √100 = 10 m."
+    },
+    {
+        question: "From a point 10 m away, an angle of elevation to the top of a tree is 45°. How tall is the tree?",
+        choices: ["10 m", "5 m", "20 m", "14.14 m"],
+        answer: 0,
+        explanation: "tan 45° = height / 10. Since tan 45° = 1, the height is 10 m."
+    },
+    {
+        question: "From which direction are bearings measured, and in which direction?",
+        choices: [
+            "Clockwise from north",
+            "Counterclockwise from north",
+            "Clockwise from east",
+            "Counterclockwise from south"
+        ],
+        answer: 0,
+        explanation: "A bearing is measured clockwise from north."
+    },
+    {
+        question: "What is the three-figure bearing of west?",
+        choices: ["270°", "090°", "180°", "360°"],
+        answer: 0,
+        explanation: "West is 270° when bearings are measured clockwise from north."
+    },
+    {
+        question: "Which formula can find the area of a triangle when all three side lengths are known?",
+        choices: ["Heron's formula", "Sine area formula", "Pythagorean theorem", "Tangent ratio"],
+        answer: 0,
+        explanation: "Heron's formula uses the three sides through the semiperimeter s."
+    },
+    {
+        question: "Using Heron's formula, what is the area of a triangle with sides 5 m, 5 m, and 6 m?",
+        choices: ["12 m²", "15 m²", "16 m²", "30 m²"],
+        answer: 0,
+        explanation: "The semiperimeter is 8. Area = √[8(3)(3)(2)] = 12 m²."
+    },
+    {
+        question: "Which formula finds a triangle's area from two sides and their included angle?",
+        choices: ["Area = ½ ab sin C", "Area = a + b + C", "Area = ½(a + b)", "Area = a² + b²"],
+        answer: 0,
+        explanation: "The sine area formula is Area = ½ ab sin C."
+    },
+    {
+        question: "Find the area when a = 6, b = 10, and the included angle C = 30°.",
+        choices: ["15 square units", "30 square units", "60 square units", "120 square units"],
+        answer: 0,
+        explanation: "Area = ½(6)(10)sin 30° = 30(0.5) = 15 square units."
+    },
+    {
+        question: "A boat travels 6 km east and 8 km north. What is its approximate bearing from the starting point?",
+        choices: ["037°", "053°", "127°", "323°"],
+        answer: 0,
+        explanation: "The bearing is measured clockwise from north: arctan(6/8) ≈ 36.87°, or 037°."
+    }
+];
+
+function prepareRetrievalTestQuestions() {
+    const answerPositions = shuffleArray([
+        0, 0, 1, 1, 2, 2, 3, 3,
+        Math.floor(Math.random() * 4),
+        Math.floor(Math.random() * 4)
+    ]);
+
+    return retrievalTestQuestions.map((question, index) => {
+        const correctChoice = question.choices[question.answer];
+        const otherChoices = shuffleArray(
+            question.choices.filter((_, choiceIndex) => choiceIndex !== question.answer)
+        );
+        const choices = [...otherChoices];
+        choices.splice(answerPositions[index], 0, correctChoice);
+
+        return {
+            ...question,
+            choices,
+            answer: answerPositions[index]
+        };
+    });
+}
+
 function startQuiz(type) {
 
     if (type === "practice") {
         renderLearningLevels();
         showScreen("dailyQuizScreen");
+        return;
+    }
+
+    if (type === "retrieval" && !hasPassedStoringActivity()) {
+        openStoredMaterials("Pass at least 80% in one Storing activity before starting the Retrieval Test.");
         return;
     }
 
@@ -2173,9 +3102,11 @@ function startQuiz(type) {
     answerSubmitted = false;
     userAnswers = [];
 
-    currentQuestions = shuffleArray(questionBank)
-        .slice(0, 10)
-        .map(prepareQuestionForQuiz);
+    currentQuestions = type === "retrieval"
+        ? prepareRetrievalTestQuestions()
+        : shuffleArray(questionBank)
+            .slice(0, 10)
+            .map(prepareQuestionForQuiz);
 
     document.getElementById("quizType").textContent =
         getQuizName(type);
@@ -2198,6 +3129,10 @@ function getQuizName(type) {
 
     if (type === "practice") {
         return "📚 Daily Quiz";
+    }
+
+    if (type === "retrieval") {
+        return "📚 Retrieval Test";
     }
 
     if (type === "posttest") {
@@ -2255,7 +3190,11 @@ function loadQuestion() {
 
     nextButton.disabled = true;
 
-    nextButton.textContent = "Check Answer";
+    nextButton.textContent = currentQuiz === "retrieval"
+        ? currentQuestion === currentQuestions.length - 1
+            ? "Finish Test"
+            : "Next Question"
+        : "Check Answer";
 }
 
 
@@ -2373,6 +3312,33 @@ function checkAnswer() {
 // ============================================================
 
 function nextQuestion() {
+    if (currentQuiz === "retrieval") {
+        if (selectedAnswer === null) {
+            return;
+        }
+
+        const question = currentQuestions[currentQuestion];
+        const isCorrect = selectedAnswer === question.answer;
+
+        if (isCorrect) {
+            score++;
+        }
+
+        userAnswers.push({
+            question: question.question,
+            selectedAnswer,
+            correctAnswer: question.answer,
+            correct: isCorrect
+        });
+
+        if (currentQuestion < currentQuestions.length - 1) {
+            currentQuestion++;
+            loadQuestion();
+        } else {
+            finishQuiz();
+        }
+        return;
+    }
 
     if (!answerSubmitted) {
         checkAnswer();
@@ -2405,6 +3371,20 @@ function finishQuiz() {
 
     const percentage =
         Math.round((score / total) * 100);
+
+    if (currentQuiz === "retrieval") {
+        const passedRetrievalTest = percentage >= 80;
+        const requirements = getDayTwoRequirements();
+
+        requirements.retrievalTestComplete = passedRetrievalTest;
+        if (!passedRetrievalTest) {
+            requirements.passedActivities = [];
+        }
+        requirements.wordSearchComplete = requirements.passedActivities.includes("wordsearch");
+        localStorage.setItem("qpiDayTwoRequirements", JSON.stringify(requirements));
+        updateDayTwoUnlock();
+
+    }
 
     const result = {
 
@@ -2472,6 +3452,13 @@ function finishQuiz() {
     document.getElementById("performanceMessage").textContent =
         message;
 
+    if (currentQuiz === "retrieval" && percentage < 80) {
+        document.getElementById("performanceMessage").textContent =
+            "You need at least 80% to pass. Repeat the Storing word search, then take the Retrieval Test again.";
+    }
+
+    renderRetrievalTestReview();
+
     const resultActions = document.getElementById("resultActions");
     const passThreshold = 70;
 
@@ -2500,7 +3487,6 @@ function finishQuiz() {
 
             resultActions.innerHTML = `
                 <button type="button" onclick="startLearningLevel(${Math.min(currentLearningLevel + 1, learningLevels.length)})">Next Level</button>
-                <button type="button" onclick="backToMenu()">Back to Menu</button>
             `;
 
             document.getElementById("performanceMessage").innerHTML = `
@@ -2508,13 +3494,66 @@ function finishQuiz() {
                 <p>Level cleared! You unlocked the next daily level.</p>
             `;
         }
-    } else {
+    } else if (currentQuiz === "retrieval" && percentage < 80) {
         resultActions.innerHTML = `
-            <button type="button" onclick="backToMenu()">Back to Menu</button>
+            <button type="button" onclick="openStoredMaterials('Pass at least 80% in any one Storing activity to unlock another Retrieval Test attempt.')">Choose Storing Activity</button>
         `;
+    } else {
+        resultActions.innerHTML = "";
     }
 
     showScreen("resultScreen");
+}
+
+function renderRetrievalTestReview() {
+    const container = document.getElementById("retrievalTestReview");
+    container.innerHTML = "";
+
+    if (currentQuiz !== "retrieval") {
+        return;
+    }
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Review Your Answers";
+    container.appendChild(heading);
+
+    const missedAnswers = userAnswers
+        .map((answer, index) => ({ answer, question: currentQuestions[index], index }))
+        .filter(item => !item.answer.correct);
+
+    if (!missedAnswers.length) {
+        const message = document.createElement("p");
+        message.textContent = "You answered every question correctly. Great work!";
+        container.appendChild(message);
+        return;
+    }
+
+    const introduction = document.createElement("p");
+    introduction.textContent =
+        "Here are the questions to review, with the correct answers and explanations.";
+    container.appendChild(introduction);
+
+    missedAnswers.forEach(({ answer, question, index }) => {
+        const item = document.createElement("article");
+        item.className = "progressItem";
+
+        const questionText = document.createElement("h4");
+        questionText.textContent = `${index + 1}. ${question.question}`;
+
+        const selectedText = document.createElement("p");
+        selectedText.textContent =
+            `Your answer: ${question.choices[answer.selectedAnswer]}`;
+
+        const correctText = document.createElement("p");
+        correctText.textContent =
+            `Correct answer: ${question.choices[answer.correctAnswer]}`;
+
+        const explanation = document.createElement("p");
+        explanation.textContent = `Why: ${question.explanation}`;
+
+        item.append(questionText, selectedText, correctText, explanation);
+        container.appendChild(item);
+    });
 }
 
 
@@ -2654,6 +3693,11 @@ function clearResults() {
 
 function backToMenu() {
 
+    if (wordSearchTimerId !== null) {
+        clearInterval(wordSearchTimerId);
+        wordSearchTimerId = null;
+    }
+
     document.getElementById("welcomeMessage").textContent =
         `Welcome, ${studentName}! Section ${studentSection}.`;
 
@@ -2708,6 +3752,13 @@ document.getElementById("nextButton").onclick =
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    for (let index = localStorage.length - 1; index >= 0; index--) {
+        const key = localStorage.key(index);
+        if (key && key.startsWith("qpi")) {
+            localStorage.removeItem(key);
+        }
+    }
 
     loadStudent();
     hideLearningLevels();
