@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" aria-labelledby="title desc">
+  <title id="title">Bearing and route diagram</title>
+  <desc id="desc">A compass rose and a right-triangle route of 6 kilometers east and 8 kilometers north, with a bearing of approximately 037 degrees measured clockwise from north.</desc>
+  <rect width="720" height="380" rx="18" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#1f2937">
+    <text x="180" y="38" text-anchor="middle" font-size="21" font-weight="700">Bearings</text>
+    <text x="520" y="38" text-anchor="middle" font-size="21" font-weight="700">6 km east, 8 km north</text>
+
+    <g transform="translate(180 205)">
+      <circle r="105" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+      <path d="M0 -78 L0 78 M-78 0 L78 0" stroke="#94a3b8" stroke-width="2"/>
+      <path d="M0 -95 L-9 -74 L9 -74 Z" fill="#2563eb"/>
+      <path d="M0 84 L-7 66 L7 66 Z" fill="#94a3b8"/>
+      <path d="M-84 0 L-66 -7 L-66 7 Z" fill="#94a3b8"/>
+      <path d="M84 0 L66 -7 L66 7 Z" fill="#94a3b8"/>
+      <text x="0" y="-111" text-anchor="middle" font-size="17" font-weight="700" fill="#1d4ed8">N</text>
+      <text x="111" y="6" text-anchor="middle" font-size="17" font-weight="700">E</text>
+      <text x="0" y="126" text-anchor="middle" font-size="17" font-weight="700">S</text>
+      <text x="-111" y="6" text-anchor="middle" font-size="17" font-weight="700">W</text>
+      <path d="M0 0 L48 -58" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="48" cy="-58" r="6" fill="#dc2626"/>
+      <path d="M0 -44 A44 44 0 0 1 28 -34" fill="none" stroke="#f59e0b" stroke-width="4"/>
+      <text x="46" y="-43" font-size="16" font-weight="700" fill="#92400e">037°</text>
+    </g>
+
+    <g>
+      <circle cx="405" cy="300" r="5" fill="#334155"/>
+      <path d="M405 300 L635 300 L635 90 Z" fill="#dbeafe" fill-opacity=".75" stroke="#2563eb" stroke-width="3"/>
+      <path d="M617 300 L617 282 L635 282" fill="none" stroke="#334155" stroke-width="2"/>
+      <path d="M405 300 L635 90" stroke="#dc2626" stroke-width="5" stroke-linecap="round"/>
+      <path d="M405 300 L635 300" stroke="#059669" stroke-width="4" marker-end="url(#arrow)"/>
+      <path d="M635 300 L635 90" stroke="#2563eb" stroke-width="4"/>
+      <text x="520" y="328" text-anchor="middle" font-size="17" font-weight="700" fill="#047857">6 km east</text>
+      <text x="660" y="198" text-anchor="middle" font-size="17" font-weight="700" fill="#1d4ed8" transform="rotate(-90 660 198)">8 km north</text>
+      <text x="521" y="174" text-anchor="middle" font-size="16" font-weight="700" fill="#b91c1c" transform="rotate(-42 521 174)">10 km</text>
+      <text x="405" y="324" text-anchor="middle" font-size="14" fill="#475569">Start</text>
+    </g>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#059669"/>
+    </marker>
+  </defs>
+</svg>

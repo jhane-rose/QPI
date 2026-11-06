@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
+  <title id="title">Day 1 trigonometry visual reviewer</title>
+  <desc id="desc">A right triangle labels the opposite, adjacent, and hypotenuse sides relative to angle theta. Two smaller diagrams show elevation upward and depression downward from horizontal lines.</desc>
+  <rect width="760" height="360" rx="18" fill="#f8fafc"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#1f2937">
+    <text x="190" y="36" text-anchor="middle" font-size="21" font-weight="700">SOH-CAH-TOA</text>
+    <text x="565" y="36" text-anchor="middle" font-size="21" font-weight="700">Elevation and Depression</text>
+
+    <g>
+      <path d="M64 280 L310 280 L310 88 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="4"/>
+      <path d="M291 280 L291 261 L310 261" fill="none" stroke="#334155" stroke-width="2"/>
+      <path d="M98 280 A34 34 0 0 0 91 258" fill="none" stroke="#f59e0b" stroke-width="4"/>
+      <text x="82" y="274" font-size="18" font-weight="700" fill="#92400e">θ</text>
+      <text x="187" y="310" text-anchor="middle" font-size="16" font-weight="700" fill="#047857">Adjacent</text>
+      <text x="326" y="190" text-anchor="middle" font-size="16" font-weight="700" fill="#1d4ed8" transform="rotate(-90 326 190)">Opposite</text>
+      <text x="158" y="165" text-anchor="middle" font-size="16" font-weight="700" fill="#b91c1c" transform="rotate(-38 158 165)">Hypotenuse</text>
+      <text x="190" y="338" text-anchor="middle" font-size="14" fill="#475569">sin θ = O/H  •  cos θ = A/H  •  tan θ = O/A</text>
+    </g>
+
+    <g>
+      <text x="566" y="82" text-anchor="middle" font-size="16" font-weight="700" fill="#047857">Angle of elevation</text>
+      <circle cx="465" cy="149" r="10" fill="#475569"/>
+      <path d="M465 160 L465 225 M465 177 L445 197 M465 177 L485 197 M465 225 L451 250 M465 225 L479 250" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+      <path d="M480 180 L689 180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6"/>
+      <path d="M480 180 L650 99" stroke="#dc2626" stroke-width="4"/>
+      <path d="M515 180 A35 35 0 0 0 512 165" fill="none" stroke="#f59e0b" stroke-width="3"/>
+      <text x="526" y="164" font-size="14" font-weight="700" fill="#92400e">θ</text>
+      <text x="568" y="202" text-anchor="middle" font-size="14" fill="#475569">horizontal</text>
+
+      <text x="566" y="262" text-anchor="middle" font-size="16" font-weight="700" fill="#7c3aed">Angle of depression</text>
+      <path d="M478 297 L689 297" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6"/>
+      <path d="M478 297 L650 333" stroke="#7c3aed" stroke-width="4"/>
+      <path d="M512 297 A34 34 0 0 1 511 304" fill="none" stroke="#f59e0b" stroke-width="3"/>
+      <text x="524" y="317" font-size="14" font-weight="700" fill="#92400e">θ</text>
+      <text x="574" y="286" text-anchor="middle" font-size="14" fill="#475569">horizontal</text>
+    </g>
+  </g>
+</svg>
