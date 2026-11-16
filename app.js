@@ -238,1380 +238,66 @@ function reviewMistakes() {
 
 
 // ============================================================
-// GENERAL MATHEMATICS QUESTION BANK
-// 100 QUESTIONS
+// RANDOM VARIABLES QUESTION BANK
+// 40 QUESTIONS
 // ============================================================
 
-const questionBank = [
-
-    // ========================================================
-    // FUNCTIONS - 1 to 15
-    // ========================================================
-
-    {
-        question: "Which of the following best describes a function?",
-        choices: [
-            "A relation where every input has exactly one output",
-            "A relation where every input has two outputs",
-            "A set containing only numbers",
-            "A graph with no points"
-        ],
-        answer: 0,
-        explanation:
-            "A function is a relation in which every input is associated with exactly one output."
-    },
-
-    {
-        question: "What is the domain of a function?",
-        choices: [
-            "The set of input values",
-            "The set of output values",
-            "The highest value only",
-            "The lowest value only"
-        ],
-        answer: 0,
-        explanation:
-            "The domain is the set of all possible input values of a function."
-    },
-
-    {
-        question: "What is the range of a function?",
-        choices: [
-            "The set of output values",
-            "The set of input values",
-            "The independent variable",
-            "The equation only"
-        ],
-        answer: 0,
-        explanation:
-            "The range is the set of all possible output values of a function."
-    },
-
-    {
-        question: "If f(x) = x + 5, what is f(3)?",
-        choices: [
-            "8",
-            "2",
-            "15",
-            "5"
-        ],
-        answer: 0,
-        explanation:
-            "Substitute x = 3. Therefore, f(3) = 3 + 5 = 8."
-    },
-
-    {
-        question: "If f(x) = 2x, what is f(6)?",
-        choices: [
-            "12",
-            "8",
-            "6",
-            "3"
-        ],
-        answer: 0,
-        explanation:
-            "Substitute x = 6. f(6) = 2(6) = 12."
-    },
-
-    {
-        question: "Which notation represents a function named f?",
-        choices: [
-            "f(x)",
-            "fx only",
-            "f+x",
-            "x/f"
-        ],
-        answer: 0,
-        explanation:
-            "f(x) is the standard notation used to represent a function named f."
-    },
-
-    {
-        question: "If f(x) = x², what is f(4)?",
-        choices: [
-            "16",
-            "8",
-            "6",
-            "12"
-        ],
-        answer: 0,
-        explanation:
-            "f(4) = 4² = 16."
-    },
-
-    {
-        question: "Which variable is usually the independent variable?",
-        choices: [
-            "x",
-            "y",
-            "f",
-            "constant"
-        ],
-        answer: 0,
-        explanation:
-            "In many functions, x represents the independent variable or input."
-    },
-
-    {
-        question: "Which variable is usually the dependent variable?",
-        choices: [
-            "y",
-            "x",
-            "constant",
-            "domain"
-        ],
-        answer: 0,
-        explanation:
-            "The dependent variable is commonly represented by y because its value depends on x."
-    },
-
-    {
-        question: "If f(x) = 3x - 2, what is f(5)?",
-        choices: [
-            "13",
-            "15",
-            "10",
-            "8"
-        ],
-        answer: 0,
-        explanation:
-            "f(5) = 3(5) - 2 = 15 - 2 = 13."
-    },
-
-    {
-        question: "Which relation is a function?",
-        choices: [
-            "{(1,2), (2,3), (3,4)}",
-            "{(1,2), (1,3), (2,4)}",
-            "{(2,1), (2,5), (3,6)}",
-            "{(4,2), (4,3), (5,7)}"
-        ],
-        answer: 0,
-        explanation:
-            "A function cannot assign two different outputs to the same input. The first relation has a unique output for every input."
-    },
-
-    {
-        question: "What does f(2) represent?",
-        choices: [
-            "The output of the function when the input is 2",
-            "The input when the output is 2",
-            "The domain of the function",
-            "The range of the function"
-        ],
-        answer: 0,
-        explanation:
-            "f(2) means the value of the function when x, the input, is 2."
-    },
-
-    {
-        question: "If f(x) = x² + 1, what is f(2)?",
-        choices: [
-            "5",
-            "4",
-            "3",
-            "6"
-        ],
-        answer: 0,
-        explanation:
-            "f(2) = 2² + 1 = 4 + 1 = 5."
-    },
-
-    {
-        question: "If f(x) = 4x - 1, what is f(0)?",
-        choices: [
-            "-1",
-            "0",
-            "1",
-            "4"
-        ],
-        answer: 0,
-        explanation:
-            "f(0) = 4(0) - 1 = -1."
-    },
-
-    {
-        question: "A vertical line test is used to determine whether a graph represents what?",
-        choices: [
-            "A function",
-            "A sequence",
-            "A logarithm only",
-            "A polynomial degree"
-        ],
-        answer: 0,
-        explanation:
-            "If every vertical line intersects a graph at most once, the graph represents a function."
-    },
-
-
-    // ========================================================
-    // OPERATIONS ON FUNCTIONS - 16 to 25
-    // ========================================================
-
-    {
-        question: "If f(x) = x + 2 and g(x) = x + 3, what is (f + g)(x)?",
-        choices: [
-            "2x + 5",
-            "x + 5",
-            "2x + 6",
-            "x + 1"
-        ],
-        answer: 0,
-        explanation:
-            "(f + g)(x) = f(x) + g(x) = (x + 2) + (x + 3) = 2x + 5."
-    },
-
-    {
-        question: "If f(x) = x + 5 and g(x) = x - 2, what is (f - g)(x)?",
-        choices: [
-            "7",
-            "2x + 3",
-            "2x - 7",
-            "x + 3"
-        ],
-        answer: 0,
-        explanation:
-            "(f - g)(x) = (x + 5) - (x - 2) = 7."
-    },
-
-    {
-        question: "If f(x) = 2x and g(x) = x + 1, what is (fg)(x)?",
-        choices: [
-            "2x² + 2x",
-            "3x + 1",
-            "2x + 1",
-            "2x² + 1"
-        ],
-        answer: 0,
-        explanation:
-            "Multiply the functions: (2x)(x + 1) = 2x² + 2x."
-    },
-
-    {
-        question: "If f(x) = x + 1 and g(x) = 2x, what is (f ∘ g)(x)?",
-        choices: [
-            "2x + 1",
-            "3x + 1",
-            "2x + 2",
-            "x + 2"
-        ],
-        answer: 0,
-        explanation:
-            "f(g(x)) = f(2x) = 2x + 1."
-    },
-
-    {
-        question: "If f(x) = 2x + 1 and g(x) = x - 3, what is f(g(x))?",
-        choices: [
-            "2x - 5",
-            "2x + 4",
-            "x - 2",
-            "2x - 3"
-        ],
-        answer: 0,
-        explanation:
-            "f(g(x)) = 2(x - 3) + 1 = 2x - 6 + 1 = 2x - 5."
-    },
-
-    {
-        question: "What symbol is commonly used for function composition?",
-        choices: [
-            "∘",
-            "+",
-            "÷",
-            "≤"
-        ],
-        answer: 0,
-        explanation:
-            "The circle symbol ∘ is commonly used to represent function composition."
-    },
-
-    {
-        question: "If f(x) = 3x and g(x) = x + 2, what is (f + g)(x)?",
-        choices: [
-            "4x + 2",
-            "3x + 2",
-            "4x",
-            "3x + 6"
-        ],
-        answer: 0,
-        explanation:
-            "(f + g)(x) = 3x + (x + 2) = 4x + 2."
-    },
-
-    {
-        question: "If f(x) = 5x and g(x) = 2x, what is (f - g)(x)?",
-        choices: [
-            "3x",
-            "7x",
-            "10x",
-            "x"
-        ],
-        answer: 0,
-        explanation:
-            "(f - g)(x) = 5x - 2x = 3x."
-    },
-
-    {
-        question: "If f(x) = x + 4 and g(x) = 3x, what is (f × g)(x)?",
-        choices: [
-            "3x² + 12x",
-            "4x + 3",
-            "3x + 4",
-            "x² + 12"
-        ],
-        answer: 0,
-        explanation:
-            "(x + 4)(3x) = 3x² + 12x."
-    },
-
-    {
-        question: "If f(x) = x - 1 and g(x) = x + 2, what is (f + g)(3)?",
-        choices: [
-            "7",
-            "6",
-            "5",
-            "4"
-        ],
-        answer: 0,
-        explanation:
-            "f(3) = 2 and g(3) = 5. Therefore, (f + g)(3) = 2 + 5 = 7."
-    },
-
-
-    // ========================================================
-    // RATIONAL FUNCTIONS - 26 to 38
-    // ========================================================
-
-    {
-        question: "What is a rational function?",
-        choices: [
-            "A function that can be written as a ratio of polynomials",
-            "A function containing only integers",
-            "A function with no variables",
-            "A function that is always linear"
-        ],
-        answer: 0,
-        explanation:
-            "A rational function can be expressed as one polynomial divided by another polynomial."
-    },
-
-    {
-        question: "What values are excluded from the domain of a rational function?",
-        choices: [
-            "Values that make the denominator zero",
-            "Values that make the numerator zero",
-            "All positive values",
-            "All negative values"
-        ],
-        answer: 0,
-        explanation:
-            "Division by zero is undefined, so values that make the denominator zero are excluded."
-    },
-
-    {
-        question: "What is the domain restriction of f(x) = 1/(x - 4)?",
-        choices: [
-            "x ≠ 4",
-            "x ≠ 1",
-            "x > 4",
-            "x < 4"
-        ],
-        answer: 0,
-        explanation:
-            "The denominator x - 4 cannot equal zero. Therefore x ≠ 4."
-    },
-
-    {
-        question: "What happens when the denominator of a rational expression equals zero?",
-        choices: [
-            "The expression is undefined",
-            "The expression equals zero",
-            "The expression becomes one",
-            "The expression becomes negative"
-        ],
-        answer: 0,
-        explanation:
-            "Division by zero is undefined in mathematics."
-    },
-
-    {
-        question: "What is an asymptote?",
-        choices: [
-            "A line that a graph approaches",
-            "A point where the graph always stops",
-            "The maximum point of every graph",
-            "The x-intercept only"
-        ],
-        answer: 0,
-        explanation:
-            "An asymptote is a line that a graph approaches."
-    },
-
-    {
-        question: "For f(x) = 1/x, what is the vertical asymptote?",
-        choices: [
-            "x = 0",
-            "y = 0",
-            "x = 1",
-            "y = 1"
-        ],
-        answer: 0,
-        explanation:
-            "The denominator is zero when x = 0, so x = 0 is the vertical asymptote."
-    },
-
-    {
-        question: "For f(x) = 1/x, what is the horizontal asymptote?",
-        choices: [
-            "y = 0",
-            "x = 0",
-            "y = 1",
-            "x = 1"
-        ],
-        answer: 0,
-        explanation:
-            "As x becomes very large or very negative, 1/x approaches 0. Therefore y = 0 is the horizontal asymptote."
-    },
-
-    {
-        question: "Which value is excluded from f(x) = 3/(x + 2)?",
-        choices: [
-            "x = -2",
-            "x = 2",
-            "x = 3",
-            "x = 0"
-        ],
-        answer: 0,
-        explanation:
-            "x + 2 = 0 when x = -2, so -2 is excluded from the domain."
-    },
-
-    {
-        question: "What is the vertical asymptote of f(x) = 5/(x - 7)?",
-        choices: [
-            "x = 7",
-            "x = -7",
-            "y = 7",
-            "y = -7"
-        ],
-        answer: 0,
-        explanation:
-            "The denominator is zero when x = 7, so x = 7 is the vertical asymptote."
-    },
-
-    {
-        question: "What is the domain of f(x) = 2/(x + 5)?",
-        choices: [
-            "All real numbers except -5",
-            "All real numbers except 5",
-            "x > 5",
-            "x < -5"
-        ],
-        answer: 0,
-        explanation:
-            "The denominator cannot be zero. x + 5 = 0 gives x = -5."
-    },
-
-    {
-        question: "What is the vertical asymptote of f(x) = 1/(x + 3)?",
-        choices: [
-            "x = -3",
-            "x = 3",
-            "y = -3",
-            "y = 3"
-        ],
-        answer: 0,
-        explanation:
-            "Set the denominator equal to zero: x + 3 = 0, so x = -3."
-    },
-
-    {
-        question: "What is the horizontal asymptote of f(x) = 4/x?",
-        choices: [
-            "y = 0",
-            "x = 0",
-            "y = 4",
-            "x = 4"
-        ],
-        answer: 0,
-        explanation:
-            "As x approaches positive or negative infinity, 4/x approaches 0."
-    },
-
-    {
-        question: "Which expression is a rational function?",
-        choices: [
-            "f(x) = (x + 1)/(x - 2)",
-            "f(x) = 2x + 1",
-            "f(x) = x² + 3",
-            "f(x) = √x"
-        ],
-        answer: 0,
-        explanation:
-            "A ratio of two polynomials is a rational function."
-    },
-
-
-    // ========================================================
-    // INVERSE FUNCTIONS - 39 to 48
-    // ========================================================
-
-    {
-        question: "What does an inverse function do?",
-        choices: [
-            "Reverses the input-output relationship",
-            "Squares every value",
-            "Always doubles the output",
-            "Removes the domain"
-        ],
-        answer: 0,
-        explanation:
-            "An inverse function reverses the relationship between inputs and outputs."
-    },
-
-    {
-        question: "What notation represents the inverse of f?",
-        choices: [
-            "f⁻¹(x)",
-            "f²(x)",
-            "2f(x)",
-            "f/x"
-        ],
-        answer: 0,
-        explanation:
-            "The notation f⁻¹(x) represents the inverse function of f."
-    },
-
-    {
-        question: "What must a function generally have to have an inverse that is also a function?",
-        choices: [
-            "It must be one-to-one",
-            "It must be quadratic",
-            "It must have no domain",
-            "It must always be positive"
-        ],
-        answer: 0,
-        explanation:
-            "A function must be one-to-one so that each output corresponds to only one input."
-    },
-
-    {
-        question: "If f(x) = x + 4, what is f⁻¹(x)?",
-        choices: [
-            "x - 4",
-            "x + 4",
-            "4x",
-            "x/4"
-        ],
-        answer: 0,
-        explanation:
-            "Let y = x + 4. Swap x and y and solve. The inverse is f⁻¹(x) = x - 4."
-    },
-
-    {
-        question: "If f(x) = 2x, what is f⁻¹(x)?",
-        choices: [
-            "x/2",
-            "2x",
-            "x + 2",
-            "x - 2"
-        ],
-        answer: 0,
-        explanation:
-            "Let y = 2x. Swap the variables and solve: y = x/2."
-    },
-
-    {
-        question: "What happens to the domain and range when finding an inverse?",
-        choices: [
-            "They switch",
-            "They disappear",
-            "They become zero",
-            "They remain unrelated"
-        ],
-        answer: 0,
-        explanation:
-            "The domain of a function becomes the range of its inverse, and the range becomes the domain."
-    },
-
-    {
-        question: "If f(x) = x - 7, what is f⁻¹(x)?",
-        choices: [
-            "x + 7",
-            "x - 7",
-            "7x",
-            "x/7"
-        ],
-        answer: 0,
-        explanation:
-            "To reverse subtracting 7, add 7. Therefore f⁻¹(x) = x + 7."
-    },
-
-    {
-        question: "If f(x) = 3x + 6, what is f⁻¹(x)?",
-        choices: [
-            "(x - 6)/3",
-            "3x - 6",
-            "(x + 6)/3",
-            "x/3 + 6"
-        ],
-        answer: 0,
-        explanation:
-            "Let y = 3x + 6. Swap x and y: x = 3y + 6. Thus y = (x - 6)/3."
-    },
-
-    {
-        question: "Which test can help determine whether a function is one-to-one?",
-        choices: [
-            "Horizontal line test",
-            "Vertical line test",
-            "Product test",
-            "Addition test"
-        ],
-        answer: 0,
-        explanation:
-            "A graph passes the horizontal line test if no horizontal line intersects it more than once."
-    },
-
-    {
-        question: "What is f(f⁻¹(x)) for a valid inverse?",
-        choices: [
-            "x",
-            "0",
-            "1",
-            "f(x)"
-        ],
-        answer: 0,
-        explanation:
-            "A function and its inverse undo each other, so f(f⁻¹(x)) = x."
-    },
-
-
-    // ========================================================
-    // EXPONENTIAL FUNCTIONS - 49 to 61
-    // ========================================================
-
-    {
-        question: "What is an exponential function?",
-        choices: [
-            "A function in which the variable appears in the exponent",
-            "A function with no variables",
-            "A function that is always linear",
-            "A function containing only fractions"
-        ],
-        answer: 0,
-        explanation:
-            "An exponential function has a variable in the exponent, such as f(x) = 2ˣ."
-    },
-
-    {
-        question: "Which is an exponential function?",
-        choices: [
-            "f(x) = 2ˣ",
-            "f(x) = 2x",
-            "f(x) = x²",
-            "f(x) = x + 2"
-        ],
-        answer: 0,
-        explanation:
-            "In f(x) = 2ˣ, the variable x is in the exponent."
-    },
-
-    {
-        question: "What is 2³?",
-        choices: [
-            "8",
-            "6",
-            "9",
-            "5"
-        ],
-        answer: 0,
-        explanation:
-            "2³ = 2 × 2 × 2 = 8."
-    },
-
-    {
-        question: "What is 5²?",
-        choices: [
-            "25",
-            "10",
-            "15",
-            "20"
-        ],
-        answer: 0,
-        explanation:
-            "5² = 5 × 5 = 25."
-    },
-
-    {
-        question: "What is exponential growth?",
-        choices: [
-            "A quantity increases by a constant percentage or factor",
-            "A quantity always decreases by one",
-            "A quantity remains constant",
-            "A quantity changes randomly"
-        ],
-        answer: 0,
-        explanation:
-            "Exponential growth occurs when a quantity increases by a constant percentage or multiplicative factor over equal intervals."
-    },
-
-    {
-        question: "What is exponential decay?",
-        choices: [
-            "A quantity decreases by a constant percentage or factor",
-            "A quantity always increases",
-            "A quantity remains unchanged",
-            "A quantity becomes negative immediately"
-        ],
-        answer: 0,
-        explanation:
-            "Exponential decay occurs when a quantity decreases by a constant percentage or multiplicative factor over equal intervals."
-    },
-
-    {
-        question: "In an exponential function f(x) = abˣ, what is b called?",
-        choices: [
-            "The base",
-            "The exponent",
-            "The output",
-            "The domain"
-        ],
-        answer: 0,
-        explanation:
-            "In the standard form f(x) = abˣ, b is the base of the exponential expression."
-    },
-
-    {
-        question: "If a population doubles every year, what type of model can describe it?",
-        choices: [
-            "Exponential growth",
-            "Linear decay",
-            "Constant function",
-            "Quadratic decay"
-        ],
-        answer: 0,
-        explanation:
-            "A quantity that multiplies by a constant factor over equal intervals is modeled by exponential growth."
-    },
-
-    {
-        question: "What is 10⁰?",
-        choices: [
-            "1",
-            "0",
-            "10",
-            "-1"
-        ],
-        answer: 0,
-        explanation:
-            "Any nonzero number raised to the zero power equals 1."
-    },
-
-    {
-        question: "What is 3⁴?",
-        choices: [
-            "81",
-            "12",
-            "64",
-            "27"
-        ],
-        answer: 0,
-        explanation:
-            "3⁴ = 3 × 3 × 3 × 3 = 81."
-    },
-
-    {
-        question: "If f(x) = 2ˣ, what is f(4)?",
-        choices: [
-            "16",
-            "8",
-            "12",
-            "6"
-        ],
-        answer: 0,
-        explanation:
-            "f(4) = 2⁴ = 16."
-    },
-
-    {
-        question: "Which base indicates exponential decay in f(x) = abˣ?",
-        choices: [
-            "0 < b < 1",
-            "b > 1",
-            "b = 1",
-            "b = 0"
-        ],
-        answer: 0,
-        explanation:
-            "When 0 < b < 1, the exponential function decreases as x increases."
-    },
-
-    {
-        question: "Which base indicates exponential growth?",
-        choices: [
-            "b > 1",
-            "0 < b < 1",
-            "b = 0",
-            "b < 0"
-        ],
-        answer: 0,
-        explanation:
-            "When b > 1, the exponential function grows as x increases."
-    },
-
-
-    // ========================================================
-    // LOGARITHMIC FUNCTIONS - 62 to 74
-    // ========================================================
-
-    {
-        question: "What is a logarithm?",
-        choices: [
-            "The exponent to which a base must be raised to obtain a number",
-            "A type of fraction",
-            "A negative number",
-            "A polynomial"
-        ],
-        answer: 0,
-        explanation:
-            "A logarithm tells us the exponent needed to raise a given base to obtain a number."
-    },
-
-    {
-        question: "What is log₂(8)?",
-        choices: [
-            "3",
-            "2",
-            "4",
-            "8"
-        ],
-        answer: 0,
-        explanation:
-            "Because 2³ = 8, log₂(8) = 3."
-    },
-
-    {
-        question: "What is log₁₀(100)?",
-        choices: [
-            "2",
-            "10",
-            "100",
-            "1"
-        ],
-        answer: 0,
-        explanation:
-            "10² = 100, so log₁₀(100) = 2."
-    },
-
-    {
-        question: "Which equation is equivalent to log₂(8) = 3?",
-        choices: [
-            "2³ = 8",
-            "3² = 8",
-            "8² = 3",
-            "2⁸ = 3"
-        ],
-        answer: 0,
-        explanation:
-            "The logarithmic equation log₂(8) = 3 is equivalent to 2³ = 8."
-    },
-
-    {
-        question: "What is log₁₀(1)?",
-        choices: [
-            "0",
-            "1",
-            "10",
-            "-1"
-        ],
-        answer: 0,
-        explanation:
-            "10⁰ = 1, so log₁₀(1) = 0."
-    },
-
-    {
-        question: "What is log₂(16)?",
-        choices: [
-            "4",
-            "8",
-            "2",
-            "16"
-        ],
-        answer: 0,
-        explanation:
-            "Since 2⁴ = 16, log₂(16) = 4."
-    },
-
-    {
-        question: "Which is the common logarithm?",
-        choices: [
-            "Logarithm with base 10",
-            "Logarithm with base 2",
-            "Logarithm with base 5",
-            "Logarithm with base 100"
-        ],
-        answer: 0,
-        explanation:
-            "The common logarithm uses base 10 and is often written as log(x)."
-    },
-
-    {
-        question: "Which is the natural logarithm?",
-        choices: [
-            "ln(x)",
-            "log₂(x)",
-            "log₁₀(x)",
-            "log₅(x)"
-        ],
-        answer: 0,
-        explanation:
-            "The natural logarithm is written as ln(x) and has base e."
-    },
-
-    {
-        question: "What is the value of ln(e)?",
-        choices: [
-            "1",
-            "0",
-            "e",
-            "-1"
-        ],
-        answer: 0,
-        explanation:
-            "Since e¹ = e, ln(e) = 1."
-    },
-
-    {
-        question: "What is log₃(27)?",
-        choices: [
-            "3",
-            "9",
-            "6",
-            "27"
-        ],
-        answer: 0,
-        explanation:
-            "Because 3³ = 27, log₃(27) = 3."
-    },
-
-    {
-        question: "What is log₅(25)?",
-        choices: [
-            "2",
-            "5",
-            "10",
-            "25"
-        ],
-        answer: 0,
-        explanation:
-            "5² = 25, so log₅(25) = 2."
-    },
-
-    {
-        question: "What is log₄(64)?",
-        choices: [
-            "3",
-            "4",
-            "16",
-            "2"
-        ],
-        answer: 0,
-        explanation:
-            "4³ = 64, so log₄(64) = 3."
-    },
-
-    {
-        question: "What is log₂(32)?",
-        choices: [
-            "5",
-            "4",
-            "6",
-            "8"
-        ],
-        answer: 0,
-        explanation:
-            "2⁵ = 32, so log₂(32) = 5."
-    },
-
-
-    // ========================================================
-    // LAWS OF LOGARITHMS - 75 to 80
-    // ========================================================
-
-    {
-        question: "Which logarithm law represents multiplication?",
-        choices: [
-            "log(ab) = log(a) + log(b)",
-            "log(ab) = log(a) - log(b)",
-            "log(ab) = log(a)log(b)",
-            "log(ab) = log(a)/log(b)"
-        ],
-        answer: 0,
-        explanation:
-            "The product rule states log(ab) = log(a) + log(b)."
-    },
-
-    {
-        question: "Which law represents division?",
-        choices: [
-            "log(a/b) = log(a) - log(b)",
-            "log(a/b) = log(a) + log(b)",
-            "log(a/b) = log(a)log(b)",
-            "log(a/b) = log(b) - log(a)"
-        ],
-        answer: 0,
-        explanation:
-            "The quotient rule states log(a/b) = log(a) - log(b)."
-    },
-
-    {
-        question: "What is the power rule of logarithms?",
-        choices: [
-            "log(aⁿ) = n log(a)",
-            "log(aⁿ) = log(a) + n",
-            "log(aⁿ) = log(a)/n",
-            "log(aⁿ) = a log(n)"
-        ],
-        answer: 0,
-        explanation:
-            "The power rule allows an exponent to be moved in front of a logarithm as a multiplier."
-    },
-
-    {
-        question: "What is log₂(4 × 8)?",
-        choices: [
-            "5",
-            "4",
-            "6",
-            "12"
-        ],
-        answer: 0,
-        explanation:
-            "4 × 8 = 32, and log₂(32) = 5."
-    },
-
-    {
-        question: "What is log₁₀(1000)?",
-        choices: [
-            "3",
-            "2",
-            "10",
-            "100"
-        ],
-        answer: 0,
-        explanation:
-            "10³ = 1000, so log₁₀(1000) = 3."
-    },
-
-    {
-        question: "If log₂(x) = 4, what is x?",
-        choices: [
-            "16",
-            "8",
-            "12",
-            "4"
-        ],
-        answer: 0,
-        explanation:
-            "Convert to exponential form: 2⁴ = x. Therefore x = 16."
-    },
-
-
-    // ========================================================
-    // ARITHMETIC SEQUENCES - 81 to 90
-    // ========================================================
-
-    {
-        question: "What is an arithmetic sequence?",
-        choices: [
-            "A sequence with a constant difference between consecutive terms",
-            "A sequence with a constant product",
-            "A sequence with random terms",
-            "A sequence containing only even numbers"
-        ],
-        answer: 0,
-        explanation:
-            "An arithmetic sequence has a common difference between consecutive terms."
-    },
-
-    {
-        question: "What is the common difference of 2, 5, 8, 11?",
-        choices: [
-            "3",
-            "2",
-            "4",
-            "5"
-        ],
-        answer: 0,
-        explanation:
-            "Subtract consecutive terms: 5 - 2 = 3 and 8 - 5 = 3. The common difference is 3."
-    },
-
-    {
-        question: "What is the next term in 4, 7, 10, 13?",
-        choices: [
-            "16",
-            "15",
-            "17",
-            "20"
-        ],
-        answer: 0,
-        explanation:
-            "The common difference is 3, so 13 + 3 = 16."
-    },
-
-    {
-        question: "What is the formula for the nth term of an arithmetic sequence?",
-        choices: [
-            "aₙ = a₁ + (n - 1)d",
-            "aₙ = a₁dⁿ",
-            "aₙ = n + d",
-            "aₙ = a₁/n"
-        ],
-        answer: 0,
-        explanation:
-            "The nth term of an arithmetic sequence is aₙ = a₁ + (n - 1)d."
-    },
-
-    {
-        question: "In an arithmetic sequence, what does d represent?",
-        choices: [
-            "Common difference",
-            "Domain",
-            "Denominator",
-            "Degree"
-        ],
-        answer: 0,
-        explanation:
-            "The letter d commonly represents the common difference."
-    },
-
-    {
-        question: "Find the 5th term of 3, 6, 9, 12, ...",
-        choices: [
-            "15",
-            "18",
-            "12",
-            "21"
-        ],
-        answer: 0,
-        explanation:
-            "The sequence increases by 3. The fifth term is 15."
-    },
-
-    {
-        question: "If a₁ = 5 and d = 4, what is a₄?",
-        choices: [
-            "17",
-            "13",
-            "20",
-            "16"
-        ],
-        answer: 0,
-        explanation:
-            "a₄ = 5 + (4 - 1)(4) = 5 + 12 = 17."
-    },
-
-    {
-        question: "What is the common difference of 20, 15, 10, 5?",
-        choices: [
-            "-5",
-            "5",
-            "-10",
-            "10"
-        ],
-        answer: 0,
-        explanation:
-            "15 - 20 = -5, so the common difference is -5."
-    },
-
-    {
-        question: "What is the 10th term of 2, 5, 8, 11, ...?",
-        choices: [
-            "29",
-            "30",
-            "27",
-            "32"
-        ],
-        answer: 0,
-        explanation:
-            "Using aₙ = a₁ + (n - 1)d: a₁ = 2, d = 3, n = 10. Thus a₁₀ = 2 + 9(3) = 29."
-    },
-
-    {
-        question: "If a₁ = 7 and d = 3, what is a₆?",
-        choices: [
-            "22",
-            "21",
-            "25",
-            "19"
-        ],
-        answer: 0,
-        explanation:
-            "a₆ = 7 + (6 - 1)(3) = 7 + 15 = 22."
-    },
-
-
-    // ========================================================
-    // GEOMETRIC SEQUENCES - 91 to 96
-    // ========================================================
-
-    {
-        question: "What is a geometric sequence?",
-        choices: [
-            "A sequence with a constant ratio between consecutive terms",
-            "A sequence with a constant difference",
-            "A sequence with no pattern",
-            "A sequence containing only prime numbers"
-        ],
-        answer: 0,
-        explanation:
-            "A geometric sequence has a constant ratio between consecutive terms."
-    },
-
-    {
-        question: "What is the common ratio of 2, 6, 18, 54?",
-        choices: [
-            "3",
-            "2",
-            "6",
-            "4"
-        ],
-        answer: 0,
-        explanation:
-            "Divide consecutive terms: 6/2 = 3 and 18/6 = 3. The common ratio is 3."
-    },
-
-    {
-        question: "What is the next term in 3, 9, 27, 81?",
-        choices: [
-            "243",
-            "162",
-            "108",
-            "180"
-        ],
-        answer: 0,
-        explanation:
-            "Each term is multiplied by 3. Therefore, 81 × 3 = 243."
-    },
-
-    {
-        question: "What is the formula for the nth term of a geometric sequence?",
-        choices: [
-            "aₙ = a₁rⁿ⁻¹",
-            "aₙ = a₁ + (n - 1)d",
-            "aₙ = n/r",
-            "aₙ = a₁ + r"
-        ],
-        answer: 0,
-        explanation:
-            "The nth term formula for a geometric sequence is aₙ = a₁rⁿ⁻¹."
-    },
-
-    {
-        question: "In a geometric sequence, what does r represent?",
-        choices: [
-            "Common ratio",
-            "Common difference",
-            "Range",
-            "Root"
-        ],
-        answer: 0,
-        explanation:
-            "The letter r commonly represents the common ratio."
-    },
-
-    {
-        question: "Find the 4th term of 2, 4, 8, ...",
-        choices: [
-            "16",
-            "12",
-            "14",
-            "18"
-        ],
-        answer: 0,
-        explanation:
-            "The common ratio is 2. Therefore, the fourth term is 16."
-    },
-
-
-    // ========================================================
-    // SERIES - 97 to 100
-    // ========================================================
-
-    {
-        question: "What is a series?",
-        choices: [
-            "The sum of the terms of a sequence",
-            "The difference between terms",
-            "The ratio between terms",
-            "The first term only"
-        ],
-        answer: 0,
-        explanation:
-            "A series is formed by adding the terms of a sequence."
-    },
-
-{
-    question: "What is the formula for the sum of an arithmetic series?",
-    choices: [
-        "Sₙ = n/2 [2a₁ + (n - 1)d]",
-        "Sₙ = a₁rⁿ",
-        "Sₙ = a₁ + nd",
-        "Sₙ = n + d"
-    ],
-    answer: 0,
-    explanation:
-        "The sum of an arithmetic series is Sₙ = n/2 [2a₁ + (n - 1)d]."
-},
-
-{
-    question: "What is the sum of 2 + 4 + 6 + 8 + 10?",
-    choices: [
-        "30",
-        "25",
-        "35",
-        "20"
-    ],
-    answer: 0,
-    explanation:
-        "Add the terms: 2 + 4 + 6 + 8 + 10 = 30."
-},
-
-{
-    question: "What is the sum of the first 5 terms of 3, 6, 9, 12, 15?",
-    choices: [
-        "45",
-        "40",
-        "50",
-        "35"
-    ],
-    answer: 0,
-    explanation:
-        "Add the five terms: 3 + 6 + 9 + 12 + 15 = 45."
-},
-
-{
-    question: "What is the sum of 5 + 10 + 15 + 20?",
-    choices: [
-        "50",
-        "45",
-        "55",
-        "40"
-    ],
-    answer: 0,
-    explanation:
-        "5 + 10 + 15 + 20 = 50."
+function createRandomVariableQuestion(question, choices, explanation) {
+    return { question, choices, answer: 0, explanation };
 }
 
+const questionBank = [
+    createRandomVariableQuestion("What is a random variable?", ["A rule that assigns a number to each outcome of a chance experiment", "A number chosen without an experiment", "A list of non-numerical descriptions", "A result that never changes"], "A random variable assigns numerical values to outcomes of a chance experiment."),
+    createRandomVariableQuestion("Which letter is commonly used to name a random variable?", ["A capital letter such as X", "A lowercase letter such as x only", "The symbol %", "A question mark"], "Random variables are usually named with capital letters such as X or Y."),
+    createRandomVariableQuestion("What does a random variable map?", ["Outcomes of an experiment to numbers", "Numbers to colors", "Questions to students", "Measurements to units only"], "A random variable maps each outcome in the sample space to a numerical value."),
+    createRandomVariableQuestion("Which situation is a chance experiment?", ["Tossing a coin", "Writing a fixed name", "Reading a number already printed", "Measuring a ruler that is not moving"], "A coin toss has an outcome determined by chance."),
+    createRandomVariableQuestion("What is the sample space for tossing two coins?", ["{HH, HT, TH, TT}", "{H, T}", "{0, 1, 2, 3}", "{HHH, TTT}"], "Each coin can land heads or tails, giving HH, HT, TH, and TT."),
+    createRandomVariableQuestion("Two coins are tossed. X is the number of heads. What values can X take?", ["{0, 1, 2}", "{H, T}", "{1, 2, 3}", "{0, 1, 2, 3, 4}"], "Two tosses can produce zero, one, or two heads."),
+    createRandomVariableQuestion("For two coin tosses, if X counts heads, what is X for HH?", ["2", "1", "0", "4"], "HH contains two heads, so X = 2."),
+    createRandomVariableQuestion("For two coin tosses, if X counts heads, what is X for TT?", ["0", "1", "2", "4"], "TT contains no heads, so X = 0."),
+    createRandomVariableQuestion("Three coins are tossed. Y is the number of tails. What are the possible values of Y?", ["{0, 1, 2, 3}", "{H, T}", "{1, 2, 3, 4}", "{0, 1}"], "There can be zero, one, two, or three tails in three tosses."),
+    createRandomVariableQuestion("For three coin tosses, if Y counts tails, what is Y for HTH?", ["1", "0", "2", "3"], "HTH contains one tail, so Y = 1."),
+    createRandomVariableQuestion("For three coin tosses, if Y counts tails, what is Y for TTT?", ["3", "2", "1", "0"], "TTT contains three tails, so Y = 3."),
+    createRandomVariableQuestion("In an experiment with three coin tosses, what does the outcome HHT represent?", ["Two heads and one tail", "One head and two tails", "Three heads", "Three tails"], "HHT records heads on the first two tosses and tails on the third."),
+    createRandomVariableQuestion("When one fair die is rolled, which set gives all possible results?", ["{1, 2, 3, 4, 5, 6}", "{0, 1}", "{2, 4, 6}", "{1, 2, 3}"], "A standard die has six possible outcomes, numbered 1 through 6."),
+    createRandomVariableQuestion("A die is rolled. X is the result when it is an even number. Which values are possible?", ["{2, 4, 6}", "{1, 3, 5}", "{0, 2, 4, 6}", "{2, 3, 4}"], "The even outcomes on a standard die are 2, 4, and 6."),
+    createRandomVariableQuestion("Which is an example of a random variable that counts outcomes?", ["The number of heads in several coin tosses", "The color of a coin", "The name of a student", "The shape of a die"], "The number of heads is numerical and can be counted."),
+    createRandomVariableQuestion("A die is rolled twice and W is the sum of the results. What are the possible values of W?", ["{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}", "{1, 2, 3, 4, 5, 6}", "{0, 1}", "{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}"], "The smallest sum is 1 + 1 = 2 and the largest is 6 + 6 = 12; every integer in between is possible."),
+    createRandomVariableQuestion("A discrete random variable has values that are usually what?", ["Countable", "Measured on a continuous scale", "Always fractions", "Impossible to list"], "Discrete random-variable values are countable."),
+    createRandomVariableQuestion("Which quantity is discrete?", ["Number of books in a library", "Height of a learner", "Time to finish an exam", "Temperature of a room"], "Books are counted in whole items, making the number discrete."),
+    createRandomVariableQuestion("Which quantity is discrete?", ["Number of text messages sent", "Weight of a newborn", "Distance to school", "Speed of a car"], "Messages are counted, so their number is discrete."),
+    createRandomVariableQuestion("Why is the number of pencils in a box discrete?", ["Pencils are counted in whole items", "Pencil length is measured", "The number can be any decimal", "It changes continuously"], "A count of individual pencils takes countable whole-number values."),
+    createRandomVariableQuestion("A continuous random variable is based on values obtained through what?", ["Measurement", "Counting objects only", "Naming outcomes", "Sorting letters"], "Continuous random-variable values are obtained through measurement."),
+    createRandomVariableQuestion("Which quantity is continuous?", ["Height of a learner", "Number of teachers", "Number of books", "Number of pencils"], "Height is measured and can take decimal values."),
+    createRandomVariableQuestion("Which quantity is continuous?", ["Weight of a newborn child", "Number of messages", "Number of students", "Number of cars"], "Weight is measured and can vary continuously."),
+    createRandomVariableQuestion("Which quantity is continuous?", ["Time to finish an exam", "Number of questions answered", "Number of books read", "Number of phone calls"], "Time is measured and may take fractional values."),
+    createRandomVariableQuestion("The distance from home to school is usually classified as what?", ["Continuous, because it is measured", "Discrete, because it is counted", "Neither countable nor measurable", "A sample space"], "Distance is a measurement and can take decimal values."),
+    createRandomVariableQuestion("The speed of a moving car is which type of quantity?", ["Continuous", "Discrete", "A coin-toss outcome", "A count of objects"], "Speed is measured and can vary continuously."),
+    createRandomVariableQuestion("The temperature of a room is which type of quantity?", ["Continuous", "Discrete", "A count", "A sample space"], "Temperature is measured, so it is continuous."),
+    createRandomVariableQuestion("The number of teachers in a school is which type of quantity?", ["Discrete", "Continuous", "Measured only", "A decimal interval"], "Teachers are counted in whole people, so the number is discrete."),
+    createRandomVariableQuestion("A powder's weight Y is between 0 mg and 80 mg. Which classification fits Y?", ["Continuous, because weight is measured", "Discrete, because every value is a count", "Neither, because it has bounds", "A sample space"], "Weight is measured and may take decimal values between 0 mg and 80 mg."),
+    createRandomVariableQuestion("A student's score on a 10-item test can be 0 through 10. Which classification fits the score?", ["Discrete, because the possible scores are countable", "Continuous, because all decimals are possible", "Neither, because the score has a maximum", "A measurement of time"], "The possible scores are the finite set {0, 1, ..., 10}, so the variable is discrete."),
+    createRandomVariableQuestion("Which statement best distinguishes discrete and continuous variables?", ["Discrete values are counted; continuous values are measured", "Discrete values are measured; continuous values are counted", "Both types must be whole numbers", "Only continuous variables have numerical values"], "Countable values are discrete; values obtained through measurement are continuous."),
+    createRandomVariableQuestion("A measured quantity can often take which kind of values?", ["Decimal values within a range", "Only the numbers 0 and 1", "Only whole-number counts", "Only letters"], "A measurement can take decimal values within its possible range."),
+    createRandomVariableQuestion("Two balls are drawn without replacement, with colors red (R) or blue (B). What is the sample space?", ["{RR, RB, BR, BB}", "{R, B}", "{0, 1, 2, 3}", "{HH, HT, TH, TT}"], "For two draws, the ordered color outcomes are RR, RB, BR, and BB."),
+    createRandomVariableQuestion("Two balls are drawn. Z counts the number of blue balls. What are the possible values of Z?", ["{0, 1, 2}", "{R, B}", "{1, 2, 3}", "{0, 1}"], "The two draws can contain zero, one, or two blue balls."),
+    createRandomVariableQuestion("For two draws, if Z counts blue balls, what is Z for outcome RB?", ["1", "0", "2", "3"], "RB contains one blue ball, so Z = 1."),
+    createRandomVariableQuestion("For two draws, if Z counts blue balls, what is Z for outcome RR?", ["0", "1", "2", "3"], "RR contains no blue balls, so Z = 0."),
+    createRandomVariableQuestion("A learner's height is recorded in centimeters. Is the value countable or measurable?", ["Measurable", "Countable", "Neither", "A sample-space outcome"], "Height is obtained by measurement."),
+    createRandomVariableQuestion("The number of books in a library is recorded. Is the value countable or measurable?", ["Countable", "Measurable", "Neither", "A continuous interval"], "Books are counted as individual items."),
+    createRandomVariableQuestion("The weight of a newborn child is recorded. Is the value countable or measurable?", ["Measurable", "Countable", "Neither", "A coin-toss outcome"], "Weight is obtained through measurement."),
+    createRandomVariableQuestion("The number of text messages sent is recorded. Is the value countable or measurable?", ["Countable", "Measurable", "Neither", "A continuous interval"], "Text messages are counted as separate items.")
 ];
 
+const levelTitles = [
+    "Random Variables", "Outcomes and Sample Spaces", "Two Coin Tosses", "Three Coin Tosses",
+    "Discrete Variables", "Countable Quantities", "Continuous Variables", "Measured Quantities",
+    "Classifying Variables", "Applying Random Variables"
+];
 const learningLevels = Array.from({ length: 10 }, (_, index) => ({
     id: index + 1,
-    title: `Level ${index + 1}`,
-    questions: []
+    title: levelTitles[index],
+    questions: questionBank.slice(index * 4, (index + 1) * 4)
 }));
 
 
@@ -1620,274 +306,90 @@ const learningLevels = Array.from({ length: 10 }, (_, index) => ({
 // ============================================================
 
 const reviewData = {
-
-    functions: {
-        title: "Functions",
+    randomVariables: {
+        title: "Random Variables",
         content: `
-            <h3>Functions</h3>
-
-            <p>
-                A function is a relation where every input
-                has exactly one output.
-            </p>
-
-            <h4>Domain</h4>
-            <p>
-                The domain is the set of possible input values.
-            </p>
-
-            <h4>Range</h4>
-            <p>
-                The range is the set of possible output values.
-            </p>
-
-            <div class="formula">
-                f(x) = output of the function when x is the input
-            </div>
-
-            <div class="example">
-                <strong>Example:</strong><br>
-                If f(x) = 2x + 3, find f(4).<br><br>
-                f(4) = 2(4) + 3 = 11
-            </div>
+            <h3>What Is a Random Variable?</h3>
+            <p>A random variable assigns a numerical value to each outcome of a chance experiment. It is usually represented by a capital letter such as <strong>X</strong>.</p>
+            <div class="example"><strong>Example:</strong> Toss two coins and let X be the number of heads. HH → 2, HT → 1, TH → 1, TT → 0.</div>
+            <p>The possible values are <strong>X = {0, 1, 2}</strong>.</p>
         `
     },
 
-    rational: {
-        title: "Rational Functions",
+    sampleSpace: {
+        title: "Outcomes and Sample Spaces",
         content: `
-            <h3>Rational Functions</h3>
-
-            <p>
-                A rational function is a ratio of two polynomials.
-            </p>
-
-            <div class="formula">
-                f(x) = P(x) / Q(x), where Q(x) ≠ 0
-            </div>
-
-            <h4>Domain Restriction</h4>
-
-            <p>
-                Values that make the denominator equal to zero
-                are excluded from the domain.
-            </p>
-
-            <div class="example">
-                <strong>Example:</strong><br>
-                f(x) = 1 / (x - 4)<br><br>
-                x - 4 = 0<br>
-                x = 4<br><br>
-                Therefore, x ≠ 4.
-            </div>
-
-            <h4>Asymptotes</h4>
-
-            <p>
-                An asymptote is a line that the graph approaches.
-            </p>
+            <h3>Outcomes and Sample Spaces</h3>
+            <p>A sample space lists every possible outcome of a chance experiment. Apply the rule defining the random variable to each outcome to find its value.</p>
+            <div class="example"><strong>Two coin tosses</strong><br>Sample space: {HH, HT, TH, TT}<br>If X counts heads, the corresponding values are 2, 1, 1, and 0.</div>
+            <div class="formula">Outcome → apply the rule → numerical value</div>
         `
     },
 
-    inverse: {
-        title: "Inverse Functions",
+    twoCoins: {
+        title: "Example: Two Coin Tosses",
         content: `
-            <h3>Inverse Functions</h3>
-
-            <p>
-                An inverse function reverses the input-output
-                relationship of a function.
-            </p>
-
-            <div class="formula">
-                f⁻¹(x)
-            </div>
-
-            <h4>Example</h4>
-
-            <div class="example">
-                f(x) = x + 4<br><br>
-                Replace f(x) with y:<br>
-                y = x + 4<br><br>
-                Switch x and y:<br>
-                x = y + 4<br><br>
-                Solve for y:<br>
-                y = x - 4<br><br>
-                Therefore:<br>
-                <strong>f⁻¹(x) = x - 4</strong>
-            </div>
+            <h3>Two Coins: Count the Heads</h3>
+            <p>Let X represent the number of heads when two coins are tossed.</p>
+            <div class="example">HH → X = 2<br>HT → X = 1<br>TH → X = 1<br>TT → X = 0</div>
+            <p>Collect the distinct values: <strong>X = {0, 1, 2}</strong>.</p>
+            <p>Notice that different outcomes (HT and TH) can produce the same random-variable value.</p>
         `
     },
 
-    business: {
-        title: "Business Mathematics",
+    threeCoins: {
+        title: "Example: Three Coin Tosses",
         content: `
-            <h3>Business Mathematics</h3>
-
-            <p>
-                Business mathematics involves calculations
-                commonly used in business and finance.
-            </p>
-
-            <h4>Percentage</h4>
-
-            <div class="formula">
-                Percentage = (Part / Whole) × 100
-            </div>
-
-            <h4>Simple Interest</h4>
-
-            <div class="formula">
-                I = Prt
-            </div>
-
-            <p>
-                P is the principal, r is the interest rate,
-                and t is the time.
-            </p>
-
-            <div class="example">
-                <strong>Example:</strong><br>
-                If P = ₱1,000, r = 5%, and t = 2 years:<br><br>
-                I = 1000(0.05)(2)<br>
-                I = ₱100
-            </div>
+            <h3>Three Coins: Count the Tails</h3>
+            <p>Let Y represent the number of tails when three coins are tossed.</p>
+            <div class="example">HHH → Y = 0<br>HHT, HTH, THH → Y = 1<br>HTT, THT, TTH → Y = 2<br>TTT → Y = 3</div>
+            <p>The possible values are <strong>Y = {0, 1, 2, 3}</strong>.</p>
         `
     },
 
-    sequences: {
-        title: "Sequences",
+    twoBalls: {
+        title: "Example: Drawing Two Balls",
         content: `
-            <h3>Sequences</h3>
-
-            <h4>Arithmetic Sequence</h4>
-
-            <p>
-                An arithmetic sequence has a constant difference
-                between consecutive terms.
-            </p>
-
-            <div class="formula">
-                aₙ = a₁ + (n - 1)d
-            </div>
-
-            <div class="example">
-                <strong>Example:</strong><br>
-                2, 5, 8, 11, ...<br><br>
-                Common difference = 3<br><br>
-                10th term:<br>
-                a₁₀ = 2 + (10 - 1)(3)<br>
-                a₁₀ = 29
-            </div>
-
-            <h4>Geometric Sequence</h4>
-
-            <p>
-                A geometric sequence has a constant ratio
-                between consecutive terms.
-            </p>
-
-            <div class="formula">
-                aₙ = a₁rⁿ⁻¹
-            </div>
+            <h3>Two Balls: Count the Blue Balls</h3>
+            <p>Two balls are drawn in succession without replacement from a box containing red and blue balls. Let Z be the number of blue balls drawn.</p>
+            <div class="example">Sample space: {RR, RB, BR, BB}<br>RR → Z = 0<br>RB or BR → Z = 1<br>BB → Z = 2</div>
+            <p>The possible values are <strong>Z = {0, 1, 2}</strong>.</p>
         `
     },
 
-    series: {
-        title: "Series",
+    discrete: {
+        title: "Discrete Random Variables",
         content: `
-            <h3>Series</h3>
-
-            <p>
-                A series is the sum of the terms of a sequence.
-            </p>
-
-            <h4>Arithmetic Series</h4>
-
-            <div class="formula">
-                Sₙ = n/2 [2a₁ + (n - 1)d]
-            </div>
-
-            <div class="example">
-                <strong>Example:</strong><br>
-                Find the sum of 2 + 4 + 6 + 8 + 10.<br><br>
-                S = 2 + 4 + 6 + 8 + 10<br>
-                <strong>S = 30</strong>
-            </div>
+            <h3>Discrete Random Variables</h3>
+            <p>A discrete random variable has values that are countable. Its values often come from counting separate items or events.</p>
+            <ul><li>Number of text messages sent</li><li>Number of books in a library</li><li>Number of pencils in a box</li><li>Number of even outcomes when a die is rolled: {2, 4, 6}</li></ul>
+            <div class="formula">Countable values → discrete</div>
         `
     },
 
-    exponential: {
-        title: "Exponential Functions",
+    continuous: {
+        title: "Continuous Random Variables",
         content: `
-            <h3>Exponential Functions</h3>
-
-            <p>
-                An exponential function has a variable in the exponent.
-            </p>
-
-            <div class="formula">
-                f(x) = abˣ
-            </div>
-
-            <h4>Growth</h4>
-
-            <p>
-                If b &gt; 1, the function represents exponential growth.
-            </p>
-
-            <h4>Decay</h4>
-
-            <p>
-                If 0 &lt; b &lt; 1, the function represents exponential decay.
-            </p>
-
-            <div class="example">
-                <strong>Example:</strong><br>
-                f(x) = 2ˣ<br><br>
-                f(4) = 2⁴ = 16
-            </div>
+            <h3>Continuous Random Variables</h3>
+            <p>A continuous random variable has values obtained by measurement. It can take any value within a range, including decimal values.</p>
+            <ul><li>Height of a learner</li><li>Weight of a newborn child or a powder</li><li>Time to finish an exam</li><li>Distance from home to school</li><li>Speed of a moving car</li><li>Temperature of a room</li></ul>
+            <div class="example"><strong>Example:</strong> A powder's weight can be any measured amount from 0 mg up to 80 mg, including values such as 42.6 mg.</div>
+            <div class="formula">Measured values → continuous</div>
         `
     },
 
-    logarithmic: {
-        title: "Logarithmic Functions",
+    classify: {
+        title: "Countable or Measurable?",
         content: `
-            <h3>Logarithmic Functions</h3>
-
-            <p>
-                A logarithm tells us the exponent to which
-                a base must be raised to obtain a number.
-            </p>
-
-            <div class="formula">
-                logᵦ(x) = y ⇔ bʸ = x
-            </div>
-
-            <div class="example">
-                <strong>Example:</strong><br>
-                log₂(8) = 3<br><br>
-                because 2³ = 8.
-            </div>
-
-            <h4>Important Laws</h4>
-
-            <div class="formula">
-                log(ab) = log(a) + log(b)
-            </div>
-
-            <div class="formula">
-                log(a/b) = log(a) - log(b)
-            </div>
-
-            <div class="formula">
-                log(aⁿ) = n log(a)
-            </div>
+            <h3>Classify a Variable</h3>
+            <p>Ask how the value is obtained: is it counted or measured?</p>
+            <div class="example"><strong>Countable → discrete</strong><br>Books in a library, text messages sent, pencils in a box, and teachers in a school.</div>
+            <div class="example"><strong>Measurable → continuous</strong><br>Height, weight, time, distance, speed, and temperature.</div>
+            <p>A score on a 10-item test has possible values {0, 1, 2, ..., 10}; because these values are countable, the score is discrete.</p>
+            <div class="formula">Count it? Discrete.<br>Measure it? Continuous.</div>
         `
     }
-
 };
-
 
 // ============================================================
 // ENTER QPI
@@ -1926,98 +428,37 @@ function enterQPI() {
     showScreen("menuScreen");
 }
 
-const dayOneReviewerTitle = "Trigonometry, Triangles, Elevation and Depression";
+const dayOneReviewerTitle = "Random Variables and Possible Values";
 const dayOneReviewer = `# DAY 1 REVIEWER
 ${dayOneReviewerTitle}
 
-1. Trigonometric Ratios
-Remember SOH-CAH-TOA:
+1. Random Variables
+A random variable assigns a numerical value to each outcome of a chance experiment. It is usually named with a capital letter such as X.
 
-sin θ = Opposite / Hypotenuse
-cos θ = Adjacent / Hypotenuse
-tan θ = Opposite / Adjacent
+2. Two Coin Tosses
+Sample space: {HH, HT, TH, TT}
+Let X be the number of heads:
+HH → 2, HT → 1, TH → 1, TT → 0
+The possible values are X = {0, 1, 2}.
 
-The hypotenuse is the longest side of a right triangle.
+3. Three Coin Tosses
+If Y is the number of tails, its possible values are Y = {0, 1, 2, 3}.`;
 
-2. Right and Oblique Triangles
-
-Pythagorean Theorem:
-a² + b² = c²
-
-Example: a = 6, b = 8
-c = √(36 + 64) = 10 m
-
-Sine Rule:
-a/sin A = b/sin B = c/sin C
-
-Cosine Rule:
-c² = a² + b² − 2ab cos C
-
-Use the cosine rule when two sides and their included angle are known.
-
-3. Elevation and Depression
-
-Elevation: Looking upward from the horizontal.
-Depression: Looking downward from the horizontal.
-
-Example: Distance = 10 m, angle = 45°
-tan 45° = h/10
-h = 10 m
-
-Answer: 10 m`;
-
-const dayTwoReviewerTitle = "Bearings and Triangle Areas";
+const dayTwoReviewerTitle = "Discrete and Continuous Random Variables";
 const dayTwoReviewer = `# DAY 2 REVIEWER
 ${dayTwoReviewerTitle}
 
-4. Bearings
-Bearings are measured clockwise from north.
+1. Discrete Random Variables
+A discrete random variable has countable possible values. Counts such as the number of books, text messages, or heads are discrete.
 
-North = 000°
-East = 090°
-South = 180°
-West = 270°
+2. Continuous Random Variables
+A continuous random variable is measured and can take any value within a range, including decimal values. Height, weight, time, distance, speed, and temperature are continuous measurements.
 
-Example: A boat travels 6 km east and 8 km north.
-Distance = √(6² + 8²) = 10 km
-Bearing ≈ 037°
+3. Examples
+The score on a 10-item test can be {0, 1, 2, ..., 10}, so it is discrete.
+A powder's weight from 0 to 80 mg is measured, so it is continuous.
 
-5. Area of Oblique Triangles
-
-Heron's Formula — use when all three sides are known.
-
-s = (a + b + c)/2
-Area = √[s(s − a)(s − b)(s − c)]
-
-Example: Sides are 5, 5, and 6 m.
-s = (5 + 5 + 6)/2 = 8
-Area = √[8(3)(3)(2)] = 12 m²
-
-Sine Area Formula — use when two sides and their included angle are known.
-
-Area = ½ ab sin C
-
-Example: a = 8, b = 10, C = 30°.
-Area = ½(8)(10)(0.5) = 20 cm²
-
-Day 2 Practice
-
-1. What is the bearing of west?
-2. Which formula uses all three side lengths?
-3. Find the area if a = 6, b = 10, and C = 30°.
-
-Answers: 1. 270°. 2. Heron's formula. 3. 15 square units.
-
-Formulas to Memorize
-
-sin θ = O/H
-cos θ = A/H
-tan θ = O/A
-a² + b² = c²
-Sine Rule: a/sin A = b/sin B = c/sin C
-Cosine Rule: c² = a² + b² − 2ab cos C
-Heron's Formula: Area = √[s(s − a)(s − b)(s − c)]
-Sine Area: Area = ½ ab sin C`;
+Ask: Is the quantity counted or measured? Counted values are discrete; measured values are continuous.`;
 
 function getDiscussionMaterial(day, materials) {
     const material = materials[day] || {};
@@ -2048,6 +489,17 @@ function getDiscussionState() {
     } catch (error) {
         return { unlockedDay: 1, completedDays: [] };
     }
+}
+
+function requireDayOneEncoding() {
+    if (getDiscussionState().completedDays.includes(1)) {
+        return true;
+    }
+
+    openEncoding();
+    document.getElementById("discussionUnlockStatus").textContent =
+        "Complete Encode Day 1 and mark it as read before opening Storing or the Retrieval Test.";
+    return false;
 }
 
 function saveDiscussionState(state) {
@@ -2186,12 +638,20 @@ function openStoredMaterials(message = "") {
         wordSearchTimerId = null;
     }
 
+    if (!requireDayOneEncoding()) {
+        return;
+    }
+
     document.getElementById("storingStatus").textContent = message;
     renderStoredMaterials();
     showScreen("storeScreen");
 }
 
 function renderStoringActivity(activity, message = "") {
+    if (!requireDayOneEncoding()) {
+        return;
+    }
+
     if (activity !== "wordsearch" && wordSearchTimerId !== null) {
         clearInterval(wordSearchTimerId);
         wordSearchTimerId = null;
@@ -2234,61 +694,25 @@ function backToStoringChoices() {
 }
 
 const wordSearchWords = [
-    "TRIGONOMETRY",
-    "HYPOTENUSE",
-    "TRIANGLE",
-    "BEARING",
-    "COSINE",
-    "SINE",
-    "TANGENT",
-    "HERON",
-    "NORTH",
-    "ELEVATION"
+    "RANDOM", "VARIABLE", "DISCRETE", "CONTINUOUS", "COUNTABLE",
+    "MEASURABLE", "OUTCOME", "SAMPLESPACE", "EXPERIMENT", "MEASUREMENT"
 ];
-
 let wordSearchTimerId = null;
 let currentStoringFlashcard = 0;
 let storingFlashcardRatings = [];
 
 const storingFlashcards = [
-    {
-        front: "SOH: What is sine θ?",
-        back: "Opposite ÷ Hypotenuse"
-    },
-    {
-        front: "CAH: What is cosine θ?",
-        back: "Adjacent ÷ Hypotenuse"
-    },
-    {
-        front: "TOA: What is tangent θ?",
-        back: "Opposite ÷ Adjacent"
-    },
-    {
-        front: "What is the Pythagorean Theorem?",
-        back: "a² + b² = c². Use it to find a side of a right triangle."
-    },
-    {
-        front: "From which direction are bearings measured?",
-        back: "Clockwise from north. North = 000°, east = 090°, south = 180°, west = 270°."
-    },
-    {
-        front: "When should you use Heron's Formula?",
-        back: "When all three side lengths are known. First find s = (a + b + c)/2, then Area = √[s(s − a)(s − b)(s − c)]."
-    },
-    {
-        front: "What is the sine area formula?",
-        back: "Area = ½ ab sin C. Use it when two sides and their included angle are known."
-    },
-    {
-        front: "What is an angle of elevation?",
-        back: "The angle measured upward from the horizontal line of sight."
-    },
-    {
-        front: "What is an angle of depression?",
-        back: "The angle measured downward from the horizontal line of sight."
-    }
+    { front: "What is a random variable?", back: "A rule that assigns a number to each outcome of a chance experiment." },
+    { front: "How are random variables usually named?", back: "With a capital letter, usually X or Y." },
+    { front: "What is the sample space for two coin tosses?", back: "{HH, HT, TH, TT}." },
+    { front: "Two coins are tossed. X counts heads. What values can X take?", back: "X = {0, 1, 2}." },
+    { front: "Three coins are tossed. Y counts tails. What values can Y take?", back: "Y = {0, 1, 2, 3}." },
+    { front: "What is a discrete random variable?", back: "A random variable with countable possible values, often describing a count." },
+    { front: "What is a continuous random variable?", back: "A random variable whose values are obtained through measurement and may include decimals." },
+    { front: "Give two examples of discrete quantities.", back: "Number of books in a library; number of text messages sent." },
+    { front: "Give two examples of continuous quantities.", back: "Height and weight; time, distance, speed, or temperature." },
+    { front: "How can you quickly distinguish discrete from continuous?", back: "Counted or countable values are discrete; measured values are continuous." }
 ];
-
 function renderStoringFlashcards() {
     const container = document.getElementById("wordSearchPuzzle");
     if (wordSearchTimerId !== null) {
@@ -2369,38 +793,13 @@ function rateStoringFlashcard(knewAnswer) {
 }
 
 const mnemonicQuizQuestions = [
-    {
-        question: "In SOH, what does H stand for?",
-        choices: ["Hypotenuse", "Height", "Horizontal", "Heron"],
-        answer: 0
-    },
-    {
-        question: "Bearings are measured in which direction from north?",
-        choices: ["Clockwise", "Counterclockwise", "Upward", "Westward only"],
-        answer: 0
-    },
-    {
-        question: "Which method uses all three side lengths to find triangle area?",
-        choices: ["Heron's formula", "Sine area formula", "SOH-CAH-TOA", "Bearing rule"],
-        answer: 0
-    },
-    {
-        question: "The sine area formula uses which angle?",
-        choices: [
-            "The included angle between the two known sides",
-            "Any exterior angle",
-            "The smallest angle only",
-            "A right angle only"
-        ],
-        answer: 0
-    },
-    {
-        question: "An angle of depression is measured from the horizontal while looking which way?",
-        choices: ["Down", "Up", "Straight ahead only", "Clockwise"],
-        answer: 0
-    }
+    { question: "A discrete random variable has values that are usually what?", choices: ["Countable", "Measured", "Only negative", "Non-numerical"], answer: 0 },
+    { question: "A continuous random variable is obtained through what?", choices: ["Measurement", "Counting separate objects", "Naming outcomes", "Sorting a list"], answer: 0 },
+    { question: "Which is discrete?", choices: ["Number of pencils in a box", "Weight of a child", "Height of a learner", "Time to travel"], answer: 0 },
+    { question: "Which is continuous?", choices: ["Distance from home to school", "Number of students", "Number of books", "Number of calls"], answer: 0 },
+    { question: "Two coins are tossed and X counts heads. Which set is X's possible values?", choices: ["{0, 1, 2}", "{H, T}", "{1, 2, 3}", "{0, 1}"], answer: 0 },
+    { question: "What does a random variable assign to each chance outcome?", choices: ["A numerical value", "A color", "A student name", "A unit of measurement"], answer: 0 }
 ];
-
 function renderStoringMnemonics() {
     const container = document.getElementById("wordSearchPuzzle");
     if (wordSearchTimerId !== null) {
@@ -2412,17 +811,15 @@ function renderStoringMnemonics() {
     section.className = "wordSearch studyActivity";
 
     const heading = document.createElement("h3");
-    heading.textContent = "Mnemonics and Memory Tips";
+    heading.textContent = "Random Variables: Memory Tips";
     section.appendChild(heading);
 
     const memoryTips = [
-        ["SOH-CAH-TOA", "<strong>SOH:</strong> Sine = Opposite / Hypotenuse<br><strong>CAH:</strong> Cosine = Adjacent / Hypotenuse<br><strong>TOA:</strong> Tangent = Opposite / Adjacent"],
-        ["Bearings go clockwise from North", "North 000°, East 090°, South 180°, West 270°."],
-        ["Heron's Formula: three sides", "When all three side lengths are given, find s = (a + b + c)/2, then use Area = √[s(s − a)(s − b)(s − c)]."],
-        ["Sine area: two sides and the included angle", "Use Area = ½ ab sin C when two sides and their included angle are known."],
-        ["Elevation up, depression down", "Both start at the horizontal line of sight: elevation looks up; depression looks down."]
+        ["Random variable", "A capital letter such as X assigns numerical values to outcomes of a chance experiment."],
+        ["Discrete = countable", "Counts of books, messages, pencils, or teachers are discrete."],
+        ["Continuous = measured", "Height, weight, time, distance, speed, and temperature are continuous."],
+        ["Find the possible values", "List the experiment outcomes, apply the random-variable rule to each outcome, then collect the numbers."]
     ];
-
     memoryTips.forEach(([title, description]) => {
         const item = document.createElement("article");
         item.className = "mnemonicItem";
@@ -2585,7 +982,7 @@ function renderWordSearch(message = "") {
     section.className = "wordSearch";
 
     const heading = document.createElement("h3");
-    heading.textContent = "Word Search: Trigonometry and Bearings";
+    heading.textContent = "Word Search: Random Variables";
 
     const instructions = document.createElement("p");
     instructions.className = "wordSearchInstructions";
@@ -2880,7 +1277,7 @@ function openDiscussionDay(day) {
     document.getElementById("discussionDayTitle").textContent =
         `Day ${day}${material.title ? `: ${material.title}` : ""}`;
     document.getElementById("dayOneReviewerDiagram").classList.toggle("hidden", day !== 1);
-    document.getElementById("dayTwoBearingDiagram").classList.toggle("hidden", day !== 2);
+    document.getElementById("dayTwoReviewerDiagram").classList.toggle("hidden", day !== 2);
     document.getElementById("discussionMaterialText").value = material.text || "";
     document.getElementById("discussionStatus").textContent = state.completedDays.includes(day)
         ? "This discussion is complete."
@@ -2992,73 +1389,17 @@ function showScreen(screenId) {
 // ============================================================
 
 const retrievalTestQuestions = [
-    {
-        question: "Which trigonometric ratio is opposite divided by hypotenuse?",
-        choices: ["Sine", "Cosine", "Tangent", "Secant"],
-        answer: 0,
-        explanation: "SOH means sine = opposite over hypotenuse."
-    },
-    {
-        question: "A right triangle has legs of 6 m and 8 m. What is its hypotenuse?",
-        choices: ["10 m", "12 m", "14 m", "48 m"],
-        answer: 0,
-        explanation: "By the Pythagorean theorem, c = √(6² + 8²) = √100 = 10 m."
-    },
-    {
-        question: "From a point 10 m away, an angle of elevation to the top of a tree is 45°. How tall is the tree?",
-        choices: ["10 m", "5 m", "20 m", "14.14 m"],
-        answer: 0,
-        explanation: "tan 45° = height / 10. Since tan 45° = 1, the height is 10 m."
-    },
-    {
-        question: "From which direction are bearings measured, and in which direction?",
-        choices: [
-            "Clockwise from north",
-            "Counterclockwise from north",
-            "Clockwise from east",
-            "Counterclockwise from south"
-        ],
-        answer: 0,
-        explanation: "A bearing is measured clockwise from north."
-    },
-    {
-        question: "What is the three-figure bearing of west?",
-        choices: ["270°", "090°", "180°", "360°"],
-        answer: 0,
-        explanation: "West is 270° when bearings are measured clockwise from north."
-    },
-    {
-        question: "Which formula can find the area of a triangle when all three side lengths are known?",
-        choices: ["Heron's formula", "Sine area formula", "Pythagorean theorem", "Tangent ratio"],
-        answer: 0,
-        explanation: "Heron's formula uses the three sides through the semiperimeter s."
-    },
-    {
-        question: "Using Heron's formula, what is the area of a triangle with sides 5 m, 5 m, and 6 m?",
-        choices: ["12 m²", "15 m²", "16 m²", "30 m²"],
-        answer: 0,
-        explanation: "The semiperimeter is 8. Area = √[8(3)(3)(2)] = 12 m²."
-    },
-    {
-        question: "Which formula finds a triangle's area from two sides and their included angle?",
-        choices: ["Area = ½ ab sin C", "Area = a + b + C", "Area = ½(a + b)", "Area = a² + b²"],
-        answer: 0,
-        explanation: "The sine area formula is Area = ½ ab sin C."
-    },
-    {
-        question: "Find the area when a = 6, b = 10, and the included angle C = 30°.",
-        choices: ["15 square units", "30 square units", "60 square units", "120 square units"],
-        answer: 0,
-        explanation: "Area = ½(6)(10)sin 30° = 30(0.5) = 15 square units."
-    },
-    {
-        question: "A boat travels 6 km east and 8 km north. What is its approximate bearing from the starting point?",
-        choices: ["037°", "053°", "127°", "323°"],
-        answer: 0,
-        explanation: "The bearing is measured clockwise from north: arctan(6/8) ≈ 36.87°, or 037°."
-    }
+    { question: "What is a random variable?", choices: ["A rule assigning numbers to outcomes of a chance experiment", "A list of letters", "A fixed measurement", "A type of graph"], answer: 0, explanation: "A random variable assigns a numerical value to each outcome of a chance experiment." },
+    { question: "Two coins are tossed. X counts heads. What are the possible values of X?", choices: ["{0, 1, 2}", "{H, T}", "{1, 2, 3}", "{0, 1}"], answer: 0, explanation: "Two tosses can result in zero, one, or two heads." },
+    { question: "Three coins are tossed. Y counts tails. What is Y for TTT?", choices: ["3", "2", "1", "0"], answer: 0, explanation: "TTT has three tails, so Y = 3." },
+    { question: "Which is a discrete random variable?", choices: ["Number of books in a library", "Height of a learner", "Time to finish an exam", "Temperature of a room"], answer: 0, explanation: "Books are counted in whole items, so their number is discrete." },
+    { question: "Which is a continuous random variable?", choices: ["Weight of a newborn", "Number of teachers", "Number of pencils", "Number of messages"], answer: 0, explanation: "Weight is measured and can take decimal values." },
+    { question: "A student's score on a 10-item test can range from 0 to 10 whole points. Is it discrete or continuous?", choices: ["Discrete", "Continuous", "Neither", "Both by definition"], answer: 0, explanation: "The possible scores are a countable set of whole-number values." },
+    { question: "Which quantity is obtained through measurement?", choices: ["Distance from home to school", "Number of books", "Number of calls", "Number of students"], answer: 0, explanation: "Distance is measured, so it is continuous." },
+    { question: "Two balls are drawn. Z counts the blue balls. What values can Z take?", choices: ["{0, 1, 2}", "{R, B}", "{1, 2, 3}", "{0, 1}"], answer: 0, explanation: "Two draws can contain zero, one, or two blue balls." },
+    { question: "The number of text messages sent is countable or measurable?", choices: ["Countable", "Measurable", "Neither", "Continuous"], answer: 0, explanation: "Messages are counted as separate items." },
+    { question: "The time it takes to finish an exam is countable or measurable?", choices: ["Measurable", "Countable", "Neither", "A sample space"], answer: 0, explanation: "Time is measured and may take fractional values." }
 ];
-
 function prepareRetrievalTestQuestions() {
     const answerPositions = shuffleArray([
         0, 0, 1, 1, 2, 2, 3, 3,
@@ -3087,6 +1428,10 @@ function startQuiz(type) {
     if (type === "practice") {
         renderLearningLevels();
         showScreen("dailyQuizScreen");
+        return;
+    }
+
+    if (type === "retrieval" && !requireDayOneEncoding()) {
         return;
     }
 
@@ -3445,7 +1790,7 @@ function finishQuiz() {
     } else {
 
         message =
-            "Keep practicing! Use the General Mathematics Review before trying again.";
+            "Keep practicing! Review Random Variables before trying again.";
 
     }
 
@@ -3454,7 +1799,7 @@ function finishQuiz() {
 
     if (currentQuiz === "retrieval" && percentage < 80) {
         document.getElementById("performanceMessage").textContent =
-            "You need at least 80% to pass. Repeat the Storing word search, then take the Retrieval Test again.";
+            "You need at least 80% to pass. Complete any Storing activity with a passing score, then take the Retrieval Test again.";
     }
 
     renderRetrievalTestReview();
@@ -3752,14 +2097,6 @@ document.getElementById("nextButton").onclick =
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    for (let index = localStorage.length - 1; index >= 0; index--) {
-        const key = localStorage.key(index);
-        if (key && key.startsWith("qpi")) {
-            localStorage.removeItem(key);
-        }
-    }
-
     loadStudent();
     hideLearningLevels();
 
