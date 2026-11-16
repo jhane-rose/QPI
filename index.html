@@ -65,8 +65,8 @@
 
                 <p>
                     An offline learning and quiz application
-                    designed to help Grade 11 students practice
-                    General Mathematics.
+                    designed to help Grade 11 students study
+                    Discrete and Continuous Random Variables.
                 </p>
 
 
@@ -239,7 +239,7 @@
                 class="screen hidden"
             >
 
-                <h2>📝 General Mathematics Discussions</h2>
+                <h2>📝 Discrete and Continuous Random Variables</h2>
 
                 <div id="discussionDays" class="discussionDays"></div>
                 <p id="discussionUnlockStatus" class="discussionStatus" role="status"></p>
@@ -267,32 +267,32 @@
                 <div id="discussionEditor" class="discussionEditor hidden">
                     <h3 id="discussionDayTitle"></h3>
 
-                    <figure id="dayOneReviewerDiagram" class="reviewerDiagram hidden">
+                    <figure id="dayOneReviewerDiagram" class="discussionIllustration hidden">
                         <img
-                            src="day-1-trigonometry.svg"
-                            alt="Right triangle labeled opposite, adjacent, and hypotenuse, alongside diagrams showing angles of elevation and depression"
+                            src="random-variables-visual.svg"
+                            alt="Two coin-toss outcomes map to the number of heads, with discrete counts and continuous measurements shown below."
                         >
                         <figcaption>
-                            SOH-CAH-TOA labels the triangle sides. Elevation is measured upward from the horizontal; depression is measured downward.
+                            A random variable maps each chance outcome to a number.
                         </figcaption>
                     </figure>
 
-                    <figure id="dayTwoBearingDiagram" class="dayTwoBearingDiagram hidden">
+                    <figure id="dayTwoReviewerDiagram" class="discussionIllustration hidden">
                         <img
-                            src="day-2-bearings.svg"
-                            alt="Bearing diagram showing north, east, south, and west, plus a 6-kilometer east and 8-kilometer north route with a bearing of about 037 degrees"
+                            src="random-variable-types.svg"
+                            alt="Countable objects represent discrete variables; a measuring scale represents continuous variables."
                         >
                         <figcaption>
-                            Bearings are measured clockwise from north. The route 6 km east and 8 km north has a bearing of about 037°.
+                            Count values for discrete variables; measure values for continuous variables.
                         </figcaption>
                     </figure>
 
                     <div class="formGroup">
-                        <label for="discussionMaterialText">Review Material</label>
+                        <label for="discussionMaterialText">Encode Day's Lesson</label>
                         <textarea
                             id="discussionMaterialText"
                             rows="10"
-                            placeholder="Enter or paste the review material for this day"
+                            placeholder="Enter or paste the random variables lesson material for this day"
                         ></textarea>
                     </div>
 
@@ -326,8 +326,8 @@
                 class="screen hidden"
             >
 
-                <h2>🗂️ Storing: General Mathematics</h2>
-                <p>Choose a study activity. Score at least 80% in any one activity to unlock the Retrieval Test.</p>
+                <h2>🗂️ Storing: Random Variables</h2>
+                <p>Complete Encode Day 1 first. Then pass at least 80% in any one activity to unlock the Retrieval Test.</p>
                 <p id="storingStatus" class="discussionStatus" role="status"></p>
                 <div id="storingActivityChoices" class="storingActivityChoices">
                     <button type="button" onclick="renderStoringActivity('wordsearch')">🔎 Word Search</button>
@@ -370,7 +370,7 @@
             >
 
                 <h2>
-                    📖 General Mathematics
+                    📖 Discrete and Continuous Random Variables
                 </h2>
 
                 <p>
@@ -378,70 +378,72 @@
                     before taking the quiz.
                 </p>
 
+                <figure class="reviewIllustration">
+                    <img
+                        src="random-variables-visual.svg"
+                        alt="Two coin-toss outcomes map to the number of heads, with discrete counts and continuous measurements shown below."
+                    >
+                    <figcaption>
+                        Random variables turn chance outcomes into numbers. Counted values are discrete; measured values are continuous.
+                    </figcaption>
+                </figure>
 
                 <div id="reviewTopics">
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('functions')"
+                        onclick="showReviewTopic('randomVariables')"
                     >
-                        📘 Functions
+                        🎲 Random Variables
                     </button>
-
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('rational')"
+                        onclick="showReviewTopic('sampleSpace')"
                     >
-                        📊 Rational Functions
+                        🧩 Outcomes and Sample Spaces
                     </button>
-
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('inverse')"
+                        onclick="showReviewTopic('twoCoins')"
                     >
-                        🔄 Inverse Functions
+                        🪙 Example: Two Coin Tosses
                     </button>
-
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('business')"
+                        onclick="showReviewTopic('threeCoins')"
                     >
-                        💰 Business Mathematics
+                        🪙 Example: Three Coin Tosses
                     </button>
-
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('sequences')"
+                        onclick="showReviewTopic('twoBalls')"
                     >
-                        📈 Sequences
+                        🔵 Example: Drawing Two Balls
                     </button>
-
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('series')"
+                        onclick="showReviewTopic('discrete')"
                     >
-                        🧮 Series
+                        🔢 Discrete Random Variables
                     </button>
-
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('exponential')"
+                        onclick="showReviewTopic('continuous')"
                     >
-                        📐 Exponential Functions
+                        📏 Continuous Random Variables
                     </button>
-
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('logarithmic')"
+                        onclick="showReviewTopic('classify')"
                     >
-                        🔢 Logarithmic Functions
+                        🧠 Countable or Measurable?
                     </button>
 
                 </div>
@@ -458,7 +460,7 @@
                     class="secondary"
                     onclick="showReview()"
                 >
-                    ← Back to Review Topics
+                    ← Back to Review
                 </button>
 
 
