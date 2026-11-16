@@ -374,32 +374,6 @@ button.reviewButton:hover {
     margin-bottom: 10px;
 }
 
-.reviewerDiagram,
-.dayTwoBearingDiagram {
-    margin: 16px 0 22px;
-    padding: 12px;
-    border: 1px solid #dbeafe;
-    border-radius: 12px;
-    background: #f8fafc;
-}
-
-.reviewerDiagram img,
-.dayTwoBearingDiagram img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.reviewerDiagram figcaption,
-.dayTwoBearingDiagram figcaption {
-    margin-top: 8px;
-    color: #475569;
-    font-size: 14px;
-    line-height: 1.5;
-    text-align: center;
-}
-
-
 .discussionEditor textarea {
     width: 100%;
     min-height: 200px;
@@ -892,6 +866,32 @@ button.reviewButton:hover {
 
 
 /* REVIEW */
+
+.reviewIllustration,
+.discussionIllustration {
+    margin: 20px auto;
+    overflow: hidden;
+    border: 1px solid #ddd6fe;
+    border-radius: 18px;
+    background: #f5f3ff;
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.1);
+}
+
+.reviewIllustration img,
+.discussionIllustration img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.reviewIllustration figcaption,
+.discussionIllustration figcaption {
+    padding: 12px 16px;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
 
 #reviewTopics {
 
