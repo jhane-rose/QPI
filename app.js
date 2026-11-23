@@ -247,52 +247,42 @@ function createRandomVariableQuestion(question, choices, explanation) {
 }
 
 const questionBank = [
-    createRandomVariableQuestion("What is a random variable?", ["A rule that assigns a number to each outcome of a chance experiment", "A number chosen without an experiment", "A list of non-numerical descriptions", "A result that never changes"], "A random variable assigns numerical values to outcomes of a chance experiment."),
-    createRandomVariableQuestion("Which letter is commonly used to name a random variable?", ["A capital letter such as X", "A lowercase letter such as x only", "The symbol %", "A question mark"], "Random variables are usually named with capital letters such as X or Y."),
-    createRandomVariableQuestion("What does a random variable map?", ["Outcomes of an experiment to numbers", "Numbers to colors", "Questions to students", "Measurements to units only"], "A random variable maps each outcome in the sample space to a numerical value."),
-    createRandomVariableQuestion("Which situation is a chance experiment?", ["Tossing a coin", "Writing a fixed name", "Reading a number already printed", "Measuring a ruler that is not moving"], "A coin toss has an outcome determined by chance."),
-    createRandomVariableQuestion("What is the sample space for tossing two coins?", ["{HH, HT, TH, TT}", "{H, T}", "{0, 1, 2, 3}", "{HHH, TTT}"], "Each coin can land heads or tails, giving HH, HT, TH, and TT."),
-    createRandomVariableQuestion("Two coins are tossed. X is the number of heads. What values can X take?", ["{0, 1, 2}", "{H, T}", "{1, 2, 3}", "{0, 1, 2, 3, 4}"], "Two tosses can produce zero, one, or two heads."),
-    createRandomVariableQuestion("For two coin tosses, if X counts heads, what is X for HH?", ["2", "1", "0", "4"], "HH contains two heads, so X = 2."),
-    createRandomVariableQuestion("For two coin tosses, if X counts heads, what is X for TT?", ["0", "1", "2", "4"], "TT contains no heads, so X = 0."),
-    createRandomVariableQuestion("Three coins are tossed. Y is the number of tails. What are the possible values of Y?", ["{0, 1, 2, 3}", "{H, T}", "{1, 2, 3, 4}", "{0, 1}"], "There can be zero, one, two, or three tails in three tosses."),
-    createRandomVariableQuestion("For three coin tosses, if Y counts tails, what is Y for HTH?", ["1", "0", "2", "3"], "HTH contains one tail, so Y = 1."),
-    createRandomVariableQuestion("For three coin tosses, if Y counts tails, what is Y for TTT?", ["3", "2", "1", "0"], "TTT contains three tails, so Y = 3."),
-    createRandomVariableQuestion("In an experiment with three coin tosses, what does the outcome HHT represent?", ["Two heads and one tail", "One head and two tails", "Three heads", "Three tails"], "HHT records heads on the first two tosses and tails on the third."),
-    createRandomVariableQuestion("When one fair die is rolled, which set gives all possible results?", ["{1, 2, 3, 4, 5, 6}", "{0, 1}", "{2, 4, 6}", "{1, 2, 3}"], "A standard die has six possible outcomes, numbered 1 through 6."),
-    createRandomVariableQuestion("A die is rolled. X is the result when it is an even number. Which values are possible?", ["{2, 4, 6}", "{1, 3, 5}", "{0, 2, 4, 6}", "{2, 3, 4}"], "The even outcomes on a standard die are 2, 4, and 6."),
-    createRandomVariableQuestion("Which is an example of a random variable that counts outcomes?", ["The number of heads in several coin tosses", "The color of a coin", "The name of a student", "The shape of a die"], "The number of heads is numerical and can be counted."),
-    createRandomVariableQuestion("A die is rolled twice and W is the sum of the results. What are the possible values of W?", ["{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}", "{1, 2, 3, 4, 5, 6}", "{0, 1}", "{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}"], "The smallest sum is 1 + 1 = 2 and the largest is 6 + 6 = 12; every integer in between is possible."),
-    createRandomVariableQuestion("A discrete random variable has values that are usually what?", ["Countable", "Measured on a continuous scale", "Always fractions", "Impossible to list"], "Discrete random-variable values are countable."),
-    createRandomVariableQuestion("Which quantity is discrete?", ["Number of books in a library", "Height of a learner", "Time to finish an exam", "Temperature of a room"], "Books are counted in whole items, making the number discrete."),
-    createRandomVariableQuestion("Which quantity is discrete?", ["Number of text messages sent", "Weight of a newborn", "Distance to school", "Speed of a car"], "Messages are counted, so their number is discrete."),
-    createRandomVariableQuestion("Why is the number of pencils in a box discrete?", ["Pencils are counted in whole items", "Pencil length is measured", "The number can be any decimal", "It changes continuously"], "A count of individual pencils takes countable whole-number values."),
-    createRandomVariableQuestion("A continuous random variable is based on values obtained through what?", ["Measurement", "Counting objects only", "Naming outcomes", "Sorting letters"], "Continuous random-variable values are obtained through measurement."),
-    createRandomVariableQuestion("Which quantity is continuous?", ["Height of a learner", "Number of teachers", "Number of books", "Number of pencils"], "Height is measured and can take decimal values."),
-    createRandomVariableQuestion("Which quantity is continuous?", ["Weight of a newborn child", "Number of messages", "Number of students", "Number of cars"], "Weight is measured and can vary continuously."),
-    createRandomVariableQuestion("Which quantity is continuous?", ["Time to finish an exam", "Number of questions answered", "Number of books read", "Number of phone calls"], "Time is measured and may take fractional values."),
-    createRandomVariableQuestion("The distance from home to school is usually classified as what?", ["Continuous, because it is measured", "Discrete, because it is counted", "Neither countable nor measurable", "A sample space"], "Distance is a measurement and can take decimal values."),
-    createRandomVariableQuestion("The speed of a moving car is which type of quantity?", ["Continuous", "Discrete", "A coin-toss outcome", "A count of objects"], "Speed is measured and can vary continuously."),
-    createRandomVariableQuestion("The temperature of a room is which type of quantity?", ["Continuous", "Discrete", "A count", "A sample space"], "Temperature is measured, so it is continuous."),
-    createRandomVariableQuestion("The number of teachers in a school is which type of quantity?", ["Discrete", "Continuous", "Measured only", "A decimal interval"], "Teachers are counted in whole people, so the number is discrete."),
-    createRandomVariableQuestion("A powder's weight Y is between 0 mg and 80 mg. Which classification fits Y?", ["Continuous, because weight is measured", "Discrete, because every value is a count", "Neither, because it has bounds", "A sample space"], "Weight is measured and may take decimal values between 0 mg and 80 mg."),
-    createRandomVariableQuestion("A student's score on a 10-item test can be 0 through 10. Which classification fits the score?", ["Discrete, because the possible scores are countable", "Continuous, because all decimals are possible", "Neither, because the score has a maximum", "A measurement of time"], "The possible scores are the finite set {0, 1, ..., 10}, so the variable is discrete."),
-    createRandomVariableQuestion("Which statement best distinguishes discrete and continuous variables?", ["Discrete values are counted; continuous values are measured", "Discrete values are measured; continuous values are counted", "Both types must be whole numbers", "Only continuous variables have numerical values"], "Countable values are discrete; values obtained through measurement are continuous."),
-    createRandomVariableQuestion("A measured quantity can often take which kind of values?", ["Decimal values within a range", "Only the numbers 0 and 1", "Only whole-number counts", "Only letters"], "A measurement can take decimal values within its possible range."),
-    createRandomVariableQuestion("Two balls are drawn without replacement, with colors red (R) or blue (B). What is the sample space?", ["{RR, RB, BR, BB}", "{R, B}", "{0, 1, 2, 3}", "{HH, HT, TH, TT}"], "For two draws, the ordered color outcomes are RR, RB, BR, and BB."),
-    createRandomVariableQuestion("Two balls are drawn. Z counts the number of blue balls. What are the possible values of Z?", ["{0, 1, 2}", "{R, B}", "{1, 2, 3}", "{0, 1}"], "The two draws can contain zero, one, or two blue balls."),
-    createRandomVariableQuestion("For two draws, if Z counts blue balls, what is Z for outcome RB?", ["1", "0", "2", "3"], "RB contains one blue ball, so Z = 1."),
-    createRandomVariableQuestion("For two draws, if Z counts blue balls, what is Z for outcome RR?", ["0", "1", "2", "3"], "RR contains no blue balls, so Z = 0."),
-    createRandomVariableQuestion("A learner's height is recorded in centimeters. Is the value countable or measurable?", ["Measurable", "Countable", "Neither", "A sample-space outcome"], "Height is obtained by measurement."),
-    createRandomVariableQuestion("The number of books in a library is recorded. Is the value countable or measurable?", ["Countable", "Measurable", "Neither", "A continuous interval"], "Books are counted as individual items."),
-    createRandomVariableQuestion("The weight of a newborn child is recorded. Is the value countable or measurable?", ["Measurable", "Countable", "Neither", "A coin-toss outcome"], "Weight is obtained through measurement."),
-    createRandomVariableQuestion("The number of text messages sent is recorded. Is the value countable or measurable?", ["Countable", "Measurable", "Neither", "A continuous interval"], "Text messages are counted as separate items.")
+    createRandomVariableQuestion("What is a discrete probability distribution?", ["A list of random-variable values and their probabilities", "Only a list of outcomes", "A graph of measured data", "A probability greater than 1"], "A discrete probability distribution pairs each value of X with P(X)."),
+    createRandomVariableQuestion("In two coin tosses, what are the possible values of X if X counts heads?", ["{0, 1, 2}", "{HH, HT, TH, TT}", "{1, 2}", "{0, 1, 2, 3}"], "Two tosses can produce zero, one, or two heads."),
+    createRandomVariableQuestion("For two coin tosses, what is P(X = 0)?", ["1/4", "1/2", "3/4", "1"], "Only TT gives zero heads, so P(0) = 1/4."),
+    createRandomVariableQuestion("For two coin tosses, what is P(X = 1)?", ["1/2", "1/4", "3/4", "1"], "HT and TH give one head, so P(1) = 2/4 = 1/2."),
+    createRandomVariableQuestion("When rolling a die, what are the possible values of X?", ["{1, 2, 3, 4, 5, 6}", "{0, 1}", "{2, 4, 6}", "{1, 2, 3}"], "A standard die has faces 1 through 6."),
+    createRandomVariableQuestion("What is P(X = 4) for one fair die roll?", ["1/6", "1/5", "4/6", "1/4"], "One face out of six equally likely faces gives probability 1/6."),
+    createRandomVariableQuestion("What is P(X = 2) for one fair die roll?", ["1/6", "1/2", "2/6", "1"], "Each die face has probability 1/6."),
+    createRandomVariableQuestion("Which property must every probability satisfy?", ["0 <= P(X) <= 1", "P(X) > 1", "P(X) < 0", "P(X) = 2"], "A probability cannot be negative or greater than 1."),
+    createRandomVariableQuestion("What is the sum of all probabilities in a valid distribution?", ["1", "0", "10", "It depends on X"], "The probabilities of all possible outcomes sum to 1."),
+    createRandomVariableQuestion("Which list is a valid probability distribution?", ["P(0)=1/4, P(1)=1/2, P(2)=1/4", "P(0)=-0.3, P(1)=0.6", "P(1)=1.2, P(2)=0", "P(1)=0.2, P(2)=0.2"], "Each probability is from 0 to 1 and the sum is 1."),
+    createRandomVariableQuestion("Why is P(X) = -0.3 invalid?", ["A probability cannot be negative", "The variable is continuous", "It must equal 1", "It is too small to count"], "Probabilities must be between zero and one."),
+    createRandomVariableQuestion("For three coin tosses, what values can Y represent?", ["{0, 1, 2, 3}", "{H, T}", "{1, 2, 3, 4}", "{0, 1, 2}"], "There can be zero through three tails."),
+    createRandomVariableQuestion("For three coin tosses, what is P(Y = 0)?", ["1/8", "3/8", "1/4", "1/2"], "Only HHH gives zero tails."),
+    createRandomVariableQuestion("For three coin tosses, what is P(Y = 1)?", ["3/8", "1/8", "1/2", "2/8"], "Outcomes HHT, HTH, and THH give one tail."),
+    createRandomVariableQuestion("For three coin tosses, what is P(Y = 3)?", ["1/8", "3/8", "1/2", "1"], "Only TTT gives three tails."),
+    createRandomVariableQuestion("What does P(X <= 2) mean?", ["Sum P(0), P(1), and P(2)", "Subtract P(2)", "Use only P(2)", "Multiply P(0), P(1), and P(2)"], "The symbol <= means add the probabilities for all values no greater than 2."),
+    createRandomVariableQuestion("What does P(X >= 7) require?", ["Adding probabilities for X = 7, 8, 9, and 10", "Using only P(7)", "Subtracting P(7)", "Adding P(0) to P(7)"], "Values at least 7 include 7, 8, 9, and 10."),
+    createRandomVariableQuestion("Using 0.100 + 0.150 + 0.250, what is P(X <= 2)?", ["0.500", "0.250", "0.150", "0.100"], "Add the three probabilities: 0.100 + 0.150 + 0.250 = 0.500."),
+    createRandomVariableQuestion("Using probabilities 0.050, 0.040, 0.025, and 0.015, what is P(X >= 7)?", ["0.130", "0.050", "0.115", "1.000"], "Add 0.050 + 0.040 + 0.025 + 0.015 = 0.130."),
+    createRandomVariableQuestion("Which is needed to draw a probability histogram?", ["Values of X and corresponding probabilities", "Only the sample space", "Only the largest probability", "Only a die outcome"], "A histogram plots each X value against P(X)."),
+    createRandomVariableQuestion("What must a probability histogram have?", ["One probability bar for each X value", "A negative bar", "Only one bar", "Bars totaling -1"], "Each possible value of X has a bar representing its probability."),
+    createRandomVariableQuestion("A distribution has probabilities 0.2, 0.3, 0.5. Is it valid?", ["Yes", "No, one probability is negative", "No, the sum is 2", "No, probabilities cannot be decimals"], "All probabilities are between 0 and 1, and they sum to 1."),
+    createRandomVariableQuestion("A distribution has probabilities 0.4, 0.4, 0.4. Is it valid?", ["No, the sum is 1.2", "Yes", "No, probabilities cannot repeat", "Yes, the values are decimals"], "The sum of probabilities exceeds 1."),
+    createRandomVariableQuestion("A distribution has probabilities -0.1 and 1.1. Is it valid?", ["No, because both violate the 0-to-1 rule", "Yes", "No, but only 1.1 is invalid", "Yes, the sum is 1"], "Both -0.1 and 1.1 fall outside the permitted interval."),
+    createRandomVariableQuestion("For Y counts tails in three coin tosses, which outcome gives Y = 2?", ["HTT", "HHH", "HHT", "TTT"], "HTT has exactly two tails."),
+    createRandomVariableQuestion("For Y counts tails in three coin tosses, which value has probability 3/8?", ["Y = 1 or Y = 2", "Y = 0", "Y = 3", "Y = 4"], "The probabilities for one and two tails are both 3/8."),
+    createRandomVariableQuestion("Which table structure represents a discrete probability distribution?", ["X values paired with P(X)", "Only X values", "Only P(X) values", "Two random sample spaces"], "A table has columns or rows for X and P(X)."),
+    createRandomVariableQuestion("If P(0)=0.25 and P(1)=0.75, what is P(0 or 1)?", ["1", "0.25", "0.75", "0.50"], "The two mutually exclusive outcomes cover all possibilities, so the sum is 1."),
+    createRandomVariableQuestion("If P(X <= 2)=0.500, what fraction is that?", ["1/2", "1/4", "3/4", "1"], "0.500 equals one-half."),
+    createRandomVariableQuestion("If P(X >= 7)=0.130, what fraction is that approximately?", ["13/100", "7/10", "1/3", "1/2"], "0.130 is 130/1000, or 13/100.")
 ];
 
 const levelTitles = [
-    "Random Variables", "Outcomes and Sample Spaces", "Two Coin Tosses", "Three Coin Tosses",
-    "Discrete Variables", "Countable Quantities", "Continuous Variables", "Measured Quantities",
-    "Classifying Variables", "Applying Random Variables"
+    "Discrete Probability Distribution", "Two-Coin Example", "Rolling a Die",
+    "Distribution Properties", "Validating Distributions", "Three-Coin Example",
+    "Histogram", "Cumulative Probabilities", "Applying Rules", "Review"
 ];
 const learningLevels = Array.from({ length: 10 }, (_, index) => ({
     id: index + 1,
@@ -306,87 +296,62 @@ const learningLevels = Array.from({ length: 10 }, (_, index) => ({
 // ============================================================
 
 const reviewData = {
-    randomVariables: {
-        title: "Random Variables",
+    definition: {
+        title: "Discrete Probability Distribution",
         content: `
-            <h3>What Is a Random Variable?</h3>
-            <p>A random variable assigns a numerical value to each outcome of a chance experiment. It is usually represented by a capital letter such as <strong>X</strong>.</p>
-            <div class="example"><strong>Example:</strong> Toss two coins and let X be the number of heads. HH → 2, HT → 1, TH → 1, TT → 0.</div>
-            <p>The possible values are <strong>X = {0, 1, 2}</strong>.</p>
+            <h3>Discrete Probability Distribution</h3>
+            <p>A discrete probability distribution consists of the values a random variable can assume and their corresponding probabilities.</p>
+            <div class="formula">Value of X → P(X)</div>
         `
     },
-
-    sampleSpace: {
-        title: "Outcomes and Sample Spaces",
-        content: `
-            <h3>Outcomes and Sample Spaces</h3>
-            <p>A sample space lists every possible outcome of a chance experiment. Apply the rule defining the random variable to each outcome to find its value.</p>
-            <div class="example"><strong>Two coin tosses</strong><br>Sample space: {HH, HT, TH, TT}<br>If X counts heads, the corresponding values are 2, 1, 1, and 0.</div>
-            <div class="formula">Outcome → apply the rule → numerical value</div>
-        `
-    },
-
     twoCoins: {
-        title: "Example: Two Coin Tosses",
+        title: "Two-Coin Example",
         content: `
-            <h3>Two Coins: Count the Heads</h3>
-            <p>Let X represent the number of heads when two coins are tossed.</p>
-            <div class="example">HH → X = 2<br>HT → X = 1<br>TH → X = 1<br>TT → X = 0</div>
-            <p>Collect the distinct values: <strong>X = {0, 1, 2}</strong>.</p>
-            <p>Notice that different outcomes (HT and TH) can produce the same random-variable value.</p>
+            <h3>Two Coins: Number of Heads</h3>
+            <div class="example">HH → 2 heads; HT → 1; TH → 1; TT → 0.</div>
+            <p>X = {0, 1, 2}, with probabilities P(0)=1/4, P(1)=1/2, and P(2)=1/4.</p>
         `
     },
-
+    die: {
+        title: "Rolling a Die",
+        content: `
+            <h3>Rolling a Fair Die</h3>
+            <p>X can equal 1, 2, 3, 4, 5, or 6.</p>
+            <div class="formula">P(1)=P(2)=P(3)=P(4)=P(5)=P(6)=1/6</div>
+        `
+    },
+    properties: {
+        title: "Properties",
+        content: `
+            <h3>Properties of a Discrete Probability Distribution</h3>
+            <ul>
+                <li>Every probability satisfies 0 <= P(X) <= 1.</li>
+                <li>The sum of all probabilities is 1.</li>
+            </ul>
+        `
+    },
+    validity: {
+        title: "Validating a Distribution",
+        content: `
+            <h3>Is the Distribution Valid?</h3>
+            <p>Reject a distribution if a probability is negative or greater than 1, or if the total is not 1.</p>
+            <div class="example"><strong>Invalid:</strong> P(X)= -0.3<br><strong>Invalid:</strong> probabilities 0.4, 0.4, 0.4 because they sum to 1.2.</div>
+        `
+    },
     threeCoins: {
-        title: "Example: Three Coin Tosses",
+        title: "Three-Coin Example",
         content: `
-            <h3>Three Coins: Count the Tails</h3>
-            <p>Let Y represent the number of tails when three coins are tossed.</p>
-            <div class="example">HHH → Y = 0<br>HHT, HTH, THH → Y = 1<br>HTT, THT, TTH → Y = 2<br>TTT → Y = 3</div>
-            <p>The possible values are <strong>Y = {0, 1, 2, 3}</strong>.</p>
+            <h3>Three Coins: Number of Tails</h3>
+            <p>Y = {0, 1, 2, 3}.</p>
+            <div class="formula">P(0)=1/8, P(1)=3/8, P(2)=3/8, P(3)=1/8</div>
         `
     },
-
-    twoBalls: {
-        title: "Example: Drawing Two Balls",
+    cumulative: {
+        title: "Cumulative Probabilities",
         content: `
-            <h3>Two Balls: Count the Blue Balls</h3>
-            <p>Two balls are drawn in succession without replacement from a box containing red and blue balls. Let Z be the number of blue balls drawn.</p>
-            <div class="example">Sample space: {RR, RB, BR, BB}<br>RR → Z = 0<br>RB or BR → Z = 1<br>BB → Z = 2</div>
-            <p>The possible values are <strong>Z = {0, 1, 2}</strong>.</p>
-        `
-    },
-
-    discrete: {
-        title: "Discrete Random Variables",
-        content: `
-            <h3>Discrete Random Variables</h3>
-            <p>A discrete random variable has values that are countable. Its values often come from counting separate items or events.</p>
-            <ul><li>Number of text messages sent</li><li>Number of books in a library</li><li>Number of pencils in a box</li><li>Number of even outcomes when a die is rolled: {2, 4, 6}</li></ul>
-            <div class="formula">Countable values → discrete</div>
-        `
-    },
-
-    continuous: {
-        title: "Continuous Random Variables",
-        content: `
-            <h3>Continuous Random Variables</h3>
-            <p>A continuous random variable has values obtained by measurement. It can take any value within a range, including decimal values.</p>
-            <ul><li>Height of a learner</li><li>Weight of a newborn child or a powder</li><li>Time to finish an exam</li><li>Distance from home to school</li><li>Speed of a moving car</li><li>Temperature of a room</li></ul>
-            <div class="example"><strong>Example:</strong> A powder's weight can be any measured amount from 0 mg up to 80 mg, including values such as 42.6 mg.</div>
-            <div class="formula">Measured values → continuous</div>
-        `
-    },
-
-    classify: {
-        title: "Countable or Measurable?",
-        content: `
-            <h3>Classify a Variable</h3>
-            <p>Ask how the value is obtained: is it counted or measured?</p>
-            <div class="example"><strong>Countable → discrete</strong><br>Books in a library, text messages sent, pencils in a box, and teachers in a school.</div>
-            <div class="example"><strong>Measurable → continuous</strong><br>Height, weight, time, distance, speed, and temperature.</div>
-            <p>A score on a 10-item test has possible values {0, 1, 2, ..., 10}; because these values are countable, the score is discrete.</p>
-            <div class="formula">Count it? Discrete.<br>Measure it? Continuous.</div>
+            <h3>Add Probabilities in the Given Range</h3>
+            <p>P(X <= 2) = P(0) + P(1) + P(2).</p>
+            <p>P(X >= 7) = P(7) + P(8) + P(9) + P(10).</p>
         `
     }
 };
@@ -428,37 +393,36 @@ function enterQPI() {
     showScreen("menuScreen");
 }
 
-const dayOneReviewerTitle = "Random Variables and Possible Values";
+const dayOneReviewerTitle = "Discrete Probability Distribution";
 const dayOneReviewer = `# DAY 1 REVIEWER
 ${dayOneReviewerTitle}
 
-1. Random Variables
-A random variable assigns a numerical value to each outcome of a chance experiment. It is usually named with a capital letter such as X.
+1. Definition
+A discrete probability distribution consists of the values that a random variable can assume and their corresponding probabilities.
 
-2. Two Coin Tosses
-Sample space: {HH, HT, TH, TT}
-Let X be the number of heads:
-HH → 2, HT → 1, TH → 1, TT → 0
-The possible values are X = {0, 1, 2}.
+2. Two-Coin Example
+If X is the number of heads in two tosses, X = 0, 1, or 2.
+P(0) = 1/4, P(1) = 1/2, P(2) = 1/4.
 
-3. Three Coin Tosses
-If Y is the number of tails, its possible values are Y = {0, 1, 2, 3}.`;
+3. Rolling a Die
+If X is the face shown, X = 1, 2, 3, 4, 5, or 6.
+Each probability is 1/6.`;
 
-const dayTwoReviewerTitle = "Discrete and Continuous Random Variables";
+const dayTwoReviewerTitle = "Properties and Examples";
 const dayTwoReviewer = `# DAY 2 REVIEWER
 ${dayTwoReviewerTitle}
 
-1. Discrete Random Variables
-A discrete random variable has countable possible values. Counts such as the number of books, text messages, or heads are discrete.
+1. Properties
+Every probability must satisfy 0 <= P(X) <= 1.
+The sum of all probabilities must equal 1.
 
-2. Continuous Random Variables
-A continuous random variable is measured and can take any value within a range, including decimal values. Height, weight, time, distance, speed, and temperature are continuous measurements.
+2. Three-Coin Example
+If Y is the number of tails, Y = 0, 1, 2, or 3.
+P(0) = 1/8, P(1) = 3/8, P(2) = 3/8, P(3) = 1/8.
 
-3. Examples
-The score on a 10-item test can be {0, 1, 2, ..., 10}, so it is discrete.
-A powder's weight from 0 to 80 mg is measured, so it is continuous.
-
-Ask: Is the quantity counted or measured? Counted values are discrete; measured values are continuous.`;
+3. Cumulative Probability
+For P(X <= 2), add P(0), P(1), and P(2).
+For P(X >= 7), add the probabilities for X = 7, 8, 9, and 10.`;
 
 function getDiscussionMaterial(day, materials) {
     const material = materials[day] || {};
@@ -694,24 +658,24 @@ function backToStoringChoices() {
 }
 
 const wordSearchWords = [
-    "RANDOM", "VARIABLE", "DISCRETE", "CONTINUOUS", "COUNTABLE",
-    "MEASURABLE", "OUTCOME", "SAMPLESPACE", "EXPERIMENT", "MEASUREMENT"
+    "DISTRIBUTION", "PROBABILITY", "RANDOM", "VARIABLE", "DISCRETE",
+    "HISTOGRAM", "PERCENT", "OUTCOME", "PROPERTIES", "CUMULATIVE"
 ];
 let wordSearchTimerId = null;
 let currentStoringFlashcard = 0;
 let storingFlashcardRatings = [];
 
 const storingFlashcards = [
-    { front: "What is a random variable?", back: "A rule that assigns a number to each outcome of a chance experiment." },
-    { front: "How are random variables usually named?", back: "With a capital letter, usually X or Y." },
-    { front: "What is the sample space for two coin tosses?", back: "{HH, HT, TH, TT}." },
-    { front: "Two coins are tossed. X counts heads. What values can X take?", back: "X = {0, 1, 2}." },
-    { front: "Three coins are tossed. Y counts tails. What values can Y take?", back: "Y = {0, 1, 2, 3}." },
-    { front: "What is a discrete random variable?", back: "A random variable with countable possible values, often describing a count." },
-    { front: "What is a continuous random variable?", back: "A random variable whose values are obtained through measurement and may include decimals." },
-    { front: "Give two examples of discrete quantities.", back: "Number of books in a library; number of text messages sent." },
-    { front: "Give two examples of continuous quantities.", back: "Height and weight; time, distance, speed, or temperature." },
-    { front: "How can you quickly distinguish discrete from continuous?", back: "Counted or countable values are discrete; measured values are continuous." }
+    { front: "What is a discrete probability distribution?", back: "A list of values a random variable can assume and their corresponding probabilities." },
+    { front: "What are the two-coins probabilities?", back: "P(0)=1/4, P(1)=1/2, P(2)=1/4." },
+    { front: "What is P(X = 4) for a fair die?", back: "1/6." },
+    { front: "What is the first property of a discrete probability distribution?", back: "Each probability must satisfy 0 <= P(X) <= 1." },
+    { front: "What is the second property?", back: "The sum of all probabilities must equal 1." },
+    { front: "What are the three-coins probabilities?", back: "P(0)=1/8, P(1)=3/8, P(2)=3/8, P(3)=1/8." },
+    { front: "What does P(X <= 2) mean?", back: "Add P(0), P(1), and P(2)." },
+    { front: "What does P(X >= 7) mean?", back: "Add probabilities for X = 7, 8, 9, and 10." },
+    { front: "What does a probability histogram show?", back: "A bar for each value of X at height P(X)." },
+    { front: "How can a distribution be recognized as invalid?", back: "It has a negative or greater-than-one probability, or its probabilities do not sum to 1." }
 ];
 function renderStoringFlashcards() {
     const container = document.getElementById("wordSearchPuzzle");
@@ -793,12 +757,12 @@ function rateStoringFlashcard(knewAnswer) {
 }
 
 const mnemonicQuizQuestions = [
-    { question: "A discrete random variable has values that are usually what?", choices: ["Countable", "Measured", "Only negative", "Non-numerical"], answer: 0 },
-    { question: "A continuous random variable is obtained through what?", choices: ["Measurement", "Counting separate objects", "Naming outcomes", "Sorting a list"], answer: 0 },
-    { question: "Which is discrete?", choices: ["Number of pencils in a box", "Weight of a child", "Height of a learner", "Time to travel"], answer: 0 },
-    { question: "Which is continuous?", choices: ["Distance from home to school", "Number of students", "Number of books", "Number of calls"], answer: 0 },
-    { question: "Two coins are tossed and X counts heads. Which set is X's possible values?", choices: ["{0, 1, 2}", "{H, T}", "{1, 2, 3}", "{0, 1}"], answer: 0 },
-    { question: "What does a random variable assign to each chance outcome?", choices: ["A numerical value", "A color", "A student name", "A unit of measurement"], answer: 0 }
+    { question: "What is a discrete probability distribution?", choices: ["Values of X and their probabilities", "Only outcomes", "Only a histogram", "Only a random variable"], answer: 0 },
+    { question: "What must each probability satisfy?", choices: ["0 <= P(X) <= 1", "P(X) > 1", "P(X) < 0", "P(X) = 2"], answer: 0 },
+    { question: "What must all probabilities sum to?", choices: ["1", "0", "10", "100"], answer: 0 },
+    { question: "For two coins, what is P(X = 1)?", choices: ["1/2", "1/4", "3/4", "1"], answer: 0 },
+    { question: "For a fair die, what is P(X = 4)?", choices: ["1/6", "1/4", "1/5", "1"], answer: 0 },
+    { question: "What does P(X >= 7) mean?", choices: ["Add P(7), P(8), P(9), and P(10)", "Use only P(7)", "Subtract P(7)", "Use P(0) to P(7)"], answer: 0 }
 ];
 function renderStoringMnemonics() {
     const container = document.getElementById("wordSearchPuzzle");
@@ -811,7 +775,7 @@ function renderStoringMnemonics() {
     section.className = "wordSearch studyActivity";
 
     const heading = document.createElement("h3");
-    heading.textContent = "Random Variables: Memory Tips";
+    heading.textContent = "Discrete Probability Distribution: Memory Tips";
     section.appendChild(heading);
 
     const memoryTips = [
@@ -1389,16 +1353,16 @@ function showScreen(screenId) {
 // ============================================================
 
 const retrievalTestQuestions = [
-    { question: "What is a random variable?", choices: ["A rule assigning numbers to outcomes of a chance experiment", "A list of letters", "A fixed measurement", "A type of graph"], answer: 0, explanation: "A random variable assigns a numerical value to each outcome of a chance experiment." },
-    { question: "Two coins are tossed. X counts heads. What are the possible values of X?", choices: ["{0, 1, 2}", "{H, T}", "{1, 2, 3}", "{0, 1}"], answer: 0, explanation: "Two tosses can result in zero, one, or two heads." },
-    { question: "Three coins are tossed. Y counts tails. What is Y for TTT?", choices: ["3", "2", "1", "0"], answer: 0, explanation: "TTT has three tails, so Y = 3." },
-    { question: "Which is a discrete random variable?", choices: ["Number of books in a library", "Height of a learner", "Time to finish an exam", "Temperature of a room"], answer: 0, explanation: "Books are counted in whole items, so their number is discrete." },
-    { question: "Which is a continuous random variable?", choices: ["Weight of a newborn", "Number of teachers", "Number of pencils", "Number of messages"], answer: 0, explanation: "Weight is measured and can take decimal values." },
-    { question: "A student's score on a 10-item test can range from 0 to 10 whole points. Is it discrete or continuous?", choices: ["Discrete", "Continuous", "Neither", "Both by definition"], answer: 0, explanation: "The possible scores are a countable set of whole-number values." },
-    { question: "Which quantity is obtained through measurement?", choices: ["Distance from home to school", "Number of books", "Number of calls", "Number of students"], answer: 0, explanation: "Distance is measured, so it is continuous." },
-    { question: "Two balls are drawn. Z counts the blue balls. What values can Z take?", choices: ["{0, 1, 2}", "{R, B}", "{1, 2, 3}", "{0, 1}"], answer: 0, explanation: "Two draws can contain zero, one, or two blue balls." },
-    { question: "The number of text messages sent is countable or measurable?", choices: ["Countable", "Measurable", "Neither", "Continuous"], answer: 0, explanation: "Messages are counted as separate items." },
-    { question: "The time it takes to finish an exam is countable or measurable?", choices: ["Measurable", "Countable", "Neither", "A sample space"], answer: 0, explanation: "Time is measured and may take fractional values." }
+    { question: "What is a discrete probability distribution?", choices: ["The values of X and their corresponding probabilities", "Only a sample space", "Only a graph", "A probability greater than 1"], answer: 0, explanation: "It pairs every possible value of X with P(X)." },
+    { question: "For two coin tosses, what are the values of X when X counts heads?", choices: ["{0, 1, 2}", "{HH, HT, TH, TT}", "{1, 2, 3}", "{0, 1}"], answer: 0, explanation: "Two tosses can produce zero, one, or two heads." },
+    { question: "For two coin tosses, what is P(X = 1)?", choices: ["1/2", "1/4", "3/4", "1"], answer: 0, explanation: "HT and TH are the two outcomes with one head." },
+    { question: "For a fair die, what is P(X = 4)?", choices: ["1/6", "1/4", "1/5", "1"], answer: 0, explanation: "One of six equally likely faces is 4." },
+    { question: "Which property must a probability satisfy?", choices: ["0 <= P(X) <= 1", "P(X) > 1", "P(X) < 0", "P(X) = 2"], answer: 0, explanation: "A probability cannot be negative or greater than 1." },
+    { question: "What must the sum of all probabilities equal?", choices: ["1", "0", "10", "The number of values"], answer: 0, explanation: "The probabilities represent all possible outcomes." },
+    { question: "Are probabilities 0.4, 0.4, and 0.4 a valid distribution?", choices: ["No, they sum to 1.2", "Yes", "No, they must be fractions", "Yes, they are equal"], answer: 0, explanation: "The sum must equal 1." },
+    { question: "For three coin tosses, what is P(Y = 1) for the number of tails?", choices: ["3/8", "1/8", "1/2", "1"], answer: 0, explanation: "HHT, HTH, and THH give one tail." },
+    { question: "How is P(X <= 2) found?", choices: ["P(0) + P(1) + P(2)", "P(2) only", "P(3) + P(4)", "P(0) multiplied by P(2)"], answer: 0, explanation: "Add all probabilities for values no greater than 2." },
+    { question: "How is P(X >= 7) found?", choices: ["P(7) + P(8) + P(9) + P(10)", "P(7) only", "P(0) + P(7)", "P(6) + P(7)"], answer: 0, explanation: "Add probabilities for 7, 8, 9, and 10." }
 ];
 function prepareRetrievalTestQuestions() {
     const answerPositions = shuffleArray([
