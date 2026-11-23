@@ -268,20 +268,68 @@
                     <h3 id="discussionDayTitle"></h3>
 
                     <figure id="dayOneReviewerDiagram" class="discussionIllustration hidden">
-                        <img
-                            src="probability-coins.svg"
-                            alt="Probability distribution table for tossing two coins and counting heads."
-                        >
+                        <svg class="lessonPhoto" viewBox="0 0 900 520" role="img" aria-label="Two coin probability distribution illustration">
+                            <rect width="900" height="520" rx="28" fill="#eef2ff"/>
+                            <circle cx="820" cy="70" r="95" fill="#ddd6fe" opacity=".75"/>
+                            <text x="450" y="65" text-anchor="middle" font-family="Arial" font-size="32" font-weight="900" fill="#312e81">TOSS TWO COINS</text>
+                            <text x="450" y="105" text-anchor="middle" font-family="Arial" font-size="20" fill="#6366f1">Let X = number of heads</text>
+                            <g>
+                                <circle cx="150" cy="205" r="75" fill="#fde68a" stroke="#d97706" stroke-width="6"/>
+                                <circle cx="320" cy="205" r="75" fill="#fde68a" stroke="#d97706" stroke-width="6"/>
+                                <text x="150" y="225" text-anchor="middle" font-family="Arial" font-size="58" font-weight="900" fill="#78350f">H</text>
+                                <text x="320" y="225" text-anchor="middle" font-family="Arial" font-size="58" font-weight="900" fill="#78350f">H</text>
+                            </g>
+                            <rect x="80" y="310" width="310" height="150" rx="24" fill="#fff" stroke="#c4b5fd" stroke-width="4"/>
+                            <text x="235" y="355" text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#64748b">OUTCOME</text>
+                            <text x="235" y="410" text-anchor="middle" font-family="Arial" font-size="42" font-weight="900" fill="#4f46e5">HH</text>
+                            <text x="235" y="445" text-anchor="middle" font-family="Arial" font-size="28" font-weight="900" fill="#0f172a">X = 2</text>
+                            <rect x="430" y="165" width="390" height="295" rx="26" fill="#312e81"/>
+                            <text x="625" y="210" text-anchor="middle" font-family="Arial" font-size="20" font-weight="800" fill="#c7d2fe">PROBABILITY TABLE</text>
+                            <rect x="465" y="245" width="320" height="54" rx="10" fill="#eef2ff"/>
+                            <text x="535" y="280" text-anchor="middle" font-family="Arial" font-size="20" font-weight="800" fill="#312e81">Heads X</text>
+                            <g font-family="Arial" text-anchor="middle" font-size="24" font-weight="900" fill="#312e81">
+                                <text x="635" y="280">0</text><text x="705" y="280">1</text><text x="775" y="280">2</text>
+                            </g>
+                            <rect x="465" y="305" width="320" height="54" rx="10" fill="#fef3c7"/>
+                            <text x="535" y="340" text-anchor="middle" font-family="Arial" font-size="20" font-weight="800" fill="#92400e">P(X)</text>
+                            <g font-family="Arial" text-anchor="middle" font-size="24" font-weight="900" fill="#92400e">
+                                <text x="635" y="340">1/4</text><text x="705" y="340">1/2</text><text x="775" y="340">1/4</text>
+                            </g>
+                            <rect x="465" y="385" width="320" height="58" rx="16" fill="#ec4899"/>
+                            <text x="625" y="422" text-anchor="middle" font-family="Arial" font-size="23" font-weight="900" fill="#fff">1/4 + 1/2 + 1/4 = 1</text>
+                        </svg>
                         <figcaption>
                             A discrete probability distribution pairs each value of X with P(X).
                         </figcaption>
                     </figure>
 
                     <figure id="dayTwoReviewerDiagram" class="discussionIllustration hidden">
-                        <img
-                            src="probability-three-coins.svg"
-                            alt="Probability distribution table for tossing three coins and counting tails."
-                        >
+                        <svg class="lessonPhoto" viewBox="0 0 900 520" role="img" aria-label="Three coin probability distribution illustration">
+                            <rect width="900" height="520" rx="28" fill="#ecfeff"/>
+                            <circle cx="820" cy="75" r="100" fill="#67e8f9" opacity=".35"/>
+                            <text x="450" y="65" text-anchor="middle" font-family="Arial" font-size="32" font-weight="900" fill="#155e75">TOSS THREE COINS</text>
+                            <text x="450" y="105" text-anchor="middle" font-family="Arial" font-size="20" fill="#0891b2">Let Y = number of tails</text>
+                            <g fill="#fef3c7" stroke="#f59e0b" stroke-width="6">
+                                <circle cx="155" cy="205" r="70"/>
+                                <circle cx="315" cy="205" r="70"/>
+                                <circle cx="475" cy="205" r="70"/>
+                            </g>
+                            <g font-family="Arial" text-anchor="middle" font-size="42" font-weight="900" fill="#92400e">
+                                <text x="155" y="220">T</text><text x="315" y="220">T</text><text x="475" y="220">T</text>
+                            </g>
+                            <rect x="80" y="310" width="470" height="150" rx="24" fill="#fff" stroke="#67e8f9" stroke-width="4"/>
+                            <text x="315" y="355" text-anchor="middle" font-family="Arial" font-size="18" font-weight="800" fill="#64748b">OUTCOME</text>
+                            <text x="315" y="405" text-anchor="middle" font-family="Arial" font-size="40" font-weight="900" fill="#0891b2">TTT</text>
+                            <text x="315" y="445" text-anchor="middle" font-family="Arial" font-size="28" font-weight="900" fill="#164e63">Y = 3</text>
+                            <rect x="590" y="155" width="250" height="305" rx="26" fill="#164e63"/>
+                            <text x="715" y="200" text-anchor="middle" font-family="Arial" font-size="18" font-weight="800" fill="#cffafe">Y : P(Y)</text>
+                            <g font-family="Arial" text-anchor="middle" font-weight="900">
+                                <text x="715" y="260" font-size="28" fill="#fff">0 : 1/8</text>
+                                <text x="715" y="320" font-size="28" fill="#fde68a">1 : 3/8</text>
+                                <text x="715" y="380" font-size="28" fill="#fde68a">2 : 3/8</text>
+                                <text x="715" y="440" font-size="28" fill="#fff">3 : 1/8</text>
+                            </g>
+                        </svg>
                         <figcaption>
                             The probabilities for Y = 0, 1, 2, and 3 form a complete distribution.
                         </figcaption>
@@ -379,10 +427,29 @@
                 </p>
 
                 <figure class="reviewIllustration">
-                    <img
-                        src="probability-die.svg"
-                        alt="Probability distribution table for rolling a fair die."
-                    >
+                    <svg class="lessonPhoto" viewBox="0 0 900 520" role="img" aria-label="Fair die probability distribution illustration">
+                        <rect width="900" height="520" rx="28" fill="#dbeafe"/>
+                        <circle cx="95" cy="75" r="65" fill="#bfdbfe" opacity=".9"/>
+                        <text x="450" y="65" text-anchor="middle" font-family="Arial" font-size="32" font-weight="900" fill="#1e3a8a">ROLL A FAIR DIE</text>
+                        <text x="450" y="105" text-anchor="middle" font-family="Arial" font-size="20" fill="#4f46e5">Each face has an equal chance!</text>
+                        <rect x="80" y="145" width="300" height="300" rx="54" fill="#fff" stroke="#6366f1" stroke-width="8"/>
+                        <g fill="#4f46e5">
+                            <circle cx="155" cy="220" r="24"/><circle cx="305" cy="220" r="24"/>
+                            <circle cx="155" cy="370" r="24"/><circle cx="305" cy="370" r="24"/>
+                        </g>
+                        <circle cx="230" cy="295" r="24" fill="#ec4899"/>
+                        <rect x="430" y="145" width="390" height="300" rx="26" fill="#fff" stroke="#c4b5fd" stroke-width="4"/>
+                        <text x="625" y="190" text-anchor="middle" font-family="Arial" font-size="18" font-weight="800" fill="#64748b">VALUE OF X</text>
+                        <g font-family="Arial" text-anchor="middle" font-size="24" font-weight="900" fill="#1e1b4b">
+                            <text x="485" y="260">1</text><text x="540" y="260">2</text><text x="595" y="260">3</text>
+                            <text x="650" y="260">4</text><text x="705" y="260">5</text><text x="760" y="260">6</text>
+                        </g>
+                        <text x="625" y="320" text-anchor="middle" font-family="Arial" font-size="18" font-weight="800" fill="#64748b">PROBABILITY P(X)</text>
+                        <g font-family="Arial" text-anchor="middle" font-size="22" font-weight="900" fill="#db2777">
+                            <text x="485" y="390">1/6</text><text x="540" y="390">1/6</text><text x="595" y="390">1/6</text>
+                            <text x="650" y="390">1/6</text><text x="705" y="390">1/6</text><text x="760" y="390">1/6</text>
+                        </g>
+                    </svg>
                     <figcaption>
                         For a fair die, every value from 1 to 6 has probability 1/6.
                     </figcaption>
