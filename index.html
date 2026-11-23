@@ -66,7 +66,7 @@
                 <p>
                     An offline learning and quiz application
                     designed to help Grade 11 students study
-                    Discrete and Continuous Random Variables.
+                    Discrete Probability Distribution.
                 </p>
 
 
@@ -239,7 +239,7 @@
                 class="screen hidden"
             >
 
-                <h2>📝 Discrete and Continuous Random Variables</h2>
+                <h2>📝 Discrete Probability Distribution</h2>
 
                 <div id="discussionDays" class="discussionDays"></div>
                 <p id="discussionUnlockStatus" class="discussionStatus" role="status"></p>
@@ -269,21 +269,21 @@
 
                     <figure id="dayOneReviewerDiagram" class="discussionIllustration hidden">
                         <img
-                            src="random-variables-visual.svg"
-                            alt="Two coin-toss outcomes map to the number of heads, with discrete counts and continuous measurements shown below."
+                            src="probability-coins.svg"
+                            alt="Probability distribution table for tossing two coins and counting heads."
                         >
                         <figcaption>
-                            A random variable maps each chance outcome to a number.
+                            A discrete probability distribution pairs each value of X with P(X).
                         </figcaption>
                     </figure>
 
                     <figure id="dayTwoReviewerDiagram" class="discussionIllustration hidden">
                         <img
-                            src="random-variable-types.svg"
-                            alt="Countable objects represent discrete variables; a measuring scale represents continuous variables."
+                            src="probability-three-coins.svg"
+                            alt="Probability distribution table for tossing three coins and counting tails."
                         >
                         <figcaption>
-                            Count values for discrete variables; measure values for continuous variables.
+                            The probabilities for Y = 0, 1, 2, and 3 form a complete distribution.
                         </figcaption>
                     </figure>
 
@@ -326,7 +326,7 @@
                 class="screen hidden"
             >
 
-                <h2>🗂️ Storing: Random Variables</h2>
+                <h2>🗂️ Storing: Discrete Probability Distribution</h2>
                 <p>Complete Encode Day 1 first. Then pass at least 80% in any one activity to unlock the Retrieval Test.</p>
                 <p id="storingStatus" class="discussionStatus" role="status"></p>
                 <div id="storingActivityChoices" class="storingActivityChoices">
@@ -370,7 +370,7 @@
             >
 
                 <h2>
-                    📖 Discrete and Continuous Random Variables
+                    📖 Discrete Probability Distribution
                 </h2>
 
                 <p>
@@ -380,11 +380,11 @@
 
                 <figure class="reviewIllustration">
                     <img
-                        src="random-variables-visual.svg"
-                        alt="Two coin-toss outcomes map to the number of heads, with discrete counts and continuous measurements shown below."
+                        src="probability-die.svg"
+                        alt="Probability distribution table for rolling a fair die."
                     >
                     <figcaption>
-                        Random variables turn chance outcomes into numbers. Counted values are discrete; measured values are continuous.
+                        For a fair die, every value from 1 to 6 has probability 1/6.
                     </figcaption>
                 </figure>
 
@@ -392,58 +392,51 @@
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('randomVariables')"
+                        onclick="showReviewTopic('definition')"
                     >
-                        🎲 Random Variables
-                    </button>
-
-                    <button
-                        type="button"
-                        onclick="showReviewTopic('sampleSpace')"
-                    >
-                        🧩 Outcomes and Sample Spaces
+                        🎲 Distribution Definition
                     </button>
 
                     <button
                         type="button"
                         onclick="showReviewTopic('twoCoins')"
                     >
-                        🪙 Example: Two Coin Tosses
+                        🪙 Two-Coin Example
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('die')"
+                    >
+                        🎲 Rolling a Die
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('properties')"
+                    >
+                        ✅ Distribution Properties
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="showReviewTopic('validity')"
+                    >
+                        🧪 Validating Distributions
                     </button>
 
                     <button
                         type="button"
                         onclick="showReviewTopic('threeCoins')"
                     >
-                        🪙 Example: Three Coin Tosses
+                        🪙 Three-Coin Example
                     </button>
 
                     <button
                         type="button"
-                        onclick="showReviewTopic('twoBalls')"
+                        onclick="showReviewTopic('cumulative')"
                     >
-                        🔵 Example: Drawing Two Balls
-                    </button>
-
-                    <button
-                        type="button"
-                        onclick="showReviewTopic('discrete')"
-                    >
-                        🔢 Discrete Random Variables
-                    </button>
-
-                    <button
-                        type="button"
-                        onclick="showReviewTopic('continuous')"
-                    >
-                        📏 Continuous Random Variables
-                    </button>
-
-                    <button
-                        type="button"
-                        onclick="showReviewTopic('classify')"
-                    >
-                        🧠 Countable or Measurable?
+                        📊 Cumulative Probabilities
                     </button>
 
                 </div>
